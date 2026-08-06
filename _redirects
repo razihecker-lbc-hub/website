@@ -1,6 +1,6 @@
 # Root serves the main site page without exposing the filename.
 /                /League%20Bound%20Site.dc.html   200
-/almaya          /Almaya%20Admissions.html        200
+/almaya          /Elmayat.html                    200
 
 # Missing assets should fail as real 404s, not silently return the HTML page.
 /assets/*        /assets/:splat                   404
