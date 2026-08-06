@@ -884,14 +884,14 @@
           <div data-anatomy-sticky="true" style="position: sticky; top: 0; height: clamp(680px, 94vh, 840px); overflow: hidden; display: flex; flex-direction: column;">
             <div data-an-head="true" style="flex-shrink: 0; padding: 30px 48px 6px; max-width: 1280px; margin: 0 auto; width: 100%;">
               <span style="display: block; font-weight: 700; font-size: 10.5px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--lbc-gold); margin-bottom: 9px;">{{ anOverline }}</span>
-              <h2 style="font-family: var(--font-serif); font-size: 40px; font-weight: 700; line-height: 1.08; color: var(--lbc-navy); margin: 0 0 14px; max-width: 780px; text-wrap: pretty;">{{ anHeading }}</h2>
-              <p data-an-lede="true" style="font-size: 13.5px; line-height: 1.55; color: rgba(27,42,74,0.66); margin: 0 0 16px; max-width: 560px; text-wrap: pretty;">{{ anLede }}</p>
-              <div style="height: 1px; background: rgba(27,42,74,0.14); position: relative; margin-bottom: 12px;">
+              <h2 style="font-family: var(--font-serif); font-size: 40px; font-weight: 700; line-height: 1.08; color: #FFFFFF; margin: 0 0 14px; max-width: 780px; text-wrap: pretty;">{{ anHeading }}</h2>
+              <p data-an-lede="true" style="font-size: 13.5px; line-height: 1.55; color: rgba(255,255,255,0.6); margin: 0 0 16px; max-width: 560px; text-wrap: pretty;">{{ anLede }}</p>
+              <div style="height: 1px; background: rgba(255,255,255,0.14); position: relative; margin-bottom: 12px;">
                 <span data-an-bar="true" style="position: absolute; left: 0; top: -1px; height: 3px; width: 0%; background: var(--lbc-gold);"></span>
               </div>
               <div data-an-rail="true" style="display: flex; gap: 34px; flex-wrap: wrap;">
                 <sc-for list="{{ anSteps }}" as="st" hint-placeholder-count="6">
-                  <span data-an-step="{{ st.i }}" style="display: flex; align-items: baseline; gap: 7px; font-weight: 700; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; transition: color 220ms cubic-bezier(0.2,0.6,0.2,1); color: rgba(27,42,74,0.34);">
+                  <span data-an-step="{{ st.i }}" style="display: flex; align-items: baseline; gap: 7px; font-weight: 700; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; transition: color 220ms cubic-bezier(0.2,0.6,0.2,1); color: rgba(255,255,255,0.34);">
                     <span style="font-size: 9px;">{{ st.n }}</span>{{ st.label }}
                   </span>
                 </sc-for>
@@ -904,9 +904,9 @@
 
                   <div data-an-copy="true">
                     <span style="display: block; font-weight: 700; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--lbc-gold); margin-bottom: 14px;">{{ ph.label }}</span>
-                    <h3 style="font-family: var(--font-serif); font-size: 30px; font-weight: 700; line-height: 1.15; color: var(--lbc-navy); margin: 0 0 16px; text-wrap: pretty;">{{ ph.title }}</h3>
+                    <h3 style="font-family: var(--font-serif); font-size: 30px; font-weight: 700; line-height: 1.15; color: #FFFFFF; margin: 0 0 16px; text-wrap: pretty;">{{ ph.title }}</h3>
                     <span style="display: block; width: 38px; height: 2px; background: var(--lbc-gold); margin-bottom: 18px;"></span>
-                    <p style="font-size: 14.5px; line-height: 1.7; color: rgba(27,42,74,0.76); margin: 0; text-wrap: pretty;">{{ ph.body }}</p>
+                    <p style="font-size: 14.5px; line-height: 1.7; color: rgba(255,255,255,0.72); margin: 0; text-wrap: pretty;">{{ ph.body }}</p>
                   </div>
 
                   <div>
@@ -923,7 +923,7 @@
 
                     <sc-if value="{{ ph.isDetail }}" hint-placeholder-val="{{ false }}">
                       <div data-an-ans="true" style="text-align: center; opacity: 0;">
-                        <span style="display: block; background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(27,42,74,0.14); box-shadow: 0 10px 26px rgba(27,42,74,0.12); padding: 22px 24px; font-family: var(--font-serif); font-size: 19px; line-height: 1.35; color: var(--lbc-navy); margin: 0 auto 22px; max-width: 480px; text-wrap: pretty;">{{ ph.from }}</span>
+                        <span style="display: block; background: #FFFFFF; border-radius: 8px; border: 1px solid rgba(27,42,74,0.14); box-shadow: 0 10px 28px rgba(0,0,0,0.28); padding: 22px 24px; font-family: var(--font-serif); font-size: 19px; line-height: 1.35; color: var(--lbc-navy); margin: 0 auto 22px; max-width: 480px; text-wrap: pretty;">{{ ph.from }}</span>
                         <span style="display: block; width: 1px; height: 34px; background: linear-gradient(180deg, rgba(202,170,95,0) 0%, var(--lbc-gold) 100%); margin: 0 auto 22px;"></span>
                         <span style="display: inline-block; font-family: var(--font-serif); font-size: 52px; font-weight: 700; line-height: 1.1; color: var(--lbc-gold); padding-bottom: 12px; border-bottom: 2px solid rgba(202,170,95,0.4); text-wrap: pretty;">{{ ph.answer }}</span>
                       </div>
@@ -942,7 +942,7 @@
 
                     <sc-if value="{{ ph.isPaper }}" hint-placeholder-val="{{ false }}">
                       <div style="display: block;">
-                        <div data-an-paper="true" style="background: #FFFFFF; border-radius: 6px; padding: 40px 46px; box-shadow: 0 18px 44px rgba(27,42,74,0.13);">
+                        <div data-an-paper="true" style="background: #FFFFFF; border-radius: 6px; padding: 40px 46px; box-shadow: 0 24px 60px rgba(0,0,0,0.34);">
                           <sc-for list="{{ ph.lines }}" as="l" hint-placeholder-count="3">
                             <div data-an-line="{{ l.i }}" style="margin-bottom: 26px; opacity: 0; will-change: transform, opacity; display: flex; gap: 18px; align-items: baseline;">
                               <span style="flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--lbc-gold); color: var(--lbc-navy); font-family: var(--font-sans); font-size: 14px; font-weight: 700;">{{ l.num }}</span>
@@ -960,7 +960,7 @@
 
                     <sc-if value="{{ ph.isFinal }}" hint-placeholder-val="{{ false }}">
                       <div data-an-quote="true" style="border-left: 2px solid var(--lbc-gold); padding: 10px 0 10px 34px; opacity: 0;">
-                        <p style="margin: 0 0 20px; font-family: var(--font-serif); font-size: 26px; font-style: italic; font-weight: 500; line-height: 1.5; color: var(--lbc-navy); text-wrap: pretty;">{{ ph.quote }}</p>
+                        <p style="margin: 0 0 20px; font-family: var(--font-serif); font-size: 26px; font-style: italic; font-weight: 500; line-height: 1.5; color: #FFFFFF; text-wrap: pretty;">{{ ph.quote }}</p>
                         <span style="display: block; font-weight: 700; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--lbc-gold);">{{ ph.meta }}</span>
                       </div>
                     </sc-if>
@@ -2410,7 +2410,7 @@ class Component extends DCLogic {
     const bar = q('[data-an-bar]');
     if (bar) bar.style.width = (cl(p) * 100).toFixed(2) + '%';
     qa('[data-an-step]').forEach((el, i) => {
-      el.style.color = Math.floor(raw) === i ? 'var(--lbc-gold-dark, #A68840)' : 'rgba(27,42,74,0.34)';
+      el.style.color = Math.floor(raw) === i ? GOLD : 'rgba(255,255,255,0.34)';
     });
 
     qa('[data-an-layer]').forEach((layer, i) => {
@@ -2838,7 +2838,7 @@ class Component extends DCLogic {
           hasAnatomy: true,
           mentorBeforeAnatomy: false,
           mentorAfterAnatomy: true,
-          anTrackBg: '#FFFFFF',
+          anTrackBg: A.variant === 'gold' ? 'var(--lbc-navy, #1B2A4A)' : 'var(--lbc-navy-dark, #0F1A2E)',
           anOverline: A.overline, anHeading: A.heading, anLede: A.lede,
           anTrackH: (n * 100 + 100) + 'vh',
           anSteps: A.phases.map((ph, i) => ({ key: 'as' + i, label: ph.label, n: '0' + (i + 1), i: String(i) })),
