@@ -1,0 +1,274 @@
+/* League Bound Consulting — Colors & Type
+ * Source: LBC Brand Book 2025-2026
+ * Fonts loaded via Google Fonts (see import below). Self-host in /fonts if shipping.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* ——————————————————————————————————————
+   * COLOR — Primary
+   * —————————————————————————————————————— */
+  --lbc-navy:        #1B2A4A;  /* Primary. Backgrounds, headings, authority. 60% of surface area */
+  --lbc-gold:        #CAAA5F;  /* Accent. CTAs, highlights, brand moments. 25% */
+  --lbc-cream:       #FEFAF7;  /* Tertiary. Testimonial BGs, warm surfaces. 10% */
+  --lbc-white:       #FFFFFF;  /* Base. Page backgrounds, cards, negative space. 5% */
+
+  /* COLOR — Secondary (supporting) */
+  --lbc-gold-dark:   #A68840;  /* Text on cream/white — labels, overlines */
+  --lbc-navy-dark:   #0F1A2E;  /* Deep backgrounds, high-contrast headers */
+  --lbc-navy-light:  #2D4070;  /* Hover states, secondary navy elements */
+  --lbc-gold-light:  #DFC88A;  /* Disabled, subtle gold tints */
+
+  /* Derived tints — use sparingly, for strokes/tints only */
+  --lbc-navy-20:     rgba(27, 42, 74, 0.20);
+  --lbc-navy-10:     rgba(27, 42, 74, 0.10);
+  --lbc-navy-05:     rgba(27, 42, 74, 0.05);
+  --lbc-gold-30:     rgba(202, 170, 95, 0.30);
+  --lbc-gold-15:     rgba(202, 170, 95, 0.15);
+  --lbc-cream-border: #F0E8DE;  /* Subtle warm border on cream */
+
+  /* ——————————————————————————————————————
+   * SEMANTIC — Foreground / Background
+   * —————————————————————————————————————— */
+  --fg-1:         var(--lbc-navy);        /* Primary text on light */
+  --fg-2:         #3B4A66;                /* Secondary text on light */
+  --fg-3:         #6B7890;                /* Tertiary/meta text */
+  --fg-on-dark-1: var(--lbc-white);       /* Primary text on navy */
+  --fg-on-dark-2: #C9D1E0;                /* Secondary text on navy */
+  --fg-on-dark-3: #8A95AD;                /* Meta text on navy */
+  --fg-accent:    var(--lbc-gold);
+  --fg-accent-on-light: var(--lbc-gold-dark);
+
+  --bg-page:      var(--lbc-white);
+  --bg-warm:      var(--lbc-cream);
+  --bg-dark:      var(--lbc-navy);
+  --bg-dark-deep: var(--lbc-navy-dark);
+  --bg-card:      var(--lbc-white);
+
+  --border-subtle:  var(--lbc-navy-10);
+  --border-warm:    var(--lbc-cream-border);
+  --border-strong:  var(--lbc-navy);
+  --border-accent:  var(--lbc-gold);
+
+  /* ——————————————————————————————————————
+   * TYPE — Families
+   * Playfair Display carries authority. Montserrat handles clarity.
+   * In Word/Office, substitutes are Georgia / Calibri (per brand book).
+   * —————————————————————————————————————— */
+  --font-serif:  'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans:   'Montserrat', 'Calibri', 'Helvetica Neue', Arial, sans-serif;
+
+  /* TYPE — Scale (matching brand book ratios; web-scaled up from print pt)
+   * Brand book pts: Display 26, Headline 18, Subhead 14, Overline 9, Body 11, Caption 9
+   * Web baseline: 16px = 11pt body; scale others proportionally.
+   */
+  --type-display-size:   44px;    /* Hero headlines */
+  --type-display-lh:     1.10;
+  --type-display-weight: 700;
+  --type-display-letter: -0.01em;
+
+  --type-h1-size:        36px;
+  --type-h1-lh:          1.15;
+  --type-h1-weight:      700;
+  --type-h1-letter:      -0.005em;
+
+  --type-h2-size:        28px;
+  --type-h2-lh:          1.20;
+  --type-h2-weight:      600;
+
+  --type-h3-size:        22px;
+  --type-h3-lh:          1.30;
+  --type-h3-weight:      600;
+
+  --type-subhead-size:   18px;   /* Italic serif, used above headlines */
+  --type-subhead-lh:     1.40;
+  --type-subhead-weight: 400;
+  --type-subhead-style:  italic;
+
+  --type-overline-size:    12px;
+  --type-overline-lh:      1.40;
+  --type-overline-weight:  700;
+  --type-overline-letter:  0.18em;   /* 3–4px tracking at this size */
+  --type-overline-transform: uppercase;
+
+  --type-body-size:    17px;
+  --type-body-lh:      1.65;
+  --type-body-weight:  400;
+
+  --type-body-sm-size: 15px;
+  --type-body-sm-lh:   1.60;
+
+  --type-caption-size: 13px;
+  --type-caption-lh:   1.45;
+  --type-caption-weight: 500;
+
+  --type-button-size:  13px;
+  --type-button-weight: 700;
+  --type-button-letter: 0.12em;
+  --type-button-transform: uppercase;
+
+  /* ——————————————————————————————————————
+   * SPACING — 4px base
+   * —————————————————————————————————————— */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* ——————————————————————————————————————
+   * RADII — conservative, editorial
+   * —————————————————————————————————————— */
+  --radius-sm:   2px;   /* badges, inline pills */
+  --radius-md:   4px;   /* buttons, inputs */
+  --radius-lg:   8px;   /* cards */
+  --radius-xl:   12px;  /* testimonial cards, hero surfaces */
+  --radius-pill: 999px;
+
+  /* ——————————————————————————————————————
+   * SHADOWS — restrained. never on the logo. never on gold.
+   * —————————————————————————————————————— */
+  --shadow-xs:  0 1px 2px rgba(27, 42, 74, 0.06);
+  --shadow-sm:  0 2px 6px rgba(27, 42, 74, 0.08);
+  --shadow-md:  0 8px 24px rgba(27, 42, 74, 0.10);
+  --shadow-lg:  0 20px 48px rgba(27, 42, 74, 0.14);
+  --shadow-inset-warm: inset 0 0 0 1px var(--border-warm);
+
+  /* ——————————————————————————————————————
+   * MOTION
+   * —————————————————————————————————————— */
+  --ease-standard: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ease-entrance: cubic-bezier(0.16, 0.84, 0.44, 1);
+  --dur-fast: 140ms;
+  --dur-base: 220ms;
+  --dur-slow: 380ms;
+
+  /* Focus */
+  --focus-ring: 0 0 0 3px var(--lbc-gold-30);
+}
+
+/* ——————————————————————————————————————
+ * SEMANTIC TEXT STYLES — apply directly, or compose
+ * —————————————————————————————————————— */
+
+.lbc-display {
+  font-family: var(--font-serif);
+  font-size: var(--type-display-size);
+  line-height: var(--type-display-lh);
+  font-weight: var(--type-display-weight);
+  letter-spacing: var(--type-display-letter);
+  color: var(--fg-1);
+}
+
+.lbc-h1 {
+  font-family: var(--font-serif);
+  font-size: var(--type-h1-size);
+  line-height: var(--type-h1-lh);
+  font-weight: var(--type-h1-weight);
+  letter-spacing: var(--type-h1-letter);
+  color: var(--fg-1);
+}
+
+.lbc-h2 {
+  font-family: var(--font-serif);
+  font-size: var(--type-h2-size);
+  line-height: var(--type-h2-lh);
+  font-weight: var(--type-h2-weight);
+  color: var(--fg-1);
+}
+
+.lbc-h3 {
+  font-family: var(--font-serif);
+  font-size: var(--type-h3-size);
+  line-height: var(--type-h3-lh);
+  font-weight: var(--type-h3-weight);
+  color: var(--fg-1);
+}
+
+.lbc-subhead {
+  font-family: var(--font-serif);
+  font-size: var(--type-subhead-size);
+  line-height: var(--type-subhead-lh);
+  font-style: var(--type-subhead-style);
+  font-weight: var(--type-subhead-weight);
+  color: var(--fg-2);
+}
+
+.lbc-overline {
+  font-family: var(--font-sans);
+  font-size: var(--type-overline-size);
+  line-height: var(--type-overline-lh);
+  font-weight: var(--type-overline-weight);
+  letter-spacing: var(--type-overline-letter);
+  text-transform: var(--type-overline-transform);
+  color: var(--fg-accent-on-light);
+}
+
+.lbc-body {
+  font-family: var(--font-sans);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-lh);
+  font-weight: var(--type-body-weight);
+  color: var(--fg-1);
+  text-wrap: pretty;
+}
+
+.lbc-body-sm {
+  font-family: var(--font-sans);
+  font-size: var(--type-body-sm-size);
+  line-height: var(--type-body-sm-lh);
+  color: var(--fg-2);
+}
+
+.lbc-caption {
+  font-family: var(--font-sans);
+  font-size: var(--type-caption-size);
+  line-height: var(--type-caption-lh);
+  font-weight: var(--type-caption-weight);
+  color: var(--fg-3);
+}
+
+.lbc-button-label {
+  font-family: var(--font-sans);
+  font-size: var(--type-button-size);
+  font-weight: var(--type-button-weight);
+  letter-spacing: var(--type-button-letter);
+  text-transform: var(--type-button-transform);
+}
+
+/* ——————————————————————————————————————
+ * UTILITY TOKENS ON BASE ELEMENTS
+ * —————————————————————————————————————— */
+body {
+  font-family: var(--font-sans);
+  color: var(--fg-1);
+  background: var(--bg-page);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-lh);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 { font-family: var(--font-serif); font-size: var(--type-h1-size); line-height: var(--type-h1-lh); font-weight: var(--type-h1-weight); letter-spacing: var(--type-h1-letter); margin: 0; }
+h2 { font-family: var(--font-serif); font-size: var(--type-h2-size); line-height: var(--type-h2-lh); font-weight: var(--type-h2-weight); margin: 0; }
+h3 { font-family: var(--font-serif); font-size: var(--type-h3-size); line-height: var(--type-h3-lh); font-weight: var(--type-h3-weight); margin: 0; }
+p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-height: var(--type-body-lh); margin: 0; text-wrap: pretty; }
+
+code, pre, kbd, samp {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+::selection {
+  background: var(--lbc-gold-30);
+  color: var(--lbc-navy);
+}
