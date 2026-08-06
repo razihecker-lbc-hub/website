@@ -2324,6 +2324,23 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
+    // Real URLs per screen (live site only; inert in previews where the path is a filename).
+    const PATHS = { home: '/', applications: '/college-applications', guidance: '/college-guidance', grad: '/graduate-admissions', team: '/team', blog: '/blog', resources: '/resources', testimonials: '/results', almaya: '/almaya' };
+    this._paths = PATHS;
+    try {
+      const p = window.location.pathname;
+      this._routing = window.location.protocol.indexOf('http') === 0 && (p === '/' || Object.keys(PATHS).some(k => PATHS[k] === p));
+      if (this._routing) {
+        const hit = Object.keys(PATHS).find(k => PATHS[k] === p);
+        if (hit && hit !== 'home') this.setState({ view: hit });
+        this._onPop = () => {
+          const k = Object.keys(PATHS).find(x => PATHS[x] === window.location.pathname) || 'home';
+          this._skipPush = true;
+          this.setState({ view: k }, () => { this._skipPush = false; window.scrollTo(0, 0); });
+        };
+        window.addEventListener('popstate', this._onPop);
+      }
+    } catch (e) { this._routing = false; }
     try {
       const raw = window.localStorage.getItem(STORE);
       if (raw) {
@@ -2511,6 +2528,10 @@ class Component extends DCLogic {
       this._paintedView = this.state.view;
       requestAnimationFrame(() => this.paintAnatomy());
     }
+    if (this._routing && !this._skipPush && this._paths) {
+      const target = this._paths[this.state.view];
+      if (target && window.location.pathname !== target) window.history.pushState({}, '', target);
+    }
     this.wireAlmayaFrame();
   }
 
@@ -2543,6 +2564,7 @@ class Component extends DCLogic {
     if (this._raf) cancelAnimationFrame(this._raf);
     this._raf = null;
     window.removeEventListener('scroll', this.onSvcScroll);
+    if (this._onPop) window.removeEventListener('popstate', this._onPop);
     if (this._wsScroll) { window.removeEventListener('scroll', this._wsScroll); window.removeEventListener('resize', this._wsScroll); }
   }
 
