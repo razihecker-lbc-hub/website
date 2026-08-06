@@ -1,0 +1,111 @@
+/* Website UI kit base — builds on the design system tokens */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('../../colors_and_type.css');
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--bg-page); color: var(--fg-1); font-family: var(--font-sans); }
+
+/* ——— Layout ——— */
+.lbc-container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.lbc-section { padding: 96px 0; }
+.lbc-section--tight { padding: 64px 0; }
+
+/* ——— Buttons ——— */
+.lbc-btn {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 16px 28px;
+  border-radius: 4px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 140ms var(--ease-standard);
+  text-decoration: none;
+}
+.lbc-btn--primary { background: var(--lbc-gold); color: var(--lbc-navy); border-color: var(--lbc-gold); }
+.lbc-btn--primary:hover { background: var(--lbc-gold-dark); border-color: var(--lbc-gold-dark); }
+.lbc-btn--secondary { background: transparent; color: var(--lbc-navy); border-color: var(--lbc-navy); }
+.lbc-btn--secondary:hover { background: var(--lbc-navy); color: var(--lbc-white); }
+.lbc-btn--ghost { background: transparent; color: var(--lbc-gold); border-color: var(--lbc-gold); }
+.lbc-btn--ghost:hover { background: var(--lbc-gold); color: var(--lbc-navy); }
+.lbc-btn--sm { padding: 10px 16px; font-size: 11px; }
+
+/* ——— Text utilities ——— */
+.lbc-overline { font-family: var(--font-sans); font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lbc-gold-dark); }
+.lbc-overline--on-dark { color: var(--lbc-gold); }
+.lbc-display { font-family: var(--font-serif); font-weight: 700; font-size: 60px; line-height: 1.08; letter-spacing: -0.015em; color: var(--fg-1); }
+.lbc-display em { color: var(--lbc-gold); font-style: italic; }
+.lbc-display--on-dark { color: var(--lbc-white); }
+.lbc-subhead { font-family: var(--font-serif); font-style: italic; font-size: 19px; color: var(--fg-2); line-height: 1.4; }
+.lbc-lead { font-family: var(--font-sans); font-size: 18px; line-height: 1.6; color: var(--fg-2); max-width: 560px; }
+.lbc-lead--on-dark { color: var(--fg-on-dark-2); }
+
+/* ——— Gold rule accent ——— */
+.lbc-rule { height: 1px; width: 48px; background: var(--lbc-gold); display: block; }
+
+/* ——— Photo placeholders ——— */
+.lbc-photo {
+  background: var(--lbc-navy);
+  color: var(--fg-on-dark-3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-sans);
+  font-weight: 700; font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  aspect-ratio: 4/5;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.lbc-photo::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top left, rgba(202,170,95,0.08), transparent 60%); }
+
+/* ——— Cards ——— */
+.lbc-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 32px;
+  transition: box-shadow 220ms var(--ease-standard), transform 220ms var(--ease-standard);
+}
+.lbc-card:hover { box-shadow: var(--shadow-md); }
+.lbc-card--cream { background: var(--bg-warm); border-color: var(--border-warm); }
+
+/* ——— Badges ——— */
+.lbc-badge {
+  font-family: var(--font-sans);
+  font-weight: 700; font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+}
+.lbc-badge--gold { background: var(--lbc-gold); color: var(--lbc-navy); }
+.lbc-badge--navy { background: var(--lbc-navy); color: var(--lbc-white); }
+.lbc-badge--outline { background: transparent; color: var(--lbc-navy); border: 1px solid var(--lbc-navy); }
+
+/* ——— Forms ——— */
+.lbc-label { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lbc-gold-dark); display: block; margin-bottom: 8px; }
+.lbc-input {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--fg-1);
+  background: var(--lbc-white);
+  transition: border-color 140ms, box-shadow 140ms;
+}
+.lbc-input:focus { outline: none; border-color: var(--lbc-gold); box-shadow: var(--focus-ring); }
+
+/* ——— Links ——— */
+.lbc-link { color: var(--lbc-gold-dark); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 140ms; }
+.lbc-link:hover { border-bottom-color: var(--lbc-gold-dark); }

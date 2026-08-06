@@ -1,0 +1,66 @@
+/* Section 1 — School Stats Strip (auto-scroll marquee) */
+.lbc-schoolstrip { background: rgba(15,26,46,0.94); color: #fff; padding: 24px 0; border-top: 1px solid rgba(202,170,95,0.2); border-bottom: 1px solid rgba(202,170,95,0.2); overflow: hidden; position: relative; }
+.lbc-schoolstrip:before, .lbc-schoolstrip:after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+.lbc-schoolstrip:before { left: 0; background: linear-gradient(90deg, rgba(15,26,46,1), rgba(15,26,46,0)); }
+.lbc-schoolstrip:after { right: 0; background: linear-gradient(-90deg, rgba(15,26,46,1), rgba(15,26,46,0)); }
+.lbc-schoolstrip__track { display: flex; gap: 48px; align-items: center; animation: lbc-marquee 48s linear infinite; width: max-content; }
+.lbc-schoolstrip:hover .lbc-schoolstrip__track { animation-play-state: paused; }
+@keyframes lbc-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.lbc-schoolstrip__item { display: flex; align-items: center; gap: 16px; min-width: 240px; }
+.lbc-schoolstrip__logo { width: 48px; height: 48px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 20px; color: var(--lbc-navy); flex-shrink: 0; background-size: 70%; background-repeat: no-repeat; background-position: center; }
+.lbc-schoolstrip__logo.has-img { color: transparent; background-size: cover; }
+.lbc-schoolstrip__name { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 16px; color: #fff; }
+.lbc-schoolstrip__stats { display: flex; flex-direction: column; gap: 3px; font-family: var(--font-sans); font-size: 11px; }
+.lbc-schoolstrip__national { color: #8A95AD; }
+.lbc-schoolstrip__national b { color: #C9D1E0; font-weight: 600; }
+.lbc-schoolstrip__lb { color: #C9D1E0; display: flex; align-items: center; gap: 6px; }
+.lbc-schoolstrip__lb .pill { background: var(--lbc-gold); color: var(--lbc-navy); font-weight: 700; padding: 2px 8px; border-radius: 3px; font-size: 11px; }
+
+/* Section 2 — Testimonial Carousel (auto-scroll) */
+.lbc-tmcarousel { background: #fff; padding: 80px 0 40px; overflow: hidden; position: relative; }
+.lbc-tmcarousel:before, .lbc-tmcarousel:after { content: ''; position: absolute; top: 80px; bottom: 80px; width: 60px; z-index: 2; pointer-events: none; }
+.lbc-tmcarousel:before { left: 0; background: linear-gradient(90deg, #fff, rgba(255,255,255,0)); }
+.lbc-tmcarousel:after { right: 0; background: linear-gradient(-90deg, #fff, rgba(255,255,255,0)); }
+.lbc-tmcarousel__track { display: flex; gap: 24px; padding: 0 40px 20px; width: max-content; animation: lbc-tm-marquee 60s linear infinite; }
+.lbc-tmcarousel:hover .lbc-tmcarousel__track { animation-play-state: paused; }
+@keyframes lbc-tm-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.lbc-tmcard { width: 320px; flex-shrink: 0; background: #fff; border: 1px solid #EFEAE0; border-radius: 10px; padding: 22px 24px; box-shadow: 0 4px 20px rgba(15,26,46,0.06); display: flex; flex-direction: column; gap: 14px; }
+.lbc-tmcard__head { display: flex; justify-content: space-between; align-items: center; }
+.lbc-tmcard__stars { color: #E0B84A; letter-spacing: 2px; font-size: 14px; }
+.lbc-tmcard__pill { font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.18em; color: var(--lbc-gold-dark); border: 1px solid var(--lbc-gold); padding: 4px 10px; border-radius: 3px; }
+.lbc-tmcard__quote { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 15px; line-height: 1.55; color: var(--lbc-navy); margin: 0; }
+.lbc-tmcard__author { display: flex; align-items: center; gap: 12px; margin-top: auto; padding-top: 14px; border-top: 1px solid #F4EFE4; }
+.lbc-tmcard__avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--lbc-navy); color: #E0B84A; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 16px; background-size: cover; background-position: center; flex-shrink: 0; }
+.lbc-tmcard__name { font-family: var(--font-sans); font-weight: 700; font-size: 14px; color: var(--lbc-navy); }
+.lbc-tmcard__role { font-family: var(--font-sans); font-size: 12px; color: var(--lbc-gold-dark); margin-top: 2px; }
+
+/* Section 3 — Video Testimonial Grid */
+.lbc-videogrid { background: #FAF6EE; padding: 60px 0; }
+.lbc-videogrid__label { text-align: center; font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.28em; color: var(--lbc-gold-dark); margin-bottom: 48px; }
+.lbc-videogrid__grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+.lbc-videogrid__card { background: #FEFAF2; border: 1px solid #F0E5C8; border-radius: 8px; padding: 22px 24px; position: relative; display: flex; flex-direction: column; gap: 14px; }
+.lbc-videogrid__card:before { content: '"'; position: absolute; top: 12px; right: 18px; font-family: 'Playfair Display', Georgia, serif; font-size: 28px; color: var(--lbc-gold); line-height: 1; }
+.lbc-videogrid__pill { display: inline-block; font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.22em; color: var(--lbc-gold-dark); background: #FAF2DC; border: 1px solid var(--lbc-gold); padding: 5px 12px; border-radius: 3px; align-self: flex-start; }
+.lbc-videogrid__quote { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 15px; line-height: 1.55; color: var(--lbc-navy); margin: 0; flex: 1; }
+.lbc-videogrid__author { display: flex; align-items: center; gap: 12px; padding-top: 14px; border-top: 1px solid #F0E5C8; }
+.lbc-videogrid__video { position: relative; aspect-ratio: 9/10; background: #000; border-radius: 8px; overflow: hidden; }
+.lbc-videogrid__video iframe, .lbc-videogrid__video .placeholder { position: absolute; inset: 0; width: 100%; height: 100%; }
+.lbc-videogrid__placeholder { background: linear-gradient(135deg, #1a2a4a, #0F1A2E); display: flex; align-items: center; justify-content: center; color: #8A95AD; font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.24em; flex-direction: column; gap: 12px; }
+.lbc-videogrid__playicon { width: 56px; height: 56px; border-radius: 50%; background: #FF0000; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; }
+
+/* Section 4 — Founder Bio */
+.lbc-founder { background: #FAF6EE; padding: 90px 0; }
+.lbc-founder__grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 72px; align-items: center; }
+.lbc-founder__prose { font-family: 'Playfair Display', Georgia, serif; font-size: 16px; line-height: 1.7; color: var(--lbc-navy); }
+.lbc-founder__prose p { margin: 0 0 18px; }
+.lbc-founder__prose b, .lbc-founder__prose strong { font-weight: 700; }
+.lbc-founder__callout { background: #FEFAF2; border-left: 3px solid var(--lbc-gold); padding: 18px 22px; margin: 22px 0; font-style: italic; font-size: 15px; line-height: 1.6; }
+.lbc-founder__credentials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.lbc-founder__cred { font-family: var(--font-sans); font-weight: 600; font-size: 12px; color: var(--lbc-navy); background: #fff; border: 1px solid #EFEAE0; padding: 8px 14px; border-radius: 20px; }
+.lbc-founder__photo { position: relative; aspect-ratio: 4/5; background: linear-gradient(135deg, #3a2a1a, #1a1a2a); border-radius: 8px; overflow: hidden; background-size: cover; background-position: center top; display: flex; align-items: center; justify-content: center; color: #6B7890; font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.2em; }
+.lbc-founder__media { display: flex; flex-direction: column; gap: 20px; }
+.lbc-founder__book { background: #fff; border-radius: 8px; padding: 14px; box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+.lbc-founder__book--below { display: flex; gap: 16px; align-items: center; padding: 18px; border: 1px solid #F0E5C8; }
+.lbc-founder__bookcover { background: linear-gradient(180deg, #D4A44B, #B88630); aspect-ratio: 3/4; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-align: center; padding: 14px; line-height: 1.3; }
+.lbc-founder__booktitle { font-family: var(--font-sans); font-weight: 700; font-size: 13px; color: var(--lbc-navy); margin-top: 10px; }
+.lbc-founder__booknote { font-family: var(--font-sans); font-size: 11px; color: var(--lbc-gold-dark); margin-top: 2px; }
