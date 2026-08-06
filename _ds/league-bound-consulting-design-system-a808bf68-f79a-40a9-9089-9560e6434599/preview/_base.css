@@ -1,0 +1,37 @@
+/* Shared styles for preview cards. Each card ~700x150px, minimal chrome.
+   The Design System tab renders the card filename OUTSIDE the card. */
+@import url('../colors_and_type.css');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-family: var(--font-sans);
+  color: var(--fg-1);
+}
+
+.card {
+  box-sizing: border-box;
+  width: 700px;
+  padding: 20px 24px;
+  background: var(--bg-page);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.card--warm { background: var(--bg-warm); }
+.card--dark { background: var(--bg-dark); color: var(--fg-on-dark-1); }
+.card--dark .muted { color: var(--fg-on-dark-3); }
+
+.muted {
+  color: var(--fg-3);
+  font-size: 11px;
+  font-family: var(--font-sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.stack { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.row   { display: flex; align-items: center; gap: 12px; }
