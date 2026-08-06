@@ -1,0 +1,8 @@
+# Source material for the design tool, not needed to serve the site.
+uploads/
+
+# macOS / editor noise
+.DS_Store
+.thumbnail
+*.swp
+Thumbs.db
