@@ -32,8 +32,6 @@
 <link rel="stylesheet" href="_ds/league-bound-consulting-design-system-a808bf68-f79a-40a9-9089-9560e6434599/ui_kits/website/sections.css">
 <link rel="stylesheet" href="_ds/league-bound-consulting-design-system-a808bf68-f79a-40a9-9089-9560e6434599/ui_kits/newsletter/kit.css">
 <script src="_ds/league-bound-consulting-design-system-a808bf68-f79a-40a9-9089-9560e6434599/_ds_bundle.js"></script>
-<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
-<script src="https://assets.calendly.com/assets/external/widget.js" async=""></script>
 <style>
   body { margin: 0; background: var(--bg-page, #fff); }
   a { color: var(--lbc-gold-dark); text-decoration: none; }
@@ -1449,13 +1447,19 @@
 
   <sc-if value="{{ isTeam }}" hint-placeholder-val="{{ false }}">
     <div data-screen-label="Our Team" style="background: #FFFFFF;">
-      <section style="padding: 168px 32px 24px; text-align: center;">
-        <span style="display: block; font-weight: 700; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lbc-gold-dark); margin-bottom: 16px;">Top 1% Admissions Experts</span>
-        <h1 style="font-family: var(--font-serif); font-weight: 800; font-size: 56px; line-height: 1.08; color: var(--lbc-navy); margin: 0 auto 18px; max-width: 760px; text-wrap: pretty;">Meet the Team.</h1>
-        <p style="font-size: 17px; line-height: 1.65; color: var(--fg-2); margin: 0 auto; max-width: 640px; text-wrap: pretty;">Elite consulting from 9th grade through decision day. Our team is 100% Ivy+ educated, with the expertise to guide your student to acceptance.</p>
+      <section style="position: relative; overflow: hidden; background-color: #FFFFFF; border-bottom: 1px solid rgba(27,42,74,0.07);">
+        <span style="position: absolute; inset: 0; background-image: url('assets/team-header-gears.jpg'); background-size: cover; background-position: left center;"></span>
+        <span style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,0) 26%, rgba(255,255,255,0.9) 48%, rgba(255,255,255,0.97) 100%);"></span>
+        <div style="position: relative; max-width: 1160px; margin: 0 auto; padding: 148px 32px 72px; display: flex; justify-content: flex-end;">
+          <div data-team-hero-copy="true" style="max-width: 520px;">
+            <span style="display: block; font-weight: 700; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lbc-gold-dark); margin-bottom: 14px;">Top 1% Admissions Experts</span>
+            <h1 style="font-family: var(--font-serif); font-weight: 800; font-size: 52px; line-height: 1.08; color: var(--lbc-navy); margin: 0 0 16px; text-wrap: pretty;">Meet the Team.</h1>
+            <p style="font-size: 17px; line-height: 1.65; color: var(--fg-2); margin: 0; text-wrap: pretty;">Elite consulting from 9th grade through decision day. Our team is 100% Ivy+ educated, with the expertise to guide your student to acceptance.</p>
+          </div>
+        </div>
       </section>
-      <section style="padding: 48px 32px 128px;">
-        <div style="max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: 72px;">
+      <section style="padding: 40px 32px 96px;">
+        <div style="max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px;">
           <sc-for list="{{ teamGroups }}" as="g" hint-placeholder-count="3">
             <div style="display: flex; flex-direction: column; gap: 40px;">
               <sc-if value="{{ g.hasHeader }}" hint-placeholder-val="{{ true }}">
@@ -1507,7 +1511,7 @@
           <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #E8DCC8; animation: lbcSoftPulse 1.6s ease-in-out infinite;">Coming in just one moment</span>
         </div>
       </sc-if>
-      <iframe ref="{{ almayaRef }}" src="Elmayat.html" title="Almaya Admissions" loading="eager" style="display: block; width: 100%; height: calc(100vh - 92px); border: 0;"></iframe>
+      <iframe ref="{{ almayaRef }}" src="https://leagueboundconsulting.com/Elmayat.html" title="Almaya Admissions" loading="eager" style="display: block; width: 100%; height: calc(100vh - 92px); border: 0;"></iframe>
     </div>
   </sc-if>
 
@@ -2603,7 +2607,7 @@ class Component extends DCLogic {
     const isHome = s.view === 'home';
     const isTeam = s.view === 'team';
     if (!this._almayaRef) this._almayaRef = React.createRef();
-    const onLight = isPost || isTestimonials || isAlmaya;
+    const onLight = isPost || isTestimonials || isAlmaya || isTeam;
 
     const heroCardRaw = HOME_HERO_CARDS[s.heroIdx] || HOME_HERO_CARDS[0];
     const heroCard = {
@@ -2904,8 +2908,22 @@ class Component extends DCLogic {
       openCalendly: (e) => {
         if (e) e.preventDefault();
         if (isAlmaya) { this.setState({ almayaBookOpen: true }); return; }
-        if (window.Calendly) { window.Calendly.initPopupWidget({ url: 'https://calendly.com/leaguebound/45min' }); }
-        else { window.open('https://calendly.com/leaguebound/45min', '_blank'); }
+        // Calendly loads lazily on first click, not on page load.
+        const url = 'https://calendly.com/leaguebound/45min';
+        const pop = () => { this._calWait = false; window.Calendly.initPopupWidget({ url: url }); };
+        if (window.Calendly) { pop(); return; }
+        if (this._calWait) return;
+        this._calWait = true;
+        if (!document.querySelector('link[href*="assets.calendly.com"]')) {
+          const css = document.createElement('link');
+          css.rel = 'stylesheet'; css.href = 'https://assets.calendly.com/assets/external/widget.css';
+          document.head.appendChild(css);
+        }
+        const js = document.createElement('script');
+        js.src = 'https://assets.calendly.com/assets/external/widget.js';
+        js.onload = pop;
+        js.onerror = () => { this._calWait = false; window.open(url, '_blank'); };
+        document.head.appendChild(js);
       },
       heroCard, heroDots, schoolTicker, videoCards, team, teamFull, teamGroups, reviewTicker, services, svcDots, faqs,
       guidancePath: GUIDANCE_PATH, applicationsPath: APPLICATIONS_PATH,
