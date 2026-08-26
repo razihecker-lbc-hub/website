@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site Footer</title>
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Montserrat:wght@400;600;700&display=swap">
+<style>
+  body { margin: 0; background: #0F1A2E; }
+  a { color: #CAAA5F; text-decoration: none; }
+  a:hover { color: #DFC88A; }
+  @keyframes lbcPop {
+    0%   { transform: translateZ(-620px); opacity: 0 }
+    87%  { opacity: 0 }
+    90%  { opacity: 1 }
+    93%  { opacity: 1 }
+    95%  { opacity: 0 }
+    100% { transform: translateZ(40px); opacity: 0 }
+  }
+    /* Below 1240px the side lanes would cross the centred headline, so shrink them
+     toward their own outer corner instead of letting them run under the text. */
+  @media (max-width: 1439px) {
+    [data-fx-band] { height: 244px !important; }
+    [style*="right: clamp"] { transform: scale(.79); transform-origin: 100% 0; }
+    [style*="left: clamp"]  { transform: scale(.79); transform-origin: 0 0; }
+  }
+  @media (max-width: 1240px) {
+    [data-fx-band] { height: 212px !important; }
+    [style*="right: clamp"] { transform: scale(.63); }
+    [style*="left: clamp"]  { transform: scale(.63); }
+  }
+  @media (max-width: 1040px) {
+    [data-fx-band] { height: 214px !important; }
+    [style*="right: clamp"] { transform: scale(.64); }
+    [style*="left: clamp"]  { transform: scale(.64); }
+    [data-fx-headline] { font-size: 26px !important; }
+    [data-fx-cta] { font-size: 11px !important; padding: 11px 18px !important; }
+  }
+  /* Phones: stack it. Headline and CTA sit at the top, one full-width card lane
+     runs underneath them, so nothing ever covers the consultation button. */
+  @media (max-width: 720px) {
+    [data-fx-band] { height: 462px !important; }
+    [data-fx-block] { top: 26px !important; transform: none !important; gap: 14px !important; padding: 0 20px; box-sizing: border-box; }
+    [data-fx-headline] { font-size: 27px !important; }
+    [data-fx-cta] { font-size: 11px !important; letter-spacing: 1.6px !important; padding: 13px 20px !important; }
+    [style*="right: clamp"], [style*="left: clamp"] {
+      left: 50% !important; right: auto !important; top: 214px !important;
+      width: min(340px, calc(100vw - 32px)) !important; height: 232px !important;
+      transform: translateX(-50%) !important; transform-origin: 50% 0 !important;
+    }
+    [style*="lbcPop"] { width: 100% !important; max-height: 232px !important; }
+    [style*="lbcPop"] [style*="font-size: 17px"] { font-size: 13px !important; }
+    [style*="lbcPop"] [style*="font-size: 16.5px"] { font-size: 13px !important; }
+    [style*="lbcPop"] [style*="font-size: 15px; line-height: 1.38"] { font-size: 12.5px !important; }
+    [style*="lbcPop"] [style*="font-size: 13.5px; font-weight: 600"] { font-size: 12px !important; }
+    [data-fx-bar] { padding: 0 20px 22px !important; }
+    [data-fx-bar] > div:last-child { flex-direction: column !important; gap: 14px !important; align-items: center !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [style*="lbcPop"] { animation: none !important; opacity: 1 !important; }
+  }
+</style>
+</helmet>
+
+<div style="--bx: 6px; --accent: #CAAA5F; font-family: 'Montserrat', sans-serif">
+  <div style="position: relative; width: 100%; overflow: hidden; background: #0F1A2E url('assets/footer-desk.jpg') center 30% / cover no-repeat">
+    <div style="position: absolute; inset: 0; background: linear-gradient(rgba(15,26,46,.66), rgba(15,26,46,.54) 55%, rgba(15,26,46,.76))"></div>
+
+    <div data-fx-band="true" style="position: relative; width: 100%; height: 292px; overflow: hidden; perspective: 3000px; perspective-origin: 50% 50%">
+
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -0.000s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Sam</span>
+            <span style="color: #8696A0; font-size: 11px">last seen today at 20:32</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 96%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">I <span style="color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">FUCKING</span> GOT INTO PRINCETON</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:11</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 56%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">DUDEEEEE</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">22:46</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 70%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Letsgoooooo!!!!!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">22:46</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 96%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Im on cloud 9 bro. I can't even believe it</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">00:05</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -2.604s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
+          <span style="color: #202124; font-size: 13px">‹</span>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
+            <div style="width: 10px; height: 12px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="width: 13px; height: 10px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="display: flex; gap: 2.5px"><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; padding: 6px 12px 4px">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #1A73E8"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(32,33,36,.92)">Abby Hsu</span>
+            <span style="color: #5F6368; font-size: 11.5px">Mar 28, 2025 · to me</span>
+          </div>
+        </div>
+        <div style="padding: 0 12px 7px">
+          <span style="color: #202124; font-size: 16.5px; line-height: 1.4">I got into Harvard (yayy!!), Columbia, Johns Hopkins, Emory, UMich Ross, and UNC. I also got full-tuition scholarships from WashU and Rice.</span>
+        </div>
+        <div style="border-top: 1px solid #E8EAED; padding: 7px 12px 8px; display: flex; gap: 8px; align-items: flex-start">
+          <div style="width: 20px; height: 20px; border-radius: 50%; background: #5F6368; flex-shrink: 0"></div>
+          <span style="color: #3C4043; font-size: 15px; line-height: 1.38"><span style="color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(32,33,36,.92)">Abby</span>, that is unreal!! What a crazy list of amazing places.</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -5.208s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Chris Wyzant</span>
+            <span style="color: #8696A0; font-size: 11px">last seen Thu at 18:38</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 96%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">I got the full ride scholarship for Vandy!!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:57</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 84%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">also got USC, Emory, Rice</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">20:54</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 64%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Wow that's HUGE</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">01:13</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 62%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">These are all top</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">01:14</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -7.813s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
+          <span style="color: #202124; font-size: 13px">‹</span>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
+            <div style="width: 10px; height: 12px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="width: 13px; height: 10px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="display: flex; gap: 2.5px"><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; padding: 6px 12px 4px">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #1A73E8"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(32,33,36,.92)">Maya Kanaan</span>
+            <span style="color: #5F6368; font-size: 11.5px">Dec 12, 2021 · to me</span>
+          </div>
+          <span style="margin-left: auto; color: #5F6368; font-size: 9.5px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; flex-shrink: 0">Thank u i got in</span>
+        </div>
+        <div style="padding: 0 12px 7px">
+          <span style="color: #202124; font-size: 16.5px; line-height: 1.4">I have great news!! I got into UVA!! Your support made such a big difference!!<br><br>I wouldn’t have gotten into UVA without your support and assistance!</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -10.417s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Olivia Wood</span>
+            <span style="color: #8696A0; font-size: 11px">st seen 8/14/26 at 09:03</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 98%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Hi Razi, just wanted to update you that I also got into UNC Chapel Hill and UVA!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">18:21</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 58%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Let's goooo !!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">18:30</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 96%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Literally every top state school in country</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">18:30</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 90%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Now we're coming for the ivies :)</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">18:31</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -13.021s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
+          <span style="color: #202124; font-size: 13px">‹</span>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
+            <div style="width: 10px; height: 12px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="width: 13px; height: 10px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="display: flex; gap: 2.5px"><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; padding: 6px 12px 4px">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #1A73E8"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(32,33,36,.92)">Nicola Kupczyk</span>
+            <span style="color: #5F6368; font-size: 11.5px">Apr 20 · to me</span>
+          </div>
+          <span style="margin-left: auto; color: #5F6368; font-size: 9.5px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; flex-shrink: 0">Wake!!!</span>
+        </div>
+        <div style="padding: 0 12px 7px">
+          <span style="color: #202124; font-size: 16.5px; line-height: 1.4">I just got off the Wake waitlist!!!</span>
+        </div>
+        <div style="border-top: 1px solid #E8EAED; padding: 7px 12px 8px; display: flex; gap: 8px; align-items: flex-start">
+          <div style="width: 20px; height: 20px; border-radius: 50%; background: #5F6368; flex-shrink: 0"></div>
+          <span style="color: #3C4043; font-size: 15px; line-height: 1.38"><span style="color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(32,33,36,.92)">Nicola</span>!!!! Letsss freakingggg gooo!!!</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -15.625s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Charvi</span>
+            <span style="color: #8696A0; font-size: 11px">Charvi, Krishnan (Charvin), You</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 44%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">RAZI!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:12</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 74%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">I GOT INTO UPENN</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:12</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 50%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Yooo!!!!!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:13</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 88%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Let's freaking Goooooo!!!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:13</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -18.229s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
+          <span style="color: #202124; font-size: 13px">‹</span>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
+            <div style="width: 10px; height: 12px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="width: 13px; height: 10px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="display: flex; gap: 2.5px"><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; padding: 6px 12px 4px">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #1A73E8"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(32,33,36,.92)">Caleb Bynum</span>
+            <span style="color: #5F6368; font-size: 11.5px">Mar 7, 2021 · to me</span>
+          </div>
+        </div>
+        <div style="padding: 0 12px 7px">
+          <span style="color: #202124; font-size: 16.5px; line-height: 1.4">I was accepted into all three of the colleges I applied to, UNC Charlotte, NC State, and Georgia Tech, receiving scholarships from all three.</span>
+        </div>
+        <div style="border-top: 1px solid #E8EAED; padding: 7px 12px 8px; display: flex; gap: 8px; align-items: flex-start">
+          <div style="width: 20px; height: 20px; border-radius: 50%; background: #5F6368; flex-shrink: 0"></div>
+          <span style="color: #3C4043; font-size: 15px; line-height: 1.38">Wow <span style="color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(32,33,36,.92)">Caleb</span> that’s amazing!!! So proud, and best of luck with your college decision :)</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -20.834s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Oma</span>
+            <span style="color: #8696A0; font-size: 11px">online</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 78%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">I GOT INTO CALTECH</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:35</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 52%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34"><span style="color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">OMA</span>!!!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:35</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 64%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Let's GOOO!!!!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:35</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 52%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">in disbelief</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:36</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -23.438s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
+          <span style="color: #202124; font-size: 13px">‹</span>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
+            <div style="width: 10px; height: 12px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="width: 13px; height: 10px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="display: flex; gap: 2.5px"><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; padding: 6px 12px 4px">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #1A73E8"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(32,33,36,.92)">Amaan Ali</span>
+            <span style="color: #5F6368; font-size: 11.5px">Apr 19, 2024 · to me</span>
+          </div>
+        </div>
+        <div style="padding: 0 12px 7px">
+          <span style="color: #202124; font-size: 16.5px; line-height: 1.4">I applied to UCI, UCB, and UCLA. I got UCI Regents and just got into UCB today! UCB has been my dream school since high school so I will commit.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -26.042s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Shivank Wyzant</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 72%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Hi! Got into Cornell!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:16</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 92%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Thank you so much for all the help!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:16</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 82%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">You made my freaking day</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:17</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 94%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Really happy I wasn't expecting it</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:23</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -28.646s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Joy Wyzant</span>
+            <span style="color: #8696A0; font-size: 11px">last seen Thu at 00:46</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 98%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">A week later she got into Duke! Then another 2 weeks later she received a letter from Cornell and she was selected to be a Meinig Scholar which is a less than 2% acceptance rate among the entire freshman population.</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">00:46</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -31.250s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Sam</span>
+            <span style="color: #8696A0; font-size: 11px">seen yesterday at 20:32</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 96%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">I got into Duke and also their China campus</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">20:33</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 48%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34"><span style="color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Lfgggg</span></span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">21:07</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 94%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Yeah and it's just such a nice ending</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">21:07</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 98%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Ended off so grateful for everything. This experience was great</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">21:08</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -33.855s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
+          <span style="color: #202124; font-size: 13px">‹</span>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
+            <div style="width: 10px; height: 12px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="width: 13px; height: 10px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="display: flex; gap: 2.5px"><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; padding: 6px 12px 4px">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #1A73E8"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(32,33,36,.92)">Nicola Kupczyk</span>
+            <span style="color: #5F6368; font-size: 11.5px">May 9 · to me</span>
+          </div>
+        </div>
+        <div style="padding: 0 12px 7px">
+          <span style="color: #202124; font-size: 16.5px; line-height: 1.4">I got off the BC waitlist and I’m going there!! Thank you so much again for all your help.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -36.459s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Abhinav Wyzant</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 86%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Hi Razi, I got into Berkeley!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:35</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 82%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Wowww amazing to hear!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">20:47</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 98%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Thank you! I really appreciate all your help with my applications, it defenitely helped me a lot.</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">20:53</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -39.063s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
+          <span style="color: #202124; font-size: 13px">‹</span>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
+            <div style="width: 10px; height: 12px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="width: 13px; height: 10px; border: 1.5px solid #5F6368; border-radius: 2px"></div>
+            <div style="display: flex; gap: 2.5px"><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div><div style="width: 3px; height: 3px; border-radius: 50%; background: #5F6368"></div></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; padding: 6px 12px 4px">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: #1A73E8"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(32,33,36,.92)">Charles Oberlander</span>
+            <span style="color: #5F6368; font-size: 11.5px">Mar 27, 2025 · to me</span>
+          </div>
+        </div>
+        <div style="padding: 0 12px 7px">
+          <span style="color: #202124; font-size: 16.5px; line-height: 1.4">Hey! Ivy’s just came back today. Here are my results:<br><br>University of Pennsylvania — Accepted!<br>Cornell — Accepted!</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -41.667s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Eric Wyzant</span>
+            <span style="color: #8696A0; font-size: 11px">seen yesterday at 16:12</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 68%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">I got in UT Austin!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:19</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 68%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">First choice X+CS</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:19</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 48%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34"><span style="color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Eric</span>!!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">18:27</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 88%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">I still can't believe I got in</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">12:46</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -44.271s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Joanne Young Col...</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 82%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34"><span style="color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Kian</span> is in !!!! Woohoo!!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">18:13</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 78%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Wowwww!!! Let's go!!!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">22:30</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 54%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">We did it!!!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">22:30</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 90%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Yesssssss!!! Great of course !!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">22:30</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -46.876s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Julia Wyzant (All-...</span>
+            <span style="color: #8696A0; font-size: 11px">last seen today at 23:10</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 74%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">I’m going to Berkeley!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">15:07</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 88%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Also got accepted to Colombia</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">15:07</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 96%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Wowww letsgoo!!! <span style="color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Julia</span> that's amazing!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">16:33</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -49.480s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Gabriel W Wyzant</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 88%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">I just got into Johns Hopkins</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">20:42</span>
+            </div>
+            <div style="align-self: flex-start; max-width: 98%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Thank you so much for your help and guidance on my essays! They are truly helpful!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">20:43</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 98%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34"><span style="color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">gabriel</span>!! I'm so happy to hear that's unreal</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">10:25</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -52.084s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Ansh Wyzant</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 58%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">I got Berkeley</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">00:06</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 54%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Sick dude!!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">00:06</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 96%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">That’s amazing - where are you leaning?</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">00:07</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+       </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -54.688s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Olivia Wood</span>
+            <span style="color: #8696A0; font-size: 11px">st seen 8/14/26 at 09:03</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 56%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">accepted USC</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:19</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -57.292s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Yuvia/Quinley Wy...</span>
+            <span style="color: #8696A0; font-size: 11px">last seen today at 10:33</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 98%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Yes, she got in UCLA. Thanks for your support and helping her get through this difficult period.</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">07:45</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 96%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">First, super happy to hear about UCLA :)</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">08:31</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -59.897s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
+          <span style="color: #E9EDEF; font-size: 12px">‹</span>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Olivia Wood</span>
+            <span style="color: #8696A0; font-size: 11px">st seen 8/14/26 at 09:03</span>
+          </div>
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+            <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
+            <div style="width: 12px; height: 12px; border: 1.5px solid #8696A0; border-radius: 4px 11px 4px 4px; transform: rotate(8deg)"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 7px 8px">
+            <div style="align-self: flex-start; max-width: 76%; background: #1F2C34; border-radius: 8px 8px 8px 2px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">I got into Cal Berkeley!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">18:55</span>
+            </div>
+            <div style="align-self: flex-end; max-width: 52%; background: #005C4B; border-radius: 8px 8px 2px 8px; padding: 4px 9px; display: flex; align-items: flex-end; gap: 6px">
+              <span style="color: #E9EDEF; font-size: 17px; line-height: 1.34">Letsgoo!!!!</span>
+              <span style="color: #8696A0; font-size: 10.5px; flex-shrink: 0">19:01</span><span style="color: #53BDEB; font-size: 10.5px; flex-shrink: 0">✓✓</span>
+            </div>
+       </div>
+      </div>
+    </div>
+
+    <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 30% 60% at 50% 50%, rgba(15,26,46,.9) 46%, rgba(15,26,46,.5) 72%, rgba(15,26,46,0)); pointer-events: none"></div>
+
+    <div data-fx-block="true" style="position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 17px; text-align: center; z-index: 2">
+      <span data-fx-headline="true" style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px; font-weight: 600; line-height: 1.12; color: #FFFFFF; text-shadow: 0 2px 24px rgba(15,26,46,.9)">These Are Our Wins<br><span style="font-style: italic; color: var(--accent, #CAAA5F)">Yours is Next</span></span>
+      <a href="#" data-fx-cta="true" onClick="{{ onConsult }}" style="background: var(--accent, #CAAA5F); color: #FFFFFF; font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 13px 24px; border-radius: 4px">Schedule a free consultation</a>
+    </div>
+    </div>
+
+    <div data-fx-bar="true" style="position: relative; padding: 0 80px 26px">
+      <div style="height: 1px; background: rgba(254,250,247,.22)"></div>
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 32px; padding-top: 30px">
+        <div style="display: flex; align-items: center; gap: 18px; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; color: #FEFAF7">
+          <span>100% Ivy+ Team</span>
+          <span style="color: rgba(254,250,247,.4)">|</span>
+          <span>5-Star Rated</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px">
+        <a href="{{ linkedinUrl }}" target="_blank" rel="noopener" aria-label="LinkedIn" style="width: 30px; height: 30px; border-radius: 7px; background: rgba(254,250,247,.16); display: flex; align-items: center; justify-content: center; color: #FFFFFF"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a>
+        <a href="{{ facebookUrl }}" target="_blank" rel="noopener" aria-label="Facebook" style="width: 30px; height: 30px; border-radius: 7px; background: rgba(254,250,247,.16); display: flex; align-items: center; justify-content: center; color: #FFFFFF"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.96h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"></path></svg></a>
+        <a href="{{ instagramUrl }}" target="_blank" rel="noopener" aria-label="Instagram" style="width: 30px; height: 30px; border-radius: 7px; background: rgba(254,250,247,.16); display: flex; align-items: center; justify-content: center; color: #FFFFFF"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.71-2.13 1.38C1.34 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.71 1.46 1.38 2.13.67.67 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.71 2.13-1.38.67-.67 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.71-1.46-1.38-2.13C21.32 1.34 20.65.93 19.86.63 19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"></path></svg></a>
+        <a href="{{ youtubeUrl }}" target="_blank" rel="noopener" aria-label="YouTube" style="width: 30px; height: 30px; border-radius: 7px; background: rgba(254,250,247,.16); display: flex; align-items: center; justify-content: center; color: #FFFFFF"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"></path></svg></a>
+        <a href="{{ substackUrl }}" target="_blank" rel="noopener" aria-label="Substack" style="width: 30px; height: 30px; border-radius: 7px; background: rgba(254,250,247,.16); display: flex; align-items: center; justify-content: center; color: #FFFFFF"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"></path></svg></a>
+        </div>
+        <span style="font-family: 'Montserrat', sans-serif; font-size: 14px; color: rgba(254,250,247,.6)">© 2026 League Bound Consulting</span>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:440},&quot;onConsult&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(e: MouseEvent) =&gt; void&quot;},&quot;linkedinUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.linkedin.com/company/league-bound-consulting/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Social links&quot;},&quot;facebookUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.facebook.com/profile.php?id=61577881956675&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Social links&quot;},&quot;instagramUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.instagram.com/leagueboundconsulting/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Social links&quot;},&quot;youtubeUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.youtube.com/@LeagueBoundConsulting&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Social links&quot;},&quot;substackUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://substack.com/@theadmissionsedge&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Social links&quot;}}"></script>
+</body>
+</html>
