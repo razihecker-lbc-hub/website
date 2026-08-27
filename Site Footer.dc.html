@@ -15,28 +15,68 @@
   body { margin: 0; background: #0F1A2E; }
   a { color: #CAAA5F; text-decoration: none; }
   a:hover { color: #DFC88A; }
+  /* Cards surface at the centre and fan out to one of four corners. Consecutive
+     cards take opposite corners so two live cards never sit on top of each other. */
+  @keyframes lbcFanTR {
+    0%, 82% { transform: translate3d(-330px, 56px, -900px); opacity: 0 }
+    85%     { opacity: 1 }
+    91%     { transform: translate3d(-92px, 21px, -210px); opacity: 1 }
+    97%     { transform: translate3d(-6px, 2px, 40px); opacity: 1 }
+    100%    { transform: translate3d(0, 0, 96px); opacity: 0 }
+  }
+  @keyframes lbcFanTL {
+    0%, 82% { transform: translate3d(330px, 56px, -900px); opacity: 0 }
+    85%     { opacity: 1 }
+    91%     { transform: translate3d(92px, 21px, -210px); opacity: 1 }
+    97%     { transform: translate3d(6px, 2px, 40px); opacity: 1 }
+    100%    { transform: translate3d(0, 0, 96px); opacity: 0 }
+  }
+  @keyframes lbcFanBR {
+    0%, 82% { transform: translate3d(-330px, -56px, -900px); opacity: 0 }
+    85%     { opacity: 1 }
+    91%     { transform: translate3d(-92px, -21px, -210px); opacity: 1 }
+    97%     { transform: translate3d(-6px, -2px, 40px); opacity: 1 }
+    100%    { transform: translate3d(0, 0, 96px); opacity: 0 }
+  }
+  @keyframes lbcFanBL {
+    0%, 82% { transform: translate3d(330px, -56px, -900px); opacity: 0 }
+    85%     { opacity: 1 }
+    91%     { transform: translate3d(92px, -21px, -210px); opacity: 1 }
+    97%     { transform: translate3d(6px, -2px, 40px); opacity: 1 }
+    100%    { transform: translate3d(0, 0, 96px); opacity: 0 }
+  }
+  [data-fx-band] { height: 322px !important; }
+  [data-fx-band] > div[style*="clamp"]:nth-child(4n+1) { top: 8px !important; }
+  [data-fx-band] > div[style*="clamp"]:nth-child(4n+4) { top: 8px !important; }
+  [data-fx-band] > div[style*="clamp"]:nth-child(4n+2) { top: 82px !important; }
+  [data-fx-band] > div[style*="clamp"]:nth-child(4n+3) { top: 82px !important; }
+  [data-fx-band] > div[style*="clamp"]:nth-child(4n+1) > [style*="lbcPop"] { animation-name: lbcFanTR !important; }
+  [data-fx-band] > div[style*="clamp"]:nth-child(4n+2) > [style*="lbcPop"] { animation-name: lbcFanBL !important; }
+  [data-fx-band] > div[style*="clamp"]:nth-child(4n+3) > [style*="lbcPop"] { animation-name: lbcFanBR !important; }
+  [data-fx-band] > div[style*="clamp"]:nth-child(4n+4) > [style*="lbcPop"] { animation-name: lbcFanTL !important; }
   @keyframes lbcPop {
-    0%   { transform: translateZ(-620px); opacity: 0 }
-    87%  { opacity: 0 }
-    90%  { opacity: 1 }
-    93%  { opacity: 1 }
-    95%  { opacity: 0 }
-    100% { transform: translateZ(40px); opacity: 0 }
+    0%    { transform: translateZ(-760px); opacity: 0 }
+    84%   { opacity: 0 }
+    86.5% { opacity: 1 }
+    95%   { opacity: 1 }
+    97.5% { opacity: 0 }
+    100%  { transform: translateZ(120px); opacity: 0 }
   }
     /* Below 1240px the side lanes would cross the centred headline, so shrink them
      toward their own outer corner instead of letting them run under the text. */
   @media (max-width: 1439px) {
-    [data-fx-band] { height: 244px !important; }
+    [data-fx-band] { height: 286px !important; }
     [style*="right: clamp"] { transform: scale(.79); transform-origin: 100% 0; }
     [style*="left: clamp"]  { transform: scale(.79); transform-origin: 0 0; }
   }
   @media (max-width: 1240px) {
-    [data-fx-band] { height: 212px !important; }
+    [data-fx-band] { height: 262px !important; }
+    [data-fx-band] > div[style*="clamp"]:nth-child(4n+2), [data-fx-band] > div[style*="clamp"]:nth-child(4n+3) { top: 66px !important; }
     [style*="right: clamp"] { transform: scale(.63); }
     [style*="left: clamp"]  { transform: scale(.63); }
   }
   @media (max-width: 1040px) {
-    [data-fx-band] { height: 214px !important; }
+    [data-fx-band] { height: 262px !important; }
     [style*="right: clamp"] { transform: scale(.64); }
     [style*="left: clamp"]  { transform: scale(.64); }
     [data-fx-headline] { font-size: 26px !important; }
@@ -44,17 +84,26 @@
   }
   /* Phones: stack it. Headline and CTA sit at the top, one full-width card lane
      runs underneath them, so nothing ever covers the consultation button. */
+  /* Phones: one flat card lane, no Z growth, so nothing reaches the CTA. */
+  @keyframes lbcPopM {
+    0%, 82% { transform: translateZ(-620px); opacity: 0 }
+    85%     { opacity: 1 }
+    97%     { transform: translateZ(18px); opacity: 1 }
+    100%    { transform: translateZ(48px); opacity: 0 }
+  }
   @media (max-width: 720px) {
-    [data-fx-band] { height: 448px !important; }
-    [data-fx-block] { top: 24px !important; transform: none !important; gap: 0 !important; padding: 0 20px; box-sizing: border-box; display: block !important; }
+    [data-fx-band] { height: 476px !important; }
+    [data-fx-block] { top: 40px !important; transform: none !important; gap: 0 !important; padding: 0 20px; box-sizing: border-box; display: block !important; }
     [data-fx-headline] { font-size: 27px !important; }
-    [data-fx-cta] { position: absolute !important; left: 50% !important; top: 352px !important; transform: translateX(-50%) !important; font-size: 11px !important; letter-spacing: 1.6px !important; padding: 14px 22px !important; white-space: nowrap; }
+    [data-fx-cta] { position: absolute !important; left: 50% !important; top: 350px !important; transform: translateX(-50%) !important; font-size: 12.5px !important; letter-spacing: 1.9px !important; padding: 17px 30px !important; white-space: nowrap; }
+    /* Match the specificity of the desktop fan rules so the single lane wins. */
+    [data-fx-band] > div[style*="clamp"]:nth-child(n) { top: 130px !important; }
     [style*="right: clamp"], [style*="left: clamp"] {
-      left: 50% !important; right: auto !important; top: 112px !important;
+      left: 50% !important; right: auto !important; top: 130px !important;
       width: min(340px, calc(100vw - 32px)) !important; height: 232px !important;
       transform: translateX(-50%) !important; transform-origin: 50% 0 !important;
     }
-    [style*="lbcPop"] { width: 100% !important; max-height: 232px !important; }
+    [style*="lbcPop"] { width: 100% !important; max-height: 232px !important; animation-name: lbcPopM !important; }
     [style*="lbcPop"] [style*="font-size: 17px"] { font-size: 13px !important; }
     [style*="lbcPop"] [style*="font-size: 16.5px"] { font-size: 13px !important; }
     [style*="lbcPop"] [style*="font-size: 15px; line-height: 1.38"] { font-size: 12.5px !important; }
@@ -74,8 +123,8 @@
 
     <div data-fx-band="true" style="position: relative; width: 100%; height: 292px; overflow: hidden; perspective: 3000px; perspective-origin: 50% 50%">
 
-    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -0.000s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -0.000s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -109,8 +158,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -2.604s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 444px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -2.604s; width: 444px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
           <span style="color: #202124; font-size: 13px">‹</span>
           <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
@@ -136,8 +185,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -5.208s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -5.208s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -171,8 +220,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -7.813s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 444px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -7.813s; width: 444px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
           <span style="color: #202124; font-size: 13px">‹</span>
           <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
@@ -196,8 +245,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -10.417s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -10.417s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -231,8 +280,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -13.021s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 444px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -13.021s; width: 444px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
           <span style="color: #202124; font-size: 13px">‹</span>
           <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
@@ -259,14 +308,14 @@
       </div>
     </div>
 
-    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -15.625s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -15.625s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
           <div style="display: flex; flex-direction: column">
             <span style="font-size: 13.5px; font-weight: 600; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(228,236,241,.92)">Charvi</span>
-            <span style="color: #8696A0; font-size: 11px">Charvi, Krishnan (Charvin), You</span>
+            <span style="font-size: 11px; color: transparent; text-shadow: 0 0 var(--bx, 6px) rgba(134,150,160,.92)">Charvi, Krishnan, You</span>
           </div>
           <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
             <div style="width: 16px; height: 9px; border: 1.5px solid #8696A0; border-radius: 3px; position: relative"><div style="position: absolute; right: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 4px solid #8696A0"></div></div>
@@ -294,8 +343,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -18.229s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 444px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -18.229s; width: 444px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
           <span style="color: #202124; font-size: 13px">‹</span>
           <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
@@ -321,8 +370,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -20.834s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -20.834s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -356,8 +405,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -23.438s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 444px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -23.438s; width: 444px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
           <span style="color: #202124; font-size: 13px">‹</span>
           <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
@@ -380,8 +429,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -26.042s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -26.042s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -414,8 +463,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -28.646s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -28.646s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -437,8 +486,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -31.250s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -31.250s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -472,8 +521,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -33.855s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 444px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -33.855s; width: 444px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
           <span style="color: #202124; font-size: 13px">‹</span>
           <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
@@ -496,8 +545,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -36.459s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -36.459s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -526,8 +575,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 472px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -39.063s; width: 472px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 444px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -39.063s; width: 444px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #FFFFFF; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 12px; padding: 4px 12px; background: #F1F3F4">
           <span style="color: #202124; font-size: 13px">‹</span>
           <div style="margin-left: auto; display: flex; align-items: center; gap: 11px">
@@ -549,8 +598,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -41.667s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -41.667s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -584,8 +633,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -44.271s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -44.271s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -618,8 +667,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -46.876s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -46.876s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -649,8 +698,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -49.480s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -49.480s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -679,8 +728,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -52.084s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -52.084s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -709,8 +758,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -54.688s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -54.688s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -732,8 +781,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -57.292s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; right: clamp(8px, calc(50% - 486px), 50px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -57.292s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
@@ -759,8 +808,8 @@
       </div>
     </div>
 
-    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 452px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
-      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -59.897s; width: 452px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
+    <div style="position: absolute; left: clamp(8px, calc(50% - 492px), 52px); top: 36px; z-index: 1; width: 426px; height: 232px; perspective: 1500px; perspective-origin: 50% 50%; transform-style: preserve-3d">
+      <div style="animation: lbcPop 62.5s linear infinite backwards; animation-delay: -59.897s; width: 426px; max-height: 232px; box-sizing: border-box; will-change: transform; background: #0B141A; border-radius: 12px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(6,12,22,.6)">
         <div style="display: flex; align-items: center; gap: 8px; padding: 5px 11px; background: #1F2C34">
           <span style="color: #E9EDEF; font-size: 12px">‹</span>
           <div style="width: 30px; height: 30px; border-radius: 50%; background: #3B4A54"></div>
