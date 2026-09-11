@@ -1,10 +1,20 @@
 # Root serves the main site page without exposing the filename.
 /                /League%20Bound%20Site.dc.html   200
 
+# Standalone international landing page. Its own file, its own <head>, no site
+# nav. The 200 keeps the pretty URL in the address bar; the <base href="/"> in
+# the file is what keeps its relative assets working from a nested path.
+/international/college    /International%20College.dc.html   200
+/international            /international/college             301
+/international-students   /international/college             301
+
 # Missing assets should fail as real 404s, not silently return the HTML page.
 /assets/*        /assets/:splat                   404
 /mlp/*           /mlp/:splat                      404
 /_ds/*           /_ds/:splat                      404
 
 # Any other path falls back to the single-page site.
+# (/almaya is intentionally NOT special-cased anymore: it now loads the main
+# site with its nav, which shows the Almaya page embedded. The raw standalone
+# page is still reachable at /Elmayat.html, which is what the embed loads.)
 /*               /League%20Bound%20Site.dc.html   200
