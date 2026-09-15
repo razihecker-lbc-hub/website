@@ -21,6 +21,23 @@
 <meta name="twitter:description" content="League Bound helps ambitious high-school students build standout profiles, master the SAT and ACT, craft compelling applications, and get accepted to the schools they have always dreamed of.">
 <meta name="twitter:image" content="https://leagueboundconsulting.com/assets/og-card-white.jpg">
 <script src="./support.js"></script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1616404346062246');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1616404346062246&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 <x-dc>
@@ -396,8 +413,10 @@
     [data-ld-route] { padding: 0 20px !important; gap: 12px !important; }
     [data-ld-route] > span { letter-spacing: 0.18em !important; font-size: 9.5px !important; }
     [data-ld-route-state] { display: none !important; }
-    [data-ld-scrim-h] { background: linear-gradient(100deg, rgba(15,26,46,0.3) 0%, rgba(15,26,46,0.12) 50%, rgba(15,26,46,0) 100%) !important; }
-    [data-ld-scrim-v] { background: linear-gradient(to bottom, rgba(15,26,46,0.34) 0%, rgba(15,26,46,0.1) 20%, rgba(15,26,46,0.3) 55%, rgba(15,26,46,0.8) 100%) !important; }
+    [data-ld-scrim-h] { background: linear-gradient(100deg, rgba(15,26,46,0.42) 0%, rgba(15,26,46,0.3) 50%, rgba(15,26,46,0.18) 100%) !important; }
+    [data-ld-scrim-v] { background: linear-gradient(to bottom, rgba(15,26,46,0.4) 0%, rgba(15,26,46,0.34) 22%, rgba(15,26,46,0.5) 55%, rgba(15,26,46,0.86) 100%) !important; }
+    [data-ld-herosec] h1, [data-ld-herosec] h1 span { text-shadow: 0 2px 18px rgba(15,26,46,0.85), 0 1px 3px rgba(15,26,46,0.9) !important; }
+    [data-ld-herosec] p { color: #FFFFFF !important; text-shadow: 0 1px 12px rgba(15,26,46,0.9), 0 1px 2px rgba(15,26,46,0.9) !important; }
     [data-essay-card] { padding: 30px 22px 0 !important; }
     [data-essay-name] { font-size: 30px !important; }
   }
