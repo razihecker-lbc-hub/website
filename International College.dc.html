@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Required: this file is served at /international/college via a Netlify 200 rewrite,
      so relative assets/ and mlp/ paths must resolve from the site root. -->
-<base href="/">
+<script>if(/^\/international/.test(location.pathname)){var b=document.createElement('base');b.href='/';document.head.appendChild(b);}</script>
 <!-- SEO / social. Hand-added: the design-system export does not emit these.
      If you replace this file with a fresh export, re-add this block. -->
 <title>US College Admissions for International Students — League Bound</title>
