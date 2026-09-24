@@ -2,33 +2,27 @@ repo: razihecker-lbc-hub/website
 branch: main
 
 ## Last sync
-date: 2026-09-15T22:30:00Z
-note: local-only changes since last sync. Site Footer.dc.html was DELETED and merged into League Bound Site.dc.html; do not re-upload it. International Students.dc.html was RENAMED to International College.dc.html; delete the old one on upload.
+date: 2026-09-24T19:36:00Z
+note: push/ holds only what changed since the 2026-09-15 sync. Do not upload support.js or International College.dc.html from this project (the repo copies are newer).
 
 ### Updated in this project
-- Mobile (<=640px) fixes on the International page: hero photo scrims lightened, route reads "Shanghai -> Cambridge", stat card in the "best year" section no longer forces horizontal scroll; section title is now "How we help you stand out"
-- International page split out as its own entry file, International College.dc.html, served at /international/college. It carries its own SEO head block. The <base href="/"> is now injected by a tiny inline script only when location.pathname starts with /international, so the file also previews locally
-- /international and /international-students now 301 to /international/college
-- International page hides the site nav; the logo links to / instead of switching views
-- Footer merged into the main file. Its styles are scoped under [data-site-footer] and live in the main helmet; Site Footer.dc.html no longer exists
-- New ad landing pages behind LANDINGS: /law-school-essays, /international-students, /john-locke-essay, /transfer-essays, /summer-programs, /mba-admissions
-- Law page fronts Mia G (mlp/videos/mia-law.mp4) with Maayan and Razi as consultants, plus an annotated "Essays that worked" card
-- International page fronts Johnny and Kian videos, Amitai and Razi as consultants, and a two-tab essay card (Keith Y / NYU, K. Y. / Northwestern)
+- Mobile heroes reworked on Summer Programs, Founding Strategy and College Essays
+- Brand tokens and fonts inlined in the main file (no longer depends on colors_and_type.css loading)
+- Duplicate landing blocks (items, booking, books) merged into one copy each, positioned with CSS order
+- 16 new images under assets/ (MIT dome, Memorial Hall, v2 service photos, UC booklet, etc.)
 
 ## Known gaps
-- Law hero still uses assets/hero-princeton-library.jpg as a placeholder. Razi is supplying a Mia photo to replace it.
-- No NYU logo in mlp/schools; the NYU essay card uses a purple wordmark instead.
-- `Elmayat.html` (Almaya page) exists only in the repo. The main file iframes `src="Elmayat.html"`; never export a placeholder over it.
-- `support.js` points at unpkg on export; the repo keeps the /vendor repoint (lbc-website skill step 2 re-applies it).
-- The head SEO block lives in the main file's static <head>; a full regenerate would drop it.
+- assets/shanghai-skyline.jpg (9 MB) and assets/international-flags.jpg (6.7 MB) are heavy; compress before or after pushing.
+- mlp/videos/*.mp4 are referenced but binaries can't be verified from here; confirm they exist in the repo.
+- `Elmayat.html` exists only in the repo. Never export a placeholder over it.
+- `support.js` keeps the /vendor repoint in the repo.
 
 ## Screen map
 | Screen | Built from |
 | --- | --- |
 | Home, Services, Results, Resources, Team, Grad, Footer | League Bound Site.dc.html |
-| Law / John Locke / Transfer / Summer / MBA landings | League Bound Site.dc.html (LANDINGS const) |
+| Law / John Locke / Transfer / Summer / MBA / Founding Strategy / College Essays landings | League Bound Site.dc.html (LANDINGS const) |
 | International Students (/international/college) | International College.dc.html (entry) + League Bound Site.dc.html (LANDINGS.international) |
 | Almaya Admissions | Elmayat.html (repo only, served at /almaya) |
-| Design tokens & components | _ds/league-bound-consulting-design-system-a808bf68-.../ |
 | Photography, book covers, logos | assets/ |
 | School logos, team photos, testimonial video | mlp/ |
