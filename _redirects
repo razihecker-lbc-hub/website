@@ -7,6 +7,7 @@
 /international/college    /International%20College.dc.html   200
 /international            /international/college             301
 /international-students   /international/college             301
+/law-school-essays        /get-started-law-school            301
 
 # Missing assets should fail as real 404s, not silently return the HTML page.
 /assets/*        /assets/:splat                   404

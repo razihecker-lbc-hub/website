@@ -215,6 +215,33 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
   @media (max-width: 980px) { [data-ld-herocard] { justify-self: stretch !important; max-width: 520px !important; margin: 0 auto; } [data-ld-offer] { grid-template-columns: 1fr !important; gap: 40px !important; } [data-ld-why] { grid-template-columns: 1fr !important; gap: 30px !important; margin-top: 36px !important; padding-top: 30px !important; } }
   @media (max-width: 640px) { [data-ld-offer] { padding: 0 20px !important; } [data-ld-offer] h2, [data-ld-why-h] { font-size: 32px !important; } [data-ld-offer-cta] { flex-direction: column; align-items: stretch !important; gap: 18px !important; } [data-ld-gifts], [data-ld-offer-vids] { gap: 12px !important; } [data-ld-herocard] { order: 5; padding: 24px 22px 22px !important; } [data-ld-gifts] > div { padding: 20px 12px !important; } [data-ld-whysec] { padding: 72px 0 76px !important; } [data-ld-whysec] > div { padding: 0 20px !important; } }
   [data-ld-itemsec][data-dark="true"] { background: var(--lbc-navy) !important; }
+  [data-ld-bannersec][data-flow="law"] { order: 125 !important; }
+  [data-ld-reviewsec][data-flow="law"] { order: 140 !important; }
+  [data-hdr-inner][data-flow="law"] { padding-right: 14px !important; }
+  [data-ld-herovid] { justify-self: end; margin-right: 24px; }
+  @media (max-width: 980px) { [data-law-grid], [data-law-book] { grid-template-columns: 1fr !important; } }
+  @media (max-width: 720px) {
+    [data-ld-herosec][data-flow="law"] { padding: 108px 0 36px !important; min-height: 0 !important; height: auto !important; }
+    [data-ld-herosec][data-flow="law"] [data-ld-copy] > p, [data-ld-herosec][data-flow="law"] [data-ld-copy] > span, [data-ld-herosec][data-flow="law"] [data-ld-stats] { display: none !important; }
+    [data-ld-herosec][data-flow="law"] h1 { font-size: 29px !important; text-align: center !important; white-space: nowrap; }
+    [data-ld-herosec][data-flow="law"] h1 em { font-size: 34px; margin-top: 4px; }
+    [data-ld-herovid] { order: 2; max-width: 230px !important; margin: 0 auto !important; justify-self: center !important; align-items: center; }
+    [data-ld-herosec][data-flow="law"] [data-ld-ctarow] { display: none !important; }
+    [data-ld-herosec][data-flow="law"] [data-ld-mcta] { display: block !important; margin: 4px -22px 0; }
+    [data-ld-herosec][data-flow="law"] [data-ld-herovid] { max-width: 250px !important; }
+    [data-ld-vbanner] { margin: 0 -22px; }
+    [data-vb-t] { font-size: 15.5px !important; }
+    [data-vb-s] { font-size: 9.5px !important; letter-spacing: 0.08em !important; }
+    [data-law-rm], [data-law-rm] h2 { text-align: center; }
+    [data-law-rm] ul { align-items: center; }
+    [data-ld-essaysec][data-flow="law"] [data-essay-over] { display: none; }
+    [data-law-items], [data-law-team] { grid-template-columns: 1fr !important; }
+    [data-law-faq] { grid-template-columns: 1fr !important; }
+    [data-law-h2] { font-size: 34px !important; }
+    [data-law-sec] { padding-left: 20px !important; padding-right: 20px !important; }
+    [data-law-book] > div:first-child { padding: 40px 24px !important; }
+  }
+  @media (max-width: 980px) { [data-ld-herovid] { justify-self: center !important; margin-right: 0 !important; } }
   [data-ld-itemsec][data-dark="true"] h2 { color: #FFFFFF !important; }
   [data-ld-itemsec][data-dark="true"] [data-ld-head] p { color: rgba(254,250,247,0.84) !important; }
   [data-ld-itemsec][data-dark="true"] [data-ld-item] { background: rgba(255,255,255,0.04) !important; border-color: rgba(202,170,95,0.34) !important; }
@@ -612,7 +639,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
 <div style="font-family: var(--font-sans); color: var(--fg-1); background: #FFFFFF; min-height: 100vh;">
 
   <header style="position: sticky; top: 0; z-index: 60; margin-bottom: -92px; background: {{ hdrBg }}; backdrop-filter: blur(9px) saturate(1.06); -webkit-backdrop-filter: blur(9px); border-bottom: 1px solid {{ hdrBorder }};">
-    <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px 0 14px; height: 92px; display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+    <div data-hdr-inner data-flow="{{ ldFlow }}" style="max-width: 1400px; margin: 0 auto; padding: 0 40px 0 14px; height: 92px; display: flex; align-items: center; justify-content: space-between; gap: 32px;">
       <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
       <a href="#" onClick="{{ goHome }}" style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
         <img src="assets/logo-lion-gold.png" alt="League Bound" style="height: 44px; width: auto; display: block;">
@@ -2125,7 +2152,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
       </section>
       </sc-if>
       <sc-if value="{{ ldStdHero }}" hint-placeholder-val="{{ true }}">
-      <section data-ld-herosec data-hero-top="{{ ldHeroTop }}" data-founding="{{ ldFoundingAttr }}" style="order: 20; position: relative; overflow: hidden; background: #0F1A2E; padding: 150px 0 92px; min-height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
+      <section data-ld-herosec data-flow="{{ ldFlow }}" data-hero-top="{{ ldHeroTop }}" data-founding="{{ ldFoundingAttr }}" style="order: 20; position: relative; overflow: hidden; background: #0F1A2E; padding: 150px 0 92px; min-height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
         <sc-if value="{{ ldHasEngrave }}" hint-placeholder-val="{{ false }}">
           <span data-ld-engrave style="display: none; position: absolute; left: 50%; top: 49.6%; transform: translateX(-50%); z-index: 3; width: 78%; text-align: center; font-family: var(--font-serif); font-weight: 700; font-size: 11.5px; line-height: 1.2; letter-spacing: 0.14em; text-transform: uppercase; color: #1B2A4A; text-shadow: 0 1px 0 rgba(255,255,255,0.6), 0 -1px 0 rgba(0,0,0,0.22);">{{ ldEngrave }}</span>
         </sc-if>
@@ -2189,7 +2216,14 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
             </sc-if>
           </div>
           <sc-if value="{{ ldHasVideo }}" hint-placeholder-val="{{ false }}">
-            <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div data-ld-herovid style="display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 360px;">
+              <sc-if value="{{ ldHasVideoBanner }}" hint-placeholder-val="{{ false }}">
+                <div data-ld-vbanner style="display: flex; align-items: baseline; justify-content: center; gap: 8px; padding: 12px 12px; border-radius: 8px; background: var(--lbc-gold); white-space: nowrap;">
+                  <span data-vb-t style="font-family: var(--font-serif); font-size: 19px; font-weight: 700; line-height: 1.15; color: var(--lbc-navy);">{{ ldVideoBanner.title }}</span>
+                  <span style="color: rgba(27,42,74,0.55);">&middot;</span>
+                  <span data-vb-s style="font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lbc-navy);">{{ ldVideoBanner.sub }}</span>
+                </div>
+              </sc-if>
               <div style="position: relative; width: 100%; max-width: 360px; aspect-ratio: 3 / 4; border-radius: 10px; overflow: hidden; border: 1px solid rgba(202,170,95,0.34); background: #0B1524;">
                 <span style="position: absolute; inset: 0; display: block;">{{ ldVideoNode }}</span>
                 <sc-if value="{{ ldVideoIdle }}" hint-placeholder-val="{{ true }}">
@@ -2204,6 +2238,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
                 <span style="font-family: var(--font-serif); font-size: 20px; font-weight: 600; color: #FFFFFF;">{{ ldVideoName }}</span>
                 <span style="font-family: var(--font-sans); font-weight: 600; font-size: 12.5px; letter-spacing: 0.08em; color: var(--lbc-gold);">{{ ldVideoRole }}</span>
               </span>
+              <a data-ld-mcta href="#" onClick="{{ openCalendly }}" style="display: none; background: var(--lbc-gold); color: #FFFFFF; font-family: var(--font-sans); font-weight: 700; font-size: 12.5px; letter-spacing: 0.18em; text-transform: uppercase; padding: 18px 28px; border-radius: 4px; text-decoration: none; white-space: nowrap; text-align: center;" style-hover="background: #A68840;">Schedule a Free Consultation</a>
             </div>
           </sc-if>
           <sc-if value="{{ ldHeroQuote }}" hint-placeholder-val="{{ false }}">
@@ -2612,7 +2647,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
     </sc-if>
 
       <sc-if value="{{ ldHasBanner }}" hint-placeholder-val="{{ false }}">
-      <section style="order: 90; background: #FFFFFF;">
+      <section data-ld-bannersec data-flow="{{ ldFlow }}" style="order: 90; background: #FFFFFF;">
         <div data-ld-banner style="position: relative; width: 100%; box-sizing: border-box; padding: 64px 40px 68px; text-align: center; overflow: hidden; background-color: var(--lbc-navy); background-image: url('mlp/bg/service-comparison.jpg'); background-size: cover; background-position: center;">
           <span style="position: absolute; inset: 0; background: rgba(27,42,74,0.8);"></span>
           <div style="position: relative; z-index: 2; max-width: 860px; margin: 0 auto;">
@@ -2746,6 +2781,124 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
       </section>
       </sc-if>
 
+      <sc-if value="{{ ldLaw }}" hint-placeholder-val="{{ false }}">
+      <section data-law-sec style="order: 120; background: #FFFFFF; padding: 104px 40px 108px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; max-width: 680px; margin: 0 auto 56px;">
+            <span style="font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--lbc-gold);">What we work on</span>
+            <h2 data-law-h2 style="font-family: var(--font-serif); font-size: 50px; font-weight: 700; color: var(--lbc-navy); margin: 0; line-height: 1.1;">Law School <em style="font-style: italic; color: var(--lbc-gold);">Applications.</em></h2>
+            <p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: #5A6377; text-wrap: pretty;">Everything that carries your voice in the file, handled one on one.</p>
+          </div>
+          <div data-law-grid style="display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 32px; align-items: stretch;">
+            <div data-law-items style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid rgba(27,42,74,0.12); border-left: 1px solid rgba(27,42,74,0.12);">
+              <sc-for list="{{ ldItems }}" as="it" hint-placeholder-count="4">
+                <div style="display: flex; flex-direction: column; gap: 12px; padding: 34px 30px 36px; border-right: 1px solid rgba(27,42,74,0.12); border-bottom: 1px solid rgba(27,42,74,0.12); transition: background 140ms cubic-bezier(0.2,0.6,0.2,1);" style-hover="background: #FEFAF7;">
+                  <span style="display: flex; align-items: center; gap: 14px;"><span style="font-family: var(--font-serif); font-style: italic; font-weight: 600; font-size: 44px; line-height: 1; color: var(--lbc-gold);">{{ it.n }}</span><span style="flex: 1; height: 1px; background: rgba(202,170,95,0.45);"></span></span>
+                  <h3 style="font-family: var(--font-serif); font-size: 23px; font-weight: 700; color: var(--lbc-navy); margin: 4px 0 0; line-height: 1.2; text-wrap: balance;">{{ it.title }}</h3>
+                  <p style="margin: 0; font-size: 15px; line-height: 1.66; color: #5A6377; text-wrap: pretty;">{{ it.body }}</p>
+                </div>
+              </sc-for>
+            </div>
+            <div style="position: relative; overflow: hidden; border-radius: 12px; background: var(--lbc-navy); padding: 36px 34px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 18px 44px rgba(27,42,74,0.18);">
+              <span style="font-family: var(--font-serif); font-size: 28px; font-weight: 600; line-height: 1.2; color: #FFFFFF; text-align: center;">Countdown to <em style="font-style: italic; color: var(--lbc-gold);">ideal submission dates.</em></span>
+              <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 0 14px; border: 1px solid rgba(202,170,95,0.4); border-radius: 8px;"><span style="font-family: var(--font-serif); font-size: 44px; font-weight: 700; line-height: 1; color: #FFFFFF;">{{ lawCd.d }}</span><span style="font-family: var(--font-sans); font-weight: 700; font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.62);">Days</span></div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 0 14px; border: 1px solid rgba(202,170,95,0.4); border-radius: 8px;"><span style="font-family: var(--font-serif); font-size: 44px; font-weight: 700; line-height: 1; color: #FFFFFF;">{{ lawCd.h }}</span><span style="font-family: var(--font-sans); font-weight: 700; font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.62);">Hours</span></div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 0 14px; border: 1px solid rgba(202,170,95,0.4); border-radius: 8px;"><span style="font-family: var(--font-serif); font-size: 44px; font-weight: 700; line-height: 1; color: #FFFFFF;">{{ lawCd.m }}</span><span style="font-family: var(--font-sans); font-weight: 700; font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.62);">Minutes</span></div>
+              </div>
+              <p style="margin: 0; font-size: 14.5px; line-height: 1.65; color: rgba(254,250,247,0.78); text-wrap: pretty;">Law schools admit on a rolling basis. The earlier your file is complete, the more seats and scholarship money are still open.</p>
+              <div style="display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,0.14);">
+                <sc-for list="{{ lawTiers }}" as="t" hint-placeholder-count="3">
+                  <div style="display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.12);">
+                    <span style="font-family: var(--font-serif); font-style: italic; font-size: 19px; color: var(--lbc-gold);">{{ t.n }}</span>
+                    <span style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 14.5px; font-weight: 700; color: #FFFFFF;">{{ t.label }}</span><span style="font-size: 13px; line-height: 1.5; color: rgba(254,250,247,0.66);">{{ t.note }}</span></span>
+                    <sc-if value="{{ t.noCd }}" hint-placeholder-val="{{ false }}"><span style="font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #DFC88A; white-space: nowrap;">{{ t.date }}</span></sc-if>
+                    <sc-if value="{{ t.hasCd }}" hint-placeholder-val="{{ true }}"><span style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 64px; padding: 8px 10px 7px; border: 1px solid rgba(202,170,95,0.4); border-radius: 6px; align-self: center;"><span style="font-family: var(--font-serif); font-size: 22px; font-weight: 700; line-height: 1; color: #FFFFFF;">{{ t.days }}</span><span style="font-family: var(--font-sans); font-weight: 700; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.62); white-space: nowrap;">Days &middot; {{ t.date }}</span></span></sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-law-sec style="order: 130; background: #FFFFFF; padding: 104px 40px 40px; border-top: 1px solid rgba(27,42,74,0.07);">
+        <div style="max-width: 900px; margin: 0 auto;">
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; margin-bottom: 56px;">
+            <span style="font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--lbc-gold);">Who you would work with</span>
+            <h2 data-law-h2 style="font-family: var(--font-serif); font-size: 54px; font-weight: 700; color: var(--lbc-navy); margin: 0; line-height: 1.1;">Meet Your <em style="font-style: italic; color: var(--lbc-gold);">Law School Advisors.</em></h2>
+          </div>
+          <div data-law-team style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; align-items: start;">
+            <sc-for list="{{ ldPeople }}" as="m" hint-placeholder-count="2">
+              <div style="display: flex; flex-direction: column; border-radius: 16px; border: 1px solid #E5E5E5; background: #FFFFFF; overflow: hidden; box-shadow: 0 18px 44px rgba(27,42,74,0.10); transition: box-shadow 140ms cubic-bezier(0.2,0.6,0.2,1);" style-hover="box-shadow: 0 24px 56px rgba(27,42,74,0.16);">
+                <span style="display: block; aspect-ratio: 1 / 1; width: 100%; background-color: #EDEAE4; background-image: url('{{ m.photo }}'); background-size: cover; background-position: center 30%;"></span>
+                <div style="padding: 24px 26px 28px; display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center;">
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                    <h3 style="font-family: var(--font-serif); font-size: 30px; font-weight: 700; color: var(--lbc-navy); margin: 0; line-height: 1.1;">{{ m.name }}</h3>
+                    <span style="display: flex; align-items: center; gap: 8px;"><img src="{{ m.logo }}" alt="" style="width: 18px; height: 18px; object-fit: contain; display: block;"><span style="font-size: 14.5px; font-weight: 600; color: var(--lbc-gold-dark);">{{ m.school }}</span></span>
+                  </div>
+                  <span style="display: block; width: 32px; height: 1px; background: rgba(202,170,95,0.6);"></span>
+                  <div style="display: flex; flex-direction: column; gap: 9px; align-items: flex-start;">
+                    <sc-for list="{{ m.bulletItems }}" as="b" hint-placeholder-count="4">
+                      <span style="display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.45; color: #525252; text-align: left;"><span style="flex-shrink: 0; display: flex; height: 18px; width: 18px; align-items: center; justify-content: center; border-radius: 50%; background: rgba(202,170,95,0.14); color: var(--lbc-gold-dark); font-size: 11px; line-height: 1;">✓</span>{{ b.text }}</span>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <sc-for list="{{ ldPeopleQuotes }}" as="q" hint-placeholder-count="0">
+            <div style="max-width: 760px; margin: 72px auto 0; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+              <span style="display: flex; gap: 3px;"><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""></span>
+              <p style="margin: 0; font-family: var(--font-serif); font-style: italic; font-size: 22px; line-height: 1.55; color: var(--lbc-navy); text-wrap: pretty;">&ldquo;{{ q.text }}&rdquo;</p>
+              <span style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; justify-content: center;"><span style="font-family: var(--font-sans); font-weight: 700; font-size: 13px; color: var(--lbc-navy);">{{ q.name }}</span><span style="font-family: var(--font-sans); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lbc-gold-dark);">{{ q.school }}</span></span>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section data-law-sec style="order: 135; background: #FFFFFF; padding: 48px 40px 104px;">
+        <div data-booking="true" style="max-width: 1240px; margin: 0 auto; border-radius: 16px; box-shadow: 0 10px 30px rgba(27,42,74,0.12); background: #FFFFFF; overflow: hidden; display: flex; align-items: stretch;">
+          <div data-law-rm style="flex: 1; padding: 48px;">
+            <p style="font-size: 11px; font-weight: 700; color: var(--lbc-gold); letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 12px;">Reserve Your Session</p>
+            <h2 style="font-family: var(--font-serif); font-size: 36px; font-weight: 700; color: var(--lbc-navy); margin: 0; text-wrap: pretty;">Get Your Personal Admissions Roadmap</h2>
+            <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.65; color: #525252; text-wrap: pretty;">Consultations are a deep-dive into your law school goals. We’ll cover your school list, your timeline, and essay strategy.</p>
+            <ul style="margin: 24px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px;">
+              <li style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--lbc-navy);"><span style="display: flex; height: 20px; width: 20px; align-items: center; justify-content: center; border-radius: 50%; background: rgba(202,170,95,0.12); color: var(--lbc-gold); font-size: 12px;">✓</span>Detailed 45-Minute Zoom Call</li>
+              <li style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--lbc-navy);"><span style="display: flex; height: 20px; width: 20px; align-items: center; justify-content: center; border-radius: 50%; background: rgba(202,170,95,0.12); color: var(--lbc-gold); font-size: 12px;">✓</span>Private 1-on-1 Strategy</li>
+              <li style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--lbc-navy);"><span style="display: flex; height: 20px; width: 20px; align-items: center; justify-content: center; border-radius: 50%; background: rgba(202,170,95,0.12); color: var(--lbc-gold); font-size: 12px;">✓</span>Zero Pressure, Just Strategy</li>
+            </ul>
+          </div>
+          <div style="flex: 1; position: relative; display: flex; align-items: center; justify-content: center; min-height: 400px; padding: 40px; overflow: hidden; background-color: #1B2A4A; background-image: url('assets/reserve-princeton-campus.jpg'); background-size: cover; background-position: center;">
+            <span style="position: absolute; inset: 0; background: rgba(27,42,74,0.12);"></span>
+            <a href="#" onClick="{{ openCalendly }}" style="position: relative; display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 20px 36px; border-radius: 6px; text-align: center;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">Schedule a Free Consultation</a>
+          </div>
+        </div>
+      </section>
+
+      <section data-law-sec style="order: 270; background: #FFFFFF; border-top: 1px solid rgba(27,42,74,0.07); padding: 96px 40px 104px;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; margin-bottom: 44px;">
+            <span style="font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--lbc-gold);">FAQ</span>
+            <h2 data-law-h2 style="font-family: var(--font-serif); font-size: 48px; font-weight: 700; color: var(--lbc-navy); margin: 0; line-height: 1.1;">Questions, <em style="font-style: italic; color: var(--lbc-gold);">answered.</em></h2>
+          </div>
+          <div data-law-faq style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 20px; align-items: start;">
+            <sc-for list="{{ lawFaqs }}" as="f" hint-placeholder-count="4">
+              <div style="border: 1px solid #EADFD1; border-radius: 10px; background: #FFFFFF; overflow: hidden;">
+                <a href="#" onClick="{{ f.onToggle }}" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 26px; text-decoration: none;">
+                  <span style="font-family: var(--font-serif); font-size: 19px; font-weight: 700; line-height: 1.3; color: var(--lbc-navy); text-wrap: pretty;">{{ f.q }}</span>
+                  <span style="flex-shrink: 0; display: flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid rgba(202,170,95,0.6); font-size: 17px; line-height: 1; color: var(--lbc-gold-dark);">{{ f.sign }}</span>
+                </a>
+                <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+                  <p style="margin: 0; padding: 0 26px 24px; font-size: 15.5px; line-height: 1.72; color: #5A6377; text-wrap: pretty;">{{ f.a }}</p>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+      </sc-if>
+
       <sc-if value="{{ ldHasItems }}" hint-placeholder-val="{{ true }}">
       <section data-ld-itemsec data-early="{{ ldItemsEarlyAttr }}" data-dark="{{ ldItemsDark }}" style="order: 120; background: #FFFFFF; padding: 92px 0;">
         <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
@@ -2861,7 +3014,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
     </sc-if>
 
       <sc-if value="{{ ldShowReviews }}" hint-placeholder-val="{{ true }}">
-      <section style="order: 150; background: #FFFFFF; border-top: 1px solid rgba(27,42,74,0.07); padding: 64px 0; overflow-x: clip;">
+      <section data-ld-reviewsec data-flow="{{ ldFlow }}" style="order: 150; background: #FFFFFF; border-top: 1px solid rgba(27,42,74,0.07); padding: 64px 0; overflow-x: clip;">
         <div data-marquee="true" style="display: flex; width: max-content; animation: lbcMarqueeL 72s linear infinite;">
           <sc-for list="{{ reviewTicker }}" as="r" hint-placeholder-count="10">
             <div style="flex-shrink: 0; width: 360px; margin: 0 12px; border-radius: 16px; border: 1px solid #E5E5E5; background: #FFFFFF; padding: 24px; box-shadow: 0 1px 3px rgba(27,42,74,0.08); display: flex; flex-direction: column;">
@@ -2886,13 +3039,89 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
       </sc-if>
 
     <sc-if value="{{ ldHasEssay }}" hint-placeholder-val="{{ false }}">
-      <section style="order: 160; background: #F7F1EA; padding: 96px 0 104px;">
+      <section data-ld-essaysec data-flow="{{ ldFlow }}" style="order: 160; background: #F7F1EA; padding: 96px 0 104px;">
         <div style="max-width: 1180px; margin: 0 auto; padding: 0 40px;">
           <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 40px; text-align: center;">
-            <span style="font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--lbc-gold);">Essays that worked</span>
-            <h2 style="font-family: var(--font-serif); font-size: 42px; font-weight: 600; color: var(--lbc-navy); margin: 0; line-height: 1.12;">Read one all the way through.</h2>
-            <p style="margin: 0; max-width: 620px; font-size: 16.5px; line-height: 1.7; color: #5A6377; text-wrap: pretty;">Most consultants describe what a strong personal statement does. Here is one, with the notes we would have written in the margin.</p>
+            <span data-essay-over style="font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--lbc-gold);">Essays that worked</span>
+            <h2 style="font-family: var(--font-serif); font-size: 42px; font-weight: 600; color: var(--lbc-navy); margin: 0; line-height: 1.12;">Read one <em style="font-style: italic; color: var(--lbc-gold);">all the way through.</em></h2>
+            <p style="margin: 0; max-width: 620px; font-size: 16.5px; line-height: 1.7; color: #5A6377; text-wrap: pretty;">Most consultants just describe what a personal statement does. We show two all the way through: one of ours, and one of our students&rsquo;.</p>
           </div>
+
+          <div style="display: flex; justify-content: center; margin: -10px 0 30px;">
+            <div style="display: flex; gap: 4px; padding: 4px; border: 1px solid rgba(27,42,74,0.14); border-radius: 999px; background: #FFFFFF;">
+              <a href="#" onClick="{{ setEssayAdvisor }}" style="font-family: var(--font-sans); font-weight: 700; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; padding: 11px 20px; border-radius: 999px; background: {{ essayTabAdvBg }}; color: {{ essayTabAdvFg }}; transition: background 140ms, color 140ms;">League Bound Advisor</a>
+              <a href="#" onClick="{{ setEssayStudent }}" style="font-family: var(--font-sans); font-weight: 700; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; padding: 11px 20px; border-radius: 999px; background: {{ essayTabStuBg }}; color: {{ essayTabStuFg }}; transition: background 140ms, color 140ms;">League Bound Student</a>
+            </div>
+          </div>
+
+          <sc-if value="{{ ldEssayAdvisor }}" hint-placeholder-val="{{ true }}">
+          <div data-essay-card style="background: #FEFAF7; border: 1px solid #EADFD1; border-radius: 4px; box-shadow: 0 18px 48px rgba(27,42,74,0.10); padding: 46px 44px 0; max-width: 1060px; margin: 0 auto;">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 32px;">
+              <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0;">
+                <span style="display: flex; align-items: center; gap: 14px;">
+                  <span style="width: 42px; height: 1.5px; background: var(--lbc-gold); flex-shrink: 0;"></span>
+                  <span style="font-family: var(--font-sans); font-weight: 700; font-size: 10.5px; letter-spacing: 0.26em; text-transform: uppercase; color: #A68840;">League Bound advisor essay &middot; Law statement of purpose</span>
+                </span>
+                <span data-essay-name style="font-family: var(--font-serif); font-size: 40px; font-weight: 700; color: var(--lbc-navy); line-height: 1.05;">Sophia H. <span style="color: #C6BCA9; font-weight: 400;">&middot;</span> <em style="font-style: italic; font-weight: 600; color: var(--lbc-gold);">11 T14 Admits</em></span>
+              </div>
+              <img src="assets/logo-lion-gold.png" alt="League Bound" style="height: 40px; width: auto; opacity: .5; flex-shrink: 0;">
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 26px; flex-wrap: wrap; margin: 26px 0 34px; padding-bottom: 22px; border-bottom: 1px solid #EFE4D6;">
+              <span style="font-family: var(--font-sans); font-weight: 700; font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #9AA2B1;">LSAC &middot; Statement of purpose</span>
+            </div>
+            <div style="position: relative; max-height: 700px; overflow: hidden;">
+            <div data-essay-grid style="display: grid; grid-template-columns: 172px minmax(0, 1fr) 172px; column-gap: 26px; align-items: start;">
+        <span data-essay-note style="display: block; text-align: right; padding-top: 7px;"><span style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #CAAA5F; margin-bottom: 4px;">The hook</span><span style="display: block; font-family: 'Caveat', cursive; font-size: 19px; line-height: 1.25; color: #A68840;">Opens backstage and sets the scene for future growth.</span></span>
+        <p style="margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: 17.5px; line-height: 1.72; color: #22314F; text-wrap: pretty;"><span style="float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 58px; line-height: .8; padding: 6px 11px 0 0; color: var(--lbc-navy); font-style: normal;">S</span>tage swept, curtain drawn, props set. Wearing show blacks, a headset, and the quietest sneakers I own, I check on the actors and stage hands. Ready. Our endless preparation is about to pay off. Surely, nothing will go awry.</p>
+        <span></span>
+        <span></span>
+        <p style="margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: 17.5px; line-height: 1.72; color: #22314F; text-wrap: pretty;">At each performance of every show I&rsquo;ve stage managed, I&rsquo;ve been wrong about this. A shoe ends up across the stage from its partner, a mic battery dies, a set piece breaks.</p>
+        <span data-essay-note style="display: block; text-align: left; padding-top: 7px;"><span style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #CAAA5F; margin-bottom: 4px;">Reflection</span><span style="display: block; font-family: 'Caveat', cursive; font-size: 19px; line-height: 1.25; color: #A68840;">Shows her as a reliable narrator from the start.</span></span>
+        <span data-essay-note style="display: block; text-align: right; padding-top: 7px;"><span style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #CAAA5F; margin-bottom: 4px;">Confidence</span><span style="display: block; font-family: 'Caveat', cursive; font-size: 19px; line-height: 1.25; color: #A68840;">Claims the skill, then defines it.</span></span>
+        <p style="margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: 17.5px; line-height: 1.72; color: #22314F; text-wrap: pretty;">Still, I&rsquo;m a great stage manager. It isn&rsquo;t because I predict and prevent every problem. That&rsquo;s impossible. <span style="background: rgba(202,170,95,.18); border-bottom: 1.5px solid rgba(202,170,95,.9);">Preventing the audience from knowing such problems ever existed</span>&mdash;that&rsquo;s what makes me someone a director wants backstage. I have finite resources at my disposal to convince an audience that what they&rsquo;re seeing, thinking, and feeling is deliberate and meaningful. The quick, practical choices I make during backstage crises often deviate from the original plan&mdash;but we still get there.</p>
+        <span></span>
+        <span></span>
+        <p style="margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: 17.5px; line-height: 1.72; color: #22314F; text-wrap: pretty;">Today I work as a researcher and birth control advocate. The players have changed&mdash;audience members morphed into legislators, props and actors replaced by data and policy&mdash;but the essence of my mandate has not. I am still charged with persuading others utilizing only the materials within my reach. That, and a healthy dose of pragmatism.</p>
+        <span data-essay-note style="display: block; text-align: left; padding-top: 7px;"><span style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #CAAA5F; margin-bottom: 4px;">The bridge</span><span style="display: block; font-family: 'Caveat', cursive; font-size: 19px; line-height: 1.25; color: #A68840;">The stage becomes the statehouse.</span></span>
+        <span data-essay-note style="display: block; text-align: right; padding-top: 7px;"><span style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #CAAA5F; margin-bottom: 4px;">Specificity</span><span style="display: block; font-family: 'Caveat', cursive; font-size: 19px; line-height: 1.25; color: #A68840;">A real room, a real senator, a real bill.</span></span>
+        <p style="margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: 17.5px; line-height: 1.72; color: #22314F; text-wrap: pretty;">My first opportunity to run the show began in a cramped office with a state senator who had publicly, consistently, and incorrectly equated birth control initiatives with abortion access (which he does not support). My goal was to get a birth control pro-access bill out of this senator&rsquo;s committee. Instead of arguing that birth control and abortion raise different issues, I focused my efforts on persuading him that pharmacists were being excessively regulated by the state and that <span style="background: rgba(202,170,95,.18); border-bottom: 1.5px solid rgba(202,170,95,.9);">birth control access was an issue implicating commercial freedom</span>. I illustrated, in detail, how permitting pharmacists to prescribe oral contraception would reduce their occupational licensure burden. It worked, and he pledged to support the bill.</p>
+        <span></span>
+        <span></span>
+        <p style="margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: 17.5px; line-height: 1.72; color: #22314F; text-wrap: pretty;">I felt invincible and walked away energized. I envisioned myself making that same progress, state-by-state, one legislator at a time.</p>
+        <span></span>
+        <span data-essay-note style="display: block; text-align: right; padding-top: 7px;"><span style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #CAAA5F; margin-bottom: 4px;">The turn</span><span style="display: block; font-family: 'Caveat', cursive; font-size: 19px; line-height: 1.25; color: #A68840;">The win becomes the question.</span></span>
+        <p style="margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: 17.5px; line-height: 1.72; color: #22314F; text-wrap: pretty;">By the time my plane landed back in Washington, my enthusiasm had tempered. I had not persuaded the senator to support birth control access because it was the right thing to do from a public health perspective, or on grounds of personal autonomy. In fact, I hadn&rsquo;t even tried. Is it truly success when progress is achieved only as a byproduct of another goal? In that tiny room I had championed pharmacists, not birth control. <span style="background: rgba(202,170,95,.18); border-bottom: 1.5px solid rgba(202,170,95,.9);">How could I call myself an advocate?</span></p>
+        <span></span>
+        <span></span>
+        <p style="margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: 17.5px; line-height: 1.72; color: #22314F; text-wrap: pretty;">I learned that on a personal level, how someone feels about an issue like birth control matters to me but on a professional level, it often does not. I accept that legislators who are lukewarm to my beliefs still can and do act in furtherance of my goals. Initially challenging, this valuable lesson has made me a better advocate and communicator, able to tailor messages to my audience with more efficacy and confidence. Limiting my approach to moral or public health grounds may feel better in the moment&mdash;but it won&rsquo;t necessarily yield positive results. <span style="background: rgba(202,170,95,.18); border-bottom: 1.5px solid rgba(202,170,95,.9);">I&rsquo;d rather be impactful using an argument I don&rsquo;t relate to than be unconvincing with one that I do.</span></p>
+        <span data-essay-note style="display: block; text-align: left; padding-top: 7px;"><span style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #CAAA5F; margin-bottom: 4px;">Growth</span><span style="display: block; font-family: 'Caveat', cursive; font-size: 19px; line-height: 1.25; color: #A68840;">A lesson with a real cost attached.</span></span>
+        <span data-essay-note style="display: block; text-align: right; padding-top: 7px;"><span style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #CAAA5F; margin-bottom: 4px;">Full circle</span><span style="display: block; font-family: 'Caveat', cursive; font-size: 19px; line-height: 1.25; color: #A68840;">The stage comes back as a pun.</span></span>
+        <p style="margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: 17.5px; line-height: 1.72; color: #22314F; text-wrap: pretty; font-style: italic; color: #3A4A6B;">Progress is progress, even when it comes through a side (or stage) door.</p>
+        <span></span>
+        <span></span>
+        <p style="margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: 17.5px; line-height: 1.72; color: #22314F; text-wrap: pretty; margin-bottom: 0;">As a stage manager I was most comfortable behind the scenes, at times literally &ldquo;pulling the strings.&rdquo; I knew quickly if the split-second decisions I&rsquo;d just made were the right or wrong call. My work as an advocate is more of a journey. Learning to collaborate with individuals and organizations across the political spectrum to accomplish mutual goals and focus on areas of alignment rather than disagreement has served me well at work, and in my life more broadly. To make meaningful change, I need to be open to working with honest participants with any degree of ideological overlap, even if slim. I can be true to myself and authentic with those I work with by staying in a lane where there is room for agreement. I am confident that law school is the best and most impactful way for me to broaden and refine my approach to advocacy.</p>
+        <span></span>
+            </div>
+              <span style="position: absolute; left: -44px; right: -44px; bottom: 0; height: 470px; background: linear-gradient(180deg, rgba(254,250,247,0) 0%, rgba(254,250,247,0.74) 32%, rgba(254,250,247,0.95) 82%, #FEFAF7 100%); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); pointer-events: none;"></span>
+            </div>
+            <div style="margin: 52px -44px 0; padding: 40px 44px 44px; border-top: 1px solid #EFE4D6; background: #FCF6F0; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
+              <span style="font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #A68840;">Admitted to</span>
+              <span style="font-family: var(--font-serif); font-size: 54px; font-weight: 700; color: var(--lbc-navy); line-height: 1.05;">11 <em style="font-style: italic; color: var(--lbc-gold);">T14 Law Schools</em></span>
+              <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 18px; max-width: 620px; margin-top: 10px;">
+                <sc-for list="{{ ldT14Logos }}" as="s" hint-placeholder-count="11">
+                  <sc-if value="{{ s.hasSrc }}" hint-placeholder-val="{{ true }}"><img src="{{ s.src }}" alt="{{ s.name }}" title="{{ s.name }}" style="height: 28px; width: 28px; object-fit: contain; display: block;"></sc-if>
+                  <sc-if value="{{ s.noSrc }}" hint-placeholder-val="{{ false }}"><span title="{{ s.name }}" style="display: block; position: relative; width: 28px; height: 28px; border: 1px dashed rgba(27,42,74,0.3); border-radius: 4px; overflow: hidden;"><image-slot id="{{ s.slotId }}" shape="rect" placeholder=""></image-slot></span></sc-if>
+                </sc-for>
+              </div>
+              <span style="font-family: var(--font-serif); font-size: 24px; font-weight: 600; color: var(--lbc-navy); margin-top: 18px;">Want her in your corner?</span>
+              <div style="display: flex; justify-content: center; margin-top: 6px;">
+                <a href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-family: var(--font-sans); font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; padding: 16px 30px; border-radius: 4px; text-decoration: none; text-align: center;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">Schedule a Free Consultation</a>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ ldEssayStudent }}" hint-placeholder-val="{{ false }}">
 
           <div data-essay-card style="background: #FEFAF7; border: 1px solid #EADFD1; border-radius: 4px; box-shadow: 0 18px 48px rgba(27,42,74,0.10); padding: 46px 44px 0; max-width: 1060px; margin: 0 auto;">
 
@@ -2902,7 +3131,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
                   <span style="width: 42px; height: 1.5px; background: var(--lbc-gold); flex-shrink: 0;"></span>
                   <span style="font-family: var(--font-sans); font-weight: 700; font-size: 10.5px; letter-spacing: 0.26em; text-transform: uppercase; color: #A68840;">Sample student essay &middot; Law personal statement</span>
                 </span>
-                <span data-essay-name style="font-family: var(--font-serif); font-size: 40px; font-weight: 700; color: var(--lbc-navy); line-height: 1.05;">Mia G. <span style="color: #C6BCA9; font-weight: 400;">&middot;</span> <em style="font-style: italic; font-weight: 600; color: var(--lbc-gold);">Georgetown Law &rsquo;23</em></span>
+                <span data-essay-name style="font-family: var(--font-serif); font-size: 40px; font-weight: 700; color: var(--lbc-navy); line-height: 1.05;">Mia G. <span style="color: #C6BCA9; font-weight: 400;">&middot;</span> <em style="font-style: italic; font-weight: 600; color: var(--lbc-gold);">Georgetown Law &rsquo;28</em></span>
               </div>
               <img src="assets/logo-lion-gold.png" alt="League Bound" style="height: 40px; width: auto; opacity: .5; flex-shrink: 0;">
             </div>
@@ -2912,9 +3141,9 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
               <span style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 15px; color: #8C8375; max-width: 560px;">&ldquo;Prepare a statement of two pages describing important or unusual aspects of yourself not otherwise apparent in your application.&rdquo;</span>
             </div>
 
-            <div style="position: relative; max-height: 820px; overflow: hidden;">
+            <div style="position: relative; max-height: 700px; overflow: hidden;">
             <div data-essay-grid style="display: grid; grid-template-columns: 172px minmax(0, 1fr) 172px; column-gap: 26px; align-items: start;">
-        <span data-essay-note style="display: block; text-align: right; padding-top: 7px;"><span style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #CAAA5F; margin-bottom: 4px;">The hook</span><span style="display: block; font-family: 'Caveat', cursive; font-size: 19px; line-height: 1.25; color: #A68840;">Opens mid-question. No setup, no scene.</span></span>
+        <span data-essay-note style="display: block; text-align: right; padding-top: 7px;"><span style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #CAAA5F; margin-bottom: 4px;">The hook</span><span style="display: block; font-family: 'Caveat', cursive; font-size: 19px; line-height: 1.25; color: #A68840;">Opens with a question that winks at her argumentative side.</span></span>
         <p style="margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: 17.5px; line-height: 1.72; color: #22314F; text-wrap: pretty;"><span style="float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 58px; line-height: .8; padding: 6px 11px 0 0; color: var(--lbc-navy); font-style: normal;">D</span><em style="font-style: italic; color: #3A4A6B;">oes she believe in what she does? Is she happy with how her company treats others?</em></p>
         <span></span>
         <span></span>
@@ -2954,26 +3183,24 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
         <p style="margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: 17.5px; line-height: 1.72; color: #22314F; text-wrap: pretty; margin-bottom: 0;">Now, as I look toward law school and the career beyond, I know I&rsquo;ll always believe in fighting fiercely for what matters. But more importantly, I hope the lawyer I become listens even more fiercely to the stories waiting to be told&ndash;and tells them <span style="background: rgba(202,170,95,.18); border-bottom: 1.5px solid rgba(202,170,95,.9);">with every ounce of conviction I can muster</span>.</p>
         <span data-essay-note style="display: block; text-align: left; padding-top: 7px;"><span style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #CAAA5F; margin-bottom: 4px;">Full circle</span><span style="display: block; font-family: 'Caveat', cursive; font-size: 19px; line-height: 1.25; color: #A68840;">Ends on the conviction the parking lot demanded.</span></span>
             </div>
-              <span style="position: absolute; left: -44px; right: -44px; bottom: 0; height: 320px; background: linear-gradient(180deg, rgba(254,250,247,0) 0%, rgba(254,250,247,0.66) 40%, rgba(254,250,247,0.95) 82%, #FEFAF7 100%); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); pointer-events: none;"></span>
+              <span style="position: absolute; left: -44px; right: -44px; bottom: 0; height: 470px; background: linear-gradient(180deg, rgba(254,250,247,0) 0%, rgba(254,250,247,0.74) 32%, rgba(254,250,247,0.95) 82%, #FEFAF7 100%); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); pointer-events: none;"></span>
             </div>
 
             <div style="margin: 52px -44px 0; padding: 40px 44px 44px; border-top: 1px solid #EFE4D6; background: #FCF6F0; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
               <span style="font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #A68840;">Admitted to</span>
-              <span style="font-family: var(--font-serif); font-size: 54px; font-weight: 700; color: var(--lbc-navy); line-height: 1.05;">Georgetown Law <em style="font-style: italic; color: var(--lbc-gold);">&rsquo;23</em></span>
-              <span style="display: flex; gap: 4px; margin-top: 6px;">
-                <img src="assets/star-gold.svg" width="13" height="12" alt="">
-                <img src="assets/star-gold.svg" width="13" height="12" alt="">
-                <img src="assets/star-gold.svg" width="13" height="12" alt="">
-                <img src="assets/star-gold.svg" width="13" height="12" alt="">
-                <img src="assets/star-gold.svg" width="13" height="12" alt="">
-              </span>
+              <span style="font-family: var(--font-serif); font-size: 54px; font-weight: 700; color: var(--lbc-navy); line-height: 1.05;">UCLA <em style="font-style: italic; color: var(--lbc-gold);">&amp; Georgetown Law</em></span>
+              <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 18px; max-width: 680px; margin-top: 10px;">
+                <sc-for list="{{ ldStuLogos }}" as="s" hint-placeholder-count="2">
+                  <img src="{{ s.src }}" alt="{{ s.name }}" title="{{ s.name }}" style="height: 28px; width: 28px; object-fit: contain; display: block;">
+                </sc-for>
+              </div>
               <span style="font-family: var(--font-serif); font-size: 24px; font-weight: 600; color: var(--lbc-navy); margin-top: 14px;">Want to see more?</span>
               <div style="display: flex; justify-content: center; margin-top: 6px;">
                 <a href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-family: var(--font-sans); font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; padding: 16px 30px; border-radius: 4px; text-decoration: none; text-align: center;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">Read the full essay on a free consultation</a>
               </div>
-              <span style="font-family: var(--font-serif); font-style: italic; font-size: 14.5px; color: #6E6558; margin-top: 6px;">Shared with Mia&rsquo;s permission.</span>
             </div>
           </div>
+          </sc-if>
         </div>
       </section>
     </sc-if>
@@ -3303,6 +3530,16 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
               </div>
             </sc-for>
           </div>
+          <sc-for list="{{ ldPeopleQuotes }}" as="q" hint-placeholder-count="0">
+            <div style="max-width: 820px; margin: 64px auto 0; padding-top: 48px; border-top: 1px solid var(--border-warm, #F0E8DE); display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+              <span style="display: flex; gap: 3px;"><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""></span>
+              <p style="margin: 0; font-family: var(--font-serif); font-style: italic; font-size: 22px; line-height: 1.55; color: var(--lbc-navy); text-wrap: pretty;">&ldquo;{{ q.text }}&rdquo;</p>
+              <span style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                <span style="font-family: var(--font-sans); font-weight: 700; font-size: 13px; color: var(--lbc-navy);">{{ q.name }}</span>
+                <span style="font-family: var(--font-sans); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lbc-gold-dark);">{{ q.school }}</span>
+              </span>
+            </div>
+          </sc-for>
         </div>
       </section>
       </sc-if>
@@ -3358,7 +3595,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
       </sc-if>
 
       <sc-if value="{{ ldHasBooking }}" hint-placeholder-val="{{ true }}">
-      <section data-ld-bookingsec data-early="{{ ldBookingEarlyAttr }}" style="order: 240; padding: 72px 40px 84px; background: var(--bg-warm, #FEFAF7); border-top: 1px solid var(--border-warm, #F0E8DE);">
+      <section data-ld-bookingsec data-flow="{{ ldFlow }}" data-early="{{ ldBookingEarlyAttr }}" style="order: 240; padding: 72px 40px 84px; background: var(--bg-warm, #FEFAF7); border-top: 1px solid var(--border-warm, #F0E8DE);">
         <div data-ld-booking style="max-width: 1240px; margin: 0 auto; border-radius: 16px; box-shadow: 0 10px 30px rgba(27,42,74,0.12); background: #FFFFFF; overflow: hidden; display: flex; align-items: stretch;">
           <div style="flex: 1; padding: 48px;">
             <p style="font-size: 11px; font-weight: 700; color: var(--lbc-gold); letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 12px;">Reserve Your Session</p>
@@ -3399,6 +3636,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
         </div>
       </section>
 
+      <sc-if value="{{ ldShowCollections }}" hint-placeholder-val="{{ true }}">
       <section data-ld-booksec data-early="{{ ldBooksEarlyAttr }}" style="order: 260; background: #FFFFFF;">
         <div style="max-width: 1200px; margin: 0 auto; padding: 88px 40px 24px; text-align: center;">
           <span style="display: block; font-weight: 700; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--lbc-gold-dark); margin-bottom: 16px;">Ivy+ Essay Collections</span>
@@ -3437,6 +3675,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
           </div>
         </div>
       </section>
+      </sc-if>
       </sc-if>
 
     </div>
@@ -5057,6 +5296,8 @@ const ESSAY_FAQS = [
 const EMPTY = { title: '', category: '', excerpt: '', body: '', image: '', video: '', author: '', date: '' };
 
 const LD_PEOPLE = {
+  sophia: { school: 'Harvard Law School', bullets: ['Admitted to 11 T14 Law Schools', 'Michigan Summa Cum Laude', 'Policy Researcher, R Street and Cato Institute', 'Published in Military Times and The Tennessean'], name: 'Sophia Heimowitz', photo: 'mlp/team/sophia.png', logo: 'mlp/schools/harvard-color.png', overline: "Michigan '22 \u00b7 Harvard Law School", role: 'Lead Law School Consultant',
+    body: 'Sophia was admitted to 11 T14 law schools. She graduated summa cum laude from Michigan, co-authored a Cato Institute policy analysis, and spent years at R Street persuading legislators across the aisle, one office at a time. She now takes law applicants from the first messy draft through the final school-by-school submit.' },
   maayan: { school: "Yale '23", bullets: ['Yale Graduate', 'The Politic Managing Editor', 'Published Author & Political Ghostwriter', 'Storytelling Specialist'], name: 'Maayan Schoen', photo: 'mlp/team/maayan.avif', logo: 'mlp/schools/yale.avif', overline: "Harvard Law School \u00b7 Yale '23", role: 'Lead Law School Consultant',
     body: 'Maayan read for the personal statement long before she wrote one. She was managing editor of The Politic at Yale, then worked as a political ghostwriter and published a novel, which is to say she has spent her career finding the sentence a person actually meant to write. She now takes law applicants from the first messy draft through the final school-by-school submit.' },
   razi: { school: "Harvard '20", bullets: ['Former Harvard Alumni Interviewer', '2,000+ Hours of College Consulting', 'Published in 50 Successful Harvard Essays', 'STEM Student Specialist'], name: 'Razi Hecker', photo: 'mlp/team/razi.jpg', logo: 'mlp/schools/harvard.png', overline: "Harvard '20 \u00b7 Magna Cum Laude", role: 'Founder',
@@ -5111,25 +5352,33 @@ const LD_STORY_VIDEOS = [
 
 const LANDINGS = {
   law: {
-    path: '/law-school-essays', label: 'Law School Essays',
-    calendly: 'https://calendly.com/leaguebound/45min',
+    path: '/get-started-law-school', label: 'Law School Essays',
+    calendly: 'https://calendly.com/leaguebound/law-school-strategy-call',
     overline: 'Law School Admissions',
     title: 'Your Story, Told Right.', accent: 'For Law School.',
-    lead: 'The personal statement is not a cover letter and it is not a resume in paragraphs. We help you find the experience that actually explains the decision to go, then write it as something a reader can enter.',
+    lead: 'Your law personal statement is more than a cover letter or a resume in paragraphs. League Bound will help you tie your past experiences and your story into where you are now, and write something moving for top-tier law admissions.',
     note: 'Free 30 minute consultation. No obligation.',
     image: 'assets/yale-banners.jpg',
     photoHero: 'light', wideHero: true,
-    stats: [{ v: '5.0', l: 'Average Rating' }, { v: '100%', l: 'Ivy+ Consultant Team' }],
-    video: 'mlp/videos/mia-law.mp4', videoName: 'Mia G.', videoRole: "Georgetown Law '23",
+    stats: [{ v: '5.0', l: 'Star Average Rating' }, { v: '100%', l: 'Ivy+ Consultant Team' }],
+    flow: 'law', noCollections: true, shortNames: true,
+    banner: {
+      overline: 'What we do together', title: 'Our Law School', accent: 'Services',
+      paras: [
+        'Top law schools see thousands of files with similar GPAs and LSAT scores. The subjective parts decide the rest: writing your activities correctly and, most importantly, tying them into the personal statement and optional essays, where the committee hears you directly.',
+        'Most applicants write them alone, write them late, and write them in crunch time. Thousands of internship hours and strong college GPAs are often wasted because of poor writing. You\u2019re almost at the end. We\u2019ll help you stand out with the strongest application you can have.'
+      ]
+    },
+    video: 'mlp/videos/mia-law.mp4', videoBanner: { title: 'Meet Mia', sub: 'A T14 League Bound Student' }, videoName: 'Mia G.', videoRole: "Georgetown Law '28",
     sectionOverline: 'What we work on', sectionTitle: 'Law School Essays',
     sectionLead: 'Everything that carries your voice in the file, handled one on one.',
     items: [
-      { n: '01', title: 'Personal Statement', body: 'The one piece that has to explain why law, in a way no other applicant could have written. We start from the experience, not the ambition.' },
-      { n: '02', title: 'Diversity and Optional Essays', body: 'Written so they add something the personal statement did not already say, instead of restating it in a new order.' },
-      { n: '03', title: 'Addenda', body: 'A low semester, a score gap, a break in the timeline. Explained plainly, in a paragraph that closes the question rather than reopening it.' },
-      { n: '04', title: 'School List and Timeline', body: 'Which cycle to apply in, and where. You want to submit when your numbers and your narrative are both working, not when the deadline happens to fall.' }
+      { n: '01', title: 'Personal Statement', body: 'The most important piece of writing in your law school application. We make sure it is the cornerstone that ties your profile together into one cohesive story.' },
+      { n: '02', title: 'Diversity Statement and Optional Essays', body: 'Written to add something unique and specific beyond the personal statement, with an emphasis on showcasing different sides of you.' },
+      { n: '03', title: 'Interview Prep', body: 'We help you prepare for law school interviews, so you articulate your ambitions clearly while staying consistent with the rest of your application.' },
+      { n: '04', title: 'School List and Timeline', body: 'We make sure everything is in on cycle and that you are maximizing your chances at the top law schools in the country.' }
     ],
-    why: {
+    whyRemoved: {
       title: 'Most applicants have the numbers.', accent: 'The essays decide the rest.',
       lead: 'Top law schools see thousands of files with similar GPAs and LSAT scores. The personal statement is the one place the committee hears the applicant directly, and most statements read like a resume in paragraphs.',
       points: [
@@ -5138,11 +5387,11 @@ const LANDINGS = {
         { n: '03', title: 'A plan the whole family can follow', body: 'Applicants and parents both know where things stand. We set the cycle, the school list, and a drafting schedule up front, so nothing gets written the night before a deadline.' }
       ]
     },
-    quotes: [
-      { text: "My biggest fear going in was that I didn't have a defining “why law” moment, but Razi helped me find small moments I'd totally overlooked and weave them into a narrative that felt so authentically mine.", name: 'Mia G.', school: 'UCLA and Georgetown Law' },
-      { text: 'Josh was absolutely phenomenal. He took my law school personal statement above and beyond. He is so professional, such a hard worker, and genuinely cared about getting to know my voice and having that be reflected through my writing.', name: 'Denisha', school: 'Law school personal statement' }
+    peopleQuotes: [
+      { text: "My biggest fear going in was that I didn't have a defining “why law” moment, but Razi helped me find small moments I'd totally overlooked and weave them into a narrative that felt so authentically mine.", name: 'Mia G.', school: 'UCLA and Georgetown Law' }
     ],
-    peopleTitle: 'Who you would work with', people: ['maayan', 'razi'],
+    peopleTitle: 'Who you would work with', people: ['sophia', 'razi'],
+    peopleOverrides: { razi: { bullets: ['Former Harvard Alumni Interviewer', '2,000+ Hours of College Consulting', 'Published in 50 Successful Harvard Essays', 'Author of More Than a Personal Statement'], logo: 'mlp/schools/harvard-color.png' } },
     essay: true
   },
   international: {
@@ -5380,6 +5629,7 @@ const LANDINGS = {
 class Component extends DCLogic {
   state = {
     view: this.props.view || 'home',
+    essayTab: 'advisor',
     showBackTop: false,
     anMobileStep: 0,
     heroIdx: 0,
@@ -5421,7 +5671,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     // Real URLs per screen (live site only; inert in previews where the path is a filename).
-    const PATHS = { home: '/', applications: '/college-applications', guidance: '/college-guidance', grad: '/graduate-admissions', team: '/team', blog: '/blog', resources: '/resources', testimonials: '/results', almaya: '/almaya', law: '/law-school-essays', johnlocke: '/john-locke-essay', transfer: '/transfer-essays', summer: '/summer-programs', mba: '/mba-admissions', guidancestart: '/founding-strategy', essays: '/college-essays' };
+    const PATHS = { home: '/', applications: '/college-applications', guidance: '/college-guidance', grad: '/graduate-admissions', team: '/team', blog: '/blog', resources: '/resources', testimonials: '/results', almaya: '/almaya', law: '/get-started-law-school', johnlocke: '/john-locke-essay', transfer: '/transfer-essays', summer: '/summer-programs', mba: '/mba-admissions', guidancestart: '/founding-strategy', essays: '/college-essays' };
     this._paths = PATHS;
     requestAnimationFrame(() => this.wireReveal());
     setTimeout(() => this.wireReveal(), 600);
@@ -6260,11 +6510,21 @@ class Component extends DCLogic {
       ldSectionLead: LD.sectionLead || '',
       ldItems: (LD.items || []).map((x, i) => ({ ...x, key: 'ld' + i })),
       ldPeopleTitle: LD.peopleTitle || '',
-      ldPeople: (LD.people || []).map(k => ({ ...LD_PEOPLE[k], key: 'ldp-' + k, bulletItems: (LD_PEOPLE[k].bullets || []).map((t, i) => ({ text: t, key: 'b' + i })), slotId: 'ldp-photo-' + k, hasPhoto: !!LD_PEOPLE[k].photo, noPhoto: !LD_PEOPLE[k].photo, logoSlotId: 'ldp-logo-' + k, hasLogo: !!LD_PEOPLE[k].logo, noLogo: !LD_PEOPLE[k].logo })),
+      ldPeople: (LD.people || []).map(k => ({ ...LD_PEOPLE[k], ...((LD.peopleOverrides || {})[k] || {}), ...(LD.shortNames ? { name: LD_PEOPLE[k].name.split(' ')[0] + ' ' + LD_PEOPLE[k].name.split(' ').slice(-1)[0][0] + '.' } : {}), key: 'ldp-' + k, bulletItems: ((((LD.peopleOverrides || {})[k] || {}).bullets) || LD_PEOPLE[k].bullets || []).map((t, i) => ({ text: t, key: 'b' + i })), slotId: 'ldp-photo-' + k, hasPhoto: !!LD_PEOPLE[k].photo, noPhoto: !LD_PEOPLE[k].photo, logoSlotId: 'ldp-logo-' + k, hasLogo: !!LD_PEOPLE[k].logo, noLogo: !LD_PEOPLE[k].logo })),
       ldPeopleCount: String((LD.people || []).length),
       ldPeopleCards: !!LD.peopleCards,
-      ldPeopleRows: (!LD.peopleCards) && (LD.people || []).length > 0,
+      ldPeopleRows: !LD.flow && (!LD.peopleCards) && (LD.people || []).length > 0,
       ldHasEssay: !!LD.essay,
+      ldEssayAdvisor: this.state.essayTab === 'advisor',
+      ldEssayStudent: this.state.essayTab !== 'advisor',
+      setEssayAdvisor: (e) => { if (e) e.preventDefault(); this.setState({ essayTab: 'advisor' }); },
+      setEssayStudent: (e) => { if (e) e.preventDefault(); this.setState({ essayTab: 'student' }); },
+      essayTabAdvBg: this.state.essayTab === 'advisor' ? '#1B2A4A' : 'transparent',
+      essayTabAdvFg: this.state.essayTab === 'advisor' ? '#FFFFFF' : '#1B2A4A',
+      essayTabStuBg: this.state.essayTab !== 'advisor' ? '#1B2A4A' : 'transparent',
+      essayTabStuFg: this.state.essayTab !== 'advisor' ? '#FFFFFF' : '#1B2A4A',
+      ldStuLogos: [['ucla.png','UCLA'],['georgetown.png','Georgetown']].map(([f, n]) => ({ src: 'mlp/schools/' + f, name: n, key: 'stu-' + n })),
+      ldT14Logos: [['harvard-color.png','Harvard'],['uchicago.png','Chicago'],['columbia.svg','Columbia'],['nyu.png','NYU'],['upenn-color.png','Penn'],['uva-seal.png','Virginia'],['umich-color.png','Michigan'],['duke-color.png','Duke'],['northwestern-color.png','Northwestern'],['ucberkeley-color.png','Berkeley'],['georgetown.png','Georgetown']].map(([f, n]) => ({ src: f ? 'mlp/schools/' + f : '', hasSrc: !!f, noSrc: !f, slotId: 't14-logo-' + n.toLowerCase(), name: n, key: 't14-' + n })),
       ldWhyNow: !!LD.whyNow,
       ldSplitHero: !!LD.splitHero,
       ldNotSplit: !LD.splitHero,
@@ -6301,10 +6561,10 @@ class Component extends DCLogic {
           return { ...sg, key: 'gs' + i + '-' + j, left: ((sg.from - 9) / 4 * 100) + '%', width: ((sg.to - sg.from) / 4 * 100) + '%', bg: 'rgba(' + rgb.join(',') + ',' + a.toFixed(2) + ')', fg: (light || a < 0.6) ? '#1B2A4A' : '#FFFFFF' };
         }) };
       }),
-      ldHasItems: !!LD.itemsEarly || (!LD.itemsTiles && !LD.appsPath && !LD.gantt),
+      ldHasItems: !LD.flow && (!!LD.itemsEarly || (!LD.itemsTiles && !LD.appsPath && !LD.gantt)),
       ldItemsEarlyAttr: LD.itemsEarly ? 'true' : 'false',
       ldAppsPath: !!LD.appsPath,
-      ldHasBooking: !(LD.storyVideos && LD.storyVideos.length),
+      ldHasBooking: !LD.flow && !(LD.storyVideos && LD.storyVideos.length),
       ldBookingEarlyAttr: LD.bookingEarly ? 'true' : 'false',
       ldItemsTiles: !!LD.itemsTiles,
       ldHasPrograms: !!LD.programs,
@@ -6338,6 +6598,29 @@ class Component extends DCLogic {
       ldHeroQuote: !!LD.heroQuote,
       ldStdHero: !LD.homeHero,
       ldHasBanner: !!LD.banner,
+      ldHasVideoBanner: !!LD.videoBanner,
+      ldVideoBanner: LD.videoBanner || {},
+      ldLaw: LD.flow === 'law',
+      lawCd: (() => {
+        if (LD.flow === 'law' && !this._lawTimer) this._lawTimer = setInterval(() => this.forceUpdate(), 30000);
+        const ms = Math.max(0, new Date(2026, 10, 26, 0, 0, 0).getTime() - Date.now());
+        const p = n => String(n).padStart(2, '0');
+        return { d: String(Math.floor(ms / 86400000)), h: p(Math.floor(ms / 3600000) % 24), m: p(Math.floor(ms / 60000) % 60) };
+      })(),
+      lawTiers: [
+        { n: '01', label: 'Ideal: by Thanksgiving', note: 'Most seats and scholarship money are still open.', date: 'Nov 26', key: 'lt1' },
+        { n: '02', label: 'Strong: by mid-December', note: 'Still early. Files are read with room left to admit.', date: 'Dec 15', to: new Date(2026, 11, 15), key: 'lt2' },
+        { n: '03', label: 'Late: late January onward', note: 'Possible, with a partly filled class and smaller aid budgets.', date: 'Jan 25', to: new Date(2027, 0, 25), key: 'lt3' }
+      ].map(t => ({ ...t, hasCd: !!t.to, noCd: !t.to, days: t.to ? String(Math.max(0, Math.ceil((t.to.getTime() - Date.now()) / 86400000))) : '' })),
+      lawFaqs: [
+        { q: 'How much does this cost?', a: 'We walk through the options and pricing on your free consultation, but most of our investments start at $5,000.' },
+        { q: 'I want to get this done in the next month. Is that feasible?', a: 'Yes, certainly for at least the first couple of applications. On the call we\u2019ll dive into everything and see where you are, to determine how feasible it is and for how many schools.' },
+        { q: 'How do you help, exactly?', a: 'You work one on one with your advisor on every written piece of the file: the personal statement, the diversity statement, optional essays, and addenda. We also build the school list with you, plan when to submit, and prepare you for interviews.' },
+        { q: 'I\u2019m applying to schools outside the T14. Can you still help?', a: 'Yes. We help you with your whole list and everything necessary to get into whichever law school you\u2019re applying to.' }
+      ].map((f, i) => ({ ...f, key: 'lf' + i, open: s.lawFaq === i, sign: s.lawFaq === i ? '\u2212' : '+', onToggle: (e) => { if (e) e.preventDefault(); this.setState(st => ({ lawFaq: st.lawFaq === i ? null : i })); } })),
+      ldFlow: LD.flow || '',
+      ldShowCollections: !LD.noCollections,
+      ldPeopleQuotes: (LD.peopleQuotes || []).map((q, i) => ({ ...q, key: 'pq' + i })),
       ldBanner: LD.banner || {},
       ldBannerParas: ((LD.banner && LD.banner.paras) || []).map((t, i) => ({ text: t, key: 'bp' + i })),
       ldShowReviews: !LD.noReviews,
