@@ -14,8 +14,12 @@
 /mlp/*           /mlp/:splat                      404
 /_ds/*           /_ds/:splat                      404
 
+# Retired pages: send old links to the homepage.
+/almaya          /                                301!
+/almaya/*        /                                301!
+/elmayat         /                                301!
+/Elmayat.html    /                                301!
+/elmayat.html    /                                301!
+
 # Any other path falls back to the single-page site.
-# (/almaya is intentionally NOT special-cased anymore: it now loads the main
-# site with its nav, which shows the Almaya page embedded. The raw standalone
-# page is still reachable at /Elmayat.html, which is what the embed loads.)
 /*               /League%20Bound%20Site.dc.html   200

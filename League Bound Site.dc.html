@@ -2008,30 +2008,9 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
     </div>
   </sc-if>
 
-  <sc-if value="{{ isAlmaya }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Almaya Admissions" style="position: relative; padding-top: 92px; background: #FFFFFF;">
-      <sc-if value="{{ almayaLoading }}" hint-placeholder-val="{{ true }}">
-        <div style="position: absolute; left: 0; right: 0; top: 92px; bottom: 0; z-index: 2; background: #173B2C; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px;">
-          <span style="font-family: Georgia, var(--font-serif); font-size: 64px; color: #E8DCC8;">Almaya</span>
-          <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #E8DCC8; animation: lbcSoftPulse 1.6s ease-in-out infinite;">Coming in just one moment</span>
-        </div>
-      </sc-if>
-      <iframe ref="{{ almayaRef }}" src="https://leagueboundconsulting.com/Elmayat.html" title="Almaya Admissions" loading="eager" style="display: block; width: 100%; height: calc(100vh - 92px); border: 0;"></iframe>
-    </div>
-  </sc-if>
-
   <a href="#" data-back-top="true" data-show="{{ showBackTop }}" onClick="{{ scrollTop }}" aria-label="Back to top">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12L12 5L19 12" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
   </a>
-
-  <sc-if value="{{ almayaBookOpen }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ closeAlmayaBook }}" style="position: fixed; inset: 0; z-index: 400; background: rgba(15,26,46,0.72); display: flex; align-items: center; justify-content: center; padding: 24px;">
-      <div onClick="{{ stopProp }}" style="position: relative; width: 100%; max-width: 980px; height: min(88vh, 860px); background: #FFFFFF; border-radius: 12px; overflow: hidden; box-shadow: 0 30px 80px rgba(15,26,46,0.45);">
-        <a href="#" onClick="{{ closeAlmayaBook }}" aria-label="Close" style="position: absolute; top: 12px; right: 14px; z-index: 2; width: 34px; height: 34px; border-radius: 999px; background: rgba(15,26,46,0.08); color: #1B2A4A; font-size: 18px; line-height: 34px; text-align: center; font-family: var(--font-sans);" style-hover="background: rgba(15,26,46,0.16);">×</a>
-        <iframe src="https://almaya-admissions.us.wise.live/book/free-consultation" title="Book a free consultation" width="100%" height="100%" frameborder="0" allowfullscreen="true" style="display: block; border: 0;"></iframe>
-      </div>
-    </div>
-  </sc-if>
 
   <sc-if value="{{ isPost }}" hint-placeholder-val="{{ false }}">
     <article style="background: #FFFFFF;">
@@ -5571,7 +5550,7 @@ const LANDINGS = {
   },
   essays: {
     path: '/college-essays', label: 'College Essays',
-    calendly: 'https://calendly.com/leaguebound/45min',
+    calendly: 'https://calendly.com/leaguebound/guidance-call',
     overline: 'Elite College Essay Consulting', homeHero: true,
     title: 'Your Story, Told Right.', accent: 'For Elite Colleges.',
     lead: 'We help ambitious students find the story only they can tell, then write the personal statement and supplements that get them into the schools they’ve always dreamed of.',
@@ -5671,7 +5650,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     // Real URLs per screen (live site only; inert in previews where the path is a filename).
-    const PATHS = { home: '/', applications: '/college-applications', guidance: '/college-guidance', grad: '/graduate-admissions', team: '/team', blog: '/blog', resources: '/resources', testimonials: '/results', almaya: '/almaya', law: '/get-started-law-school', johnlocke: '/john-locke-essay', transfer: '/transfer-essays', summer: '/summer-programs', mba: '/mba-admissions', guidancestart: '/founding-strategy', essays: '/college-essays' };
+    const PATHS = { home: '/', applications: '/college-applications', guidance: '/college-guidance', grad: '/graduate-admissions', team: '/team', blog: '/blog', resources: '/resources', testimonials: '/results', law: '/get-started-law-school', johnlocke: '/john-locke-essay', transfer: '/transfer-essays', summer: '/summer-programs', mba: '/mba-admissions', guidancestart: '/founding-strategy', essays: '/college-essays' };
     this._paths = PATHS;
     requestAnimationFrame(() => this.wireReveal());
     setTimeout(() => this.wireReveal(), 600);
@@ -5930,7 +5909,6 @@ class Component extends DCLogic {
       const target = this._paths[this.state.view];
       if (target && window.location.pathname !== target) window.history.pushState({}, '', target);
     }
-    this.wireAlmayaFrame();
     this.wireReveal();
   }
 
@@ -5953,30 +5931,6 @@ class Component extends DCLogic {
       if (r.bottom <= 0) { el.setAttribute('data-reveal', 'on'); return; }
       this._revealObs.observe(el);
     });
-  }
-
-  wireAlmayaFrame() {
-    const f = this._almayaRef && this._almayaRef.current;
-    if (!f || f._lbWired) return;
-    f._lbWired = true;
-    const attach = () => {
-      let doc;
-      try { doc = f.contentDocument; } catch (err) { return; }
-      if (!doc) return;
-      doc.addEventListener('click', (e) => {
-        const el = e.target && e.target.closest ? e.target.closest('a,button') : null;
-        if (!el) return;
-        const t = (el.textContent || '').toLowerCase();
-        if (/consult|book|schedule|get started/.test(t)) {
-          e.preventDefault();
-          e.stopPropagation();
-          this.setState({ almayaBookOpen: true });
-        }
-      }, true);
-    };
-    f.addEventListener('load', () => { attach(); if (!this.state.almayaReady) this.setState({ almayaReady: true }); });
-    attach();
-    if (f.contentDocument && f.contentDocument.readyState === 'complete' && !this.state.almayaReady) this.setState({ almayaReady: true });
   }
 
   componentWillUnmount() {
@@ -6112,11 +6066,9 @@ class Component extends DCLogic {
     const isResources = s.view === 'resources';
     const isPost = s.view === 'post';
     const isTestimonials = s.view === 'testimonials';
-    const isAlmaya = s.view === 'almaya';
     const isHome = s.view === 'home';
     const isTeam = s.view === 'team';
-    if (!this._almayaRef) this._almayaRef = React.createRef();
-    const onLight = isPost || isTestimonials || isAlmaya || isTeam;
+    const onLight = isPost || isTestimonials || isTeam;
 
     const heroCardRaw = HOME_HERO_CARDS[s.heroIdx] || HOME_HERO_CARDS[0];
     const heroCard = {
@@ -6340,7 +6292,7 @@ class Component extends DCLogic {
       hdrText: onLight ? 'var(--lbc-navy)' : '#FFFFFF',
       hdrMuted: 'var(--lbc-gold)',
       hdrHover: 'var(--lbc-gold)',
-      isIndex: !isPost && !isTestimonials && !isAlmaya && !isHome && !isTeam && !isResources && !isServicePage && !LANDINGS[s.view],
+      isIndex: !isPost && !isTestimonials && !isHome && !isTeam && !isResources && !isServicePage && !LANDINGS[s.view],
       isTeam,
       goTeam: (e) => { if (e) e.preventDefault(); this.setState({ view: 'team', menuOpen: false, mobileOpen: false }); window.scrollTo(0, 0); },
       isResourcesPage: isResources,
@@ -6431,14 +6383,11 @@ class Component extends DCLogic {
       })(),
       isHome,
       goHome: (e) => { if (e) e.preventDefault(); this.setState({ view: 'home', menuOpen: false, mobileOpen: false, aboutOpen: false }); window.scrollTo(0, 0); },
-      almayaBookOpen: !!s.almayaBookOpen,
       stopProp: (e) => { if (e) e.stopPropagation(); },
       showBackTop: s.showBackTop ? '1' : '0',
       scrollTop: (e) => { if (e) e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); },
-      closeAlmayaBook: (e) => { if (e) { e.preventDefault(); e.stopPropagation(); } this.setState({ almayaBookOpen: false }); },
       openCalendly: (e) => {
         if (e) e.preventDefault();
-        if (isAlmaya) { this.setState({ almayaBookOpen: true }); return; }
         const hs = LANDINGS[this.state.view] && LANDINGS[this.state.view].hubspot;
         if (hs) {
           if (document.getElementById('lbc-hs-modal')) return;
@@ -6455,7 +6404,7 @@ class Component extends DCLogic {
           return;
         }
         // Calendly loads lazily on first click, not on page load.
-        const url = (LANDINGS[this.state.view] && LANDINGS[this.state.view].calendly) || 'https://calendly.com/leaguebound/45min';
+        const url = (LANDINGS[this.state.view] && LANDINGS[this.state.view].calendly) || 'https://calendly.com/leaguebound/guidance-call';
         const pop = () => { this._calWait = false; window.Calendly.initPopupWidget({ url: url }); };
         if (window.Calendly) { pop(); return; }
         if (this._calWait) return;
@@ -6784,11 +6733,7 @@ class Component extends DCLogic {
         const a = list[Math.min(s.essayIdx, list.length - 1)];
         return { ...a, lines: a.lines.map((l, i) => ({ ...l, key: 'ln' + i, hasMark: !!l.mark, noMark: !l.mark })) };
       })(),
-      isAlmaya,
-      showNewFooter: !isAlmaya,
-      almayaRef: this._almayaRef,
-      almayaLoading: !s.almayaReady,
-      goAlmaya: (e) => { if (e) e.preventDefault(); this.setState({ view: 'almaya', aboutOpen: false, menuOpen: false, mobileOpen: false }); window.scrollTo(0, 0); },
+      showNewFooter: true,
       isPost,
       isTestimonials,
       testimonials,

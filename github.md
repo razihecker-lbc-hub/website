@@ -14,7 +14,7 @@ note: push/ holds only what changed since the 2026-09-15 sync. Do not upload sup
 ## Known gaps
 - assets/shanghai-skyline.jpg (9 MB) and assets/international-flags.jpg (6.7 MB) are heavy; compress before or after pushing.
 - mlp/videos/*.mp4 are referenced but binaries can't be verified from here; confirm they exist in the repo.
-- `Elmayat.html` exists only in the repo. Never export a placeholder over it.
+- Almaya removed from the site (Oct 2026). Delete `Elmayat.html` from the repo; /almaya and /elmayat 301 to the homepage.
 - `support.js` keeps the /vendor repoint in the repo.
 
 ## Screen map
@@ -23,6 +23,5 @@ note: push/ holds only what changed since the 2026-09-15 sync. Do not upload sup
 | Home, Services, Results, Resources, Team, Grad, Footer | League Bound Site.dc.html |
 | Law / John Locke / Transfer / Summer / MBA / Founding Strategy / College Essays landings | League Bound Site.dc.html (LANDINGS const) |
 | International Students (/international/college) | International College.dc.html (entry) + League Bound Site.dc.html (LANDINGS.international) |
-| Almaya Admissions | Elmayat.html (repo only, served at /almaya) |
 | Photography, book covers, logos | assets/ |
 | School logos, team photos, testimonial video | mlp/ |
