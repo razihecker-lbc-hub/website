@@ -2839,7 +2839,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
             <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
               <span style="display: flex; gap: 3px;"><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""></span>
               <p style="margin: 0; font-family: var(--font-serif); font-style: italic; font-size: 19px; line-height: 1.6; color: var(--lbc-navy); text-wrap: pretty;">&ldquo;{{ q.text }}&rdquo;</p>
-              <span style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; justify-content: center;"><span style="font-family: var(--font-sans); font-weight: 700; font-size: 13px; color: var(--lbc-navy);">{{ q.name }}</span><span style="font-family: var(--font-sans); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lbc-gold-dark);">{{ q.school }}</span></span>
+              <span style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;"><img src="{{ q.logo }}" alt="" style="height: 26px; width: 26px; object-fit: contain; display: block;"><span style="font-family: var(--font-sans); font-weight: 700; font-size: 13px; color: var(--lbc-navy);">{{ q.name }}</span><span style="font-family: var(--font-sans); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lbc-gold-dark);">{{ q.school }}</span></span>
             </div>
           </sc-for>
           </div>
@@ -5365,8 +5365,8 @@ const LANDINGS = {
       ]
     },
     peopleQuotes: [
-      { text: "Maia was an incredible resource throughout my law school application process! I am so grateful for her guidance and would highly recommend her to anyone navigating the law school admissions process!", name: 'Danya', school: 'Law School Applicant' },
-      { text: "My biggest fear going in was that I didn't have a defining “why law” moment, but Razi helped me find small moments I'd totally overlooked and weave them into a narrative that felt so authentically mine.", name: 'Mia G.', school: 'UCLA and Georgetown Law' }
+      { text: "Maia was an incredible resource throughout my law school application process! I am so grateful for her guidance and would highly recommend her to anyone navigating the law school admissions process!", name: 'Danya', school: '8 T14s \u00b7 UCLA', logo: 'mlp/schools/ucla.png' },
+      { text: "My biggest fear going in was that I didn't have a defining “why law” moment, but Razi helped me find small moments I'd totally overlooked and weave them into a narrative that felt so authentically mine.", name: 'Mia G.', school: 'UCLA and Georgetown Law', logo: 'mlp/schools/georgetown.png' }
     ],
     peopleTitle: 'Who you would work with', people: ['maia', 'razi'],
     peopleOverrides: { razi: { bullets: ['Former Harvard Alumni Interviewer', '2,000+ Hours of College Consulting', 'Published in 50 Successful Harvard Essays', 'Author of More Than a Personal Statement'], logo: 'mlp/schools/harvard-color.png' } },
