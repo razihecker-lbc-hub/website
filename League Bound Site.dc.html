@@ -2834,13 +2834,15 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
               </div>
             </sc-for>
           </div>
+          <div data-law-quotes style="max-width: 1100px; margin: 72px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 48px 56px; align-items: start;">
           <sc-for list="{{ ldPeopleQuotes }}" as="q" hint-placeholder-count="0">
-            <div style="max-width: 760px; margin: 72px auto 0; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
               <span style="display: flex; gap: 3px;"><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""></span>
-              <p style="margin: 0; font-family: var(--font-serif); font-style: italic; font-size: 22px; line-height: 1.55; color: var(--lbc-navy); text-wrap: pretty;">&ldquo;{{ q.text }}&rdquo;</p>
+              <p style="margin: 0; font-family: var(--font-serif); font-style: italic; font-size: 19px; line-height: 1.6; color: var(--lbc-navy); text-wrap: pretty;">&ldquo;{{ q.text }}&rdquo;</p>
               <span style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; justify-content: center;"><span style="font-family: var(--font-sans); font-weight: 700; font-size: 13px; color: var(--lbc-navy);">{{ q.name }}</span><span style="font-family: var(--font-sans); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lbc-gold-dark);">{{ q.school }}</span></span>
             </div>
           </sc-for>
+          </div>
         </div>
       </section>
 
@@ -3508,7 +3510,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
           <sc-for list="{{ ldPeopleQuotes }}" as="q" hint-placeholder-count="0">
             <div style="max-width: 820px; margin: 64px auto 0; padding-top: 48px; border-top: 1px solid var(--border-warm, #F0E8DE); display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
               <span style="display: flex; gap: 3px;"><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""><img src="assets/star-gold.svg" width="13" height="12" alt=""></span>
-              <p style="margin: 0; font-family: var(--font-serif); font-style: italic; font-size: 22px; line-height: 1.55; color: var(--lbc-navy); text-wrap: pretty;">&ldquo;{{ q.text }}&rdquo;</p>
+              <p style="margin: 0; font-family: var(--font-serif); font-style: italic; font-size: 19px; line-height: 1.6; color: var(--lbc-navy); text-wrap: pretty;">&ldquo;{{ q.text }}&rdquo;</p>
               <span style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; justify-content: center;">
                 <span style="font-family: var(--font-sans); font-weight: 700; font-size: 13px; color: var(--lbc-navy);">{{ q.name }}</span>
                 <span style="font-family: var(--font-sans); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lbc-gold-dark);">{{ q.school }}</span>
@@ -5363,6 +5365,7 @@ const LANDINGS = {
       ]
     },
     peopleQuotes: [
+      { text: "Maia was an incredible resource throughout my law school application process! I am so grateful for her guidance and would highly recommend her to anyone navigating the law school admissions process!", name: 'Danya', school: 'Law School Applicant' },
       { text: "My biggest fear going in was that I didn't have a defining “why law” moment, but Razi helped me find small moments I'd totally overlooked and weave them into a narrative that felt so authentically mine.", name: 'Mia G.', school: 'UCLA and Georgetown Law' }
     ],
     peopleTitle: 'Who you would work with', people: ['maia', 'razi'],
