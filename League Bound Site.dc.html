@@ -269,6 +269,12 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
   @media (max-width: 860px) { [data-essay-hero-bg] { background-position: 67% 40% !important; } }
   [data-ld-bookingsec][data-early="true"] { order: 105 !important; background: #FFFFFF !important; border-top: 0 !important; }
   [data-ld-booksec][data-early="true"] { order: 185 !important; }
+  [data-ld-collsec][data-thx="true"] { order: 32 !important; }
+  [data-ld-booksec][data-thx="true"]:not([data-ld-collsec]) { order: 34 !important; }
+  [data-ld-reviewsec][data-thx="true"] { order: 40 !important; }
+  [data-ld-storysec][data-thx="true"] { order: 70 !important; }
+  @media (max-width: 860px) { [data-thx-steps] { grid-template-columns: 1fr !important; gap: 16px !important; } [data-thx-steps] > div { padding: 28px 24px !important; } [data-thx-steps-line] { display: none !important; } [data-thx-head] h2 { font-size: 34px !important; } }
+  @media (max-width: 720px) { [data-ld-booksec][data-thx="true"] [data-ld-book] { text-align: center; } [data-ld-booksec][data-thx="true"] [data-ld-book] span[style*="width: 48px"] { margin-left: auto !important; margin-right: auto !important; } [data-ld-collsec][data-thx="true"] > div:first-child { padding-top: 64px !important; } }
   @media (max-width: 640px) { [data-ld-offer-list] { grid-template-columns: 1fr !important; } }
   @media (min-width: 721px) and (max-width: 1180px) { [data-ld-herosec][data-founding="true"] [data-ld-hero] { grid-template-columns: 1fr !important; gap: 36px !important; } [data-ld-herosec][data-founding="true"] [data-ld-herocard] { justify-self: start !important; max-width: 560px !important; } }
   [data-ld-herosec][data-founding="true"] [data-ld-hero] { grid-template-columns: minmax(0, 1.08fr) minmax(380px, 0.92fr); }
@@ -729,9 +735,11 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
         <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true"><path d="M0 1H20M0 7H20M0 13H20" stroke="currentColor" stroke-width="1.6"></path></svg>
       </a>
       </sc-if>
+      <sc-if value="{{ ldHasCta }}" hint-placeholder-val="{{ true }}">
       <span data-nav-cta="true" style="display: flex; align-items: center; flex-shrink: 0;">
         <a href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; padding: 15px 24px; border-radius: 6px; white-space: nowrap;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">Schedule a Free Consultation</a>
       </span>
+      </sc-if>
     </div>
     <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
       <div style="background: #FFFFFF; border-top: 1px solid var(--border-warm, #F0E8DE);">
@@ -2177,6 +2185,34 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
             </div>
           </div>
         </sc-if>
+        <sc-if value="{{ ldThanksCard }}" hint-placeholder-val="{{ false }}">
+          <span style="position: absolute; inset: 0; background: rgba(15,26,46,0.62);"></span>
+          <div data-ld-thx style="position: relative; z-index: 2; width: 100%; box-sizing: border-box; max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 26px;">
+            <span style="font-family: var(--font-sans); font-weight: 700; font-size: 12px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--lbc-gold); display: block; align-self: stretch; text-wrap: pretty;">{{ thx.greeting }}</span>
+            <h1 style="font-family: var(--font-serif); font-size: clamp(42px, 7.2vw, 116px); font-weight: 700; line-height: 1.02; color: #FFFFFF; margin: 0; text-wrap: balance;">Your Free Consultation <em style="font-style: italic; color: var(--lbc-gold);">Is Confirmed.</em></h1>
+            <div style="width: 100%; max-width: 640px; box-sizing: border-box; background: #FEFAF7; border-radius: 12px; padding: 30px 28px 28px; display: flex; flex-direction: column; align-items: center; gap: 14px; box-shadow: 0 24px 60px rgba(15,26,46,0.4);">
+              <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--lbc-navy);"><svg width="18" height="14" viewBox="0 0 14 11" aria-hidden="true"><path d="M1 5.5L5 9.5L13 1.5" fill="none" stroke="#CAAA5F" stroke-width="2"></path></svg></span>
+              <span style="font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lbc-gold-dark); white-space: nowrap;">Booking received</span>
+              <sc-if value="{{ thx.hasTime }}" hint-placeholder-val="{{ false }}">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 0; width: 100%; border-top: 1px solid #F0E8DE; border-bottom: 1px solid #F0E8DE;">
+                  <span style="font-weight: 700; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--lbc-gold-dark);">{{ thx.eventName }}</span>
+                  <span style="font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--lbc-navy); margin-top: 4px;">{{ thx.date }}</span>
+                  <span style="font-size: 17px; font-weight: 600; color: var(--lbc-navy);">{{ thx.time }} &middot; {{ thx.tz }}</span>
+                  <sc-if value="{{ thx.hasHost }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-size: 14px; color: #4A5672;">With {{ thx.host }}</span>
+                  </sc-if>
+                </div>
+              </sc-if>
+              <div style="width: 100%; box-sizing: border-box; background: var(--lbc-navy); border-radius: 8px; padding: 18px 20px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                <span style="font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lbc-gold);">Action needed</span>
+                <span style="font-family: var(--font-serif); font-size: 21px; font-weight: 700; line-height: 1.25; color: #FFFFFF; text-wrap: balance;">Accept the calendar invite to confirm your attendance.</span>
+                <span style="font-size: 14px; line-height: 1.55; color: rgba(254,250,247,0.82); text-wrap: pretty;">Your slot is not saved on your calendar until you do.</span>
+              </div>
+              <span style="font-size: 14.5px; line-height: 1.6; color: #4A5672; text-wrap: pretty;">Can't find it? Check your spam folder. It will come from <strong style="color: var(--lbc-navy); font-weight: 700;">razi.hecker@leagueboundconsulting.com</strong> or from Calendly on behalf of Razi Hecker.</span>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ ldNotThanks }}" hint-placeholder-val="{{ true }}">
         <div data-ld-hero data-ld-hero-split="{{ ldWideHero }}" style="position: relative; width: 100%; box-sizing: border-box; max-width: 1200px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 60px; align-items: center;">
           <sc-if value="{{ ldSplitHero }}" hint-placeholder-val="{{ false }}">
             <span data-ld-spacer style="display: block; grid-column: 1 / -1; height: 34px;"></span>
@@ -2187,9 +2223,11 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
             </sc-if>
             <h1 style="font-family: var(--font-serif); font-size: 56px; font-weight: 600; line-height: 1.08; color: #FFFFFF; margin: 0; text-wrap: balance;">{{ ldTitle }} <em style="font-style: italic; color: var(--lbc-gold); display: block;">{{ ldAccent }}</em></h1>
             <p style="margin: 0; max-width: 540px; font-size: 18px; line-height: 1.72; color: rgba(254,250,247,0.78); text-wrap: pretty;">{{ ldLead }}</p>
+            <sc-if value="{{ ldHasCta }}" hint-placeholder-val="{{ true }}">
             <div data-ld-ctarow style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 6px;">
               <a data-ld-cta href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-family: var(--font-sans); font-weight: 700; font-size: 12.5px; letter-spacing: 0.18em; text-transform: uppercase; padding: 18px 34px; border-radius: 4px; text-decoration: none; white-space: nowrap; text-align: center;" style-hover="background: #A68840;">Schedule a Free Consultation</a>
             </div>
+            </sc-if>
             <sc-if value="{{ ldHasStats }}" hint-placeholder-val="{{ false }}">
               <div data-ld-stats style="position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; margin-top: 26px; max-width: 460px;">
                 <span style="position: absolute; top: 6px; bottom: 6px; left: 45%; width: 1px; background: rgba(255,255,255,0.25);"></span>
@@ -2202,6 +2240,30 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
               </div>
             </sc-if>
           </div>
+          <sc-if value="{{ ldThanksCard }}" hint-placeholder-val="{{ false }}">
+            <div data-ld-thanks style="order: 5; justify-self: end; align-items: stretch; align-self: center; width: 100%; max-width: 420px; box-sizing: border-box; border-radius: 14px; background: rgba(15,26,46,0.72); backdrop-filter: blur(14px) saturate(1.1); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(202,170,95,0.5); box-shadow: 0 24px 60px rgba(15,26,46,0.45); padding: 30px 30px 26px; display: flex; flex-direction: column; gap: 18px; color: #FFFFFF; text-align: left;">
+              <div style="display: flex; align-items: center; gap: 12px; align-self: stretch; justify-content: flex-start;">
+                <span style="flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--lbc-gold);"><svg width="14" height="11" viewBox="0 0 14 11" aria-hidden="true"><path d="M1 5.5L5 9.5L13 1.5" fill="none" stroke="#1B2A4A" stroke-width="2"></path></svg></span>
+                <span style="font-family: var(--font-sans); font-weight: 700; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--lbc-gold); white-space: nowrap;">{{ thx.eventName }}</span>
+              </div>
+              <sc-if value="{{ thx.hasTime }}" hint-placeholder-val="{{ true }}">
+                <div style="display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 1px solid rgba(254,250,247,0.16); border-bottom: 1px solid rgba(254,250,247,0.16);">
+                  <span style="font-family: var(--font-serif); font-size: 30px; font-weight: 700; line-height: 1.15; color: #FFFFFF;">{{ thx.date }}</span>
+                  <span style="font-size: 19px; font-weight: 600; color: #FFFFFF;">{{ thx.time }}</span>
+                  <span style="font-size: 13px; color: rgba(254,250,247,0.72);">{{ thx.tz }}</span>
+                  <sc-if value="{{ thx.hasHost }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-size: 14px; color: rgba(254,250,247,0.86); margin-top: 6px;">With {{ thx.host }}</span>
+                  </sc-if>
+                </div>
+              </sc-if>
+              <sc-if value="{{ thx.noTime }}" hint-placeholder-val="{{ false }}">
+                <div style="padding: 18px 0; border-top: 1px solid rgba(254,250,247,0.16); border-bottom: 1px solid rgba(254,250,247,0.16);">
+                  <span style="font-family: var(--font-serif); font-size: 26px; font-weight: 700; line-height: 1.2; color: #FFFFFF;">Your call is confirmed.</span>
+                </div>
+              </sc-if>
+              <p style="margin: 0; font-size: 14px; line-height: 1.6; color: rgba(254,250,247,0.82); text-wrap: pretty;">The calendar invite and meeting link are in your inbox. Need to reschedule? Use the link in your confirmation email.</p>
+            </div>
+          </sc-if>
           <sc-if value="{{ ldHasVideo }}" hint-placeholder-val="{{ false }}">
             <div data-ld-herovid style="display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 360px;">
               <sc-if value="{{ ldHasVideoBanner }}" hint-placeholder-val="{{ false }}">
@@ -2309,6 +2371,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
             </div>
           </sc-if>
         </div>
+        </sc-if>
       </section>
       </sc-if>
 
@@ -2359,11 +2422,11 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
 
 
     <sc-if value="{{ ldStoryEarly }}" hint-placeholder-val="{{ false }}">
-      <section style="order: 50; padding: 84px 0 92px; background: #FFFFFF; border-bottom: 1px solid rgba(27,42,74,0.07);">
+      <section data-ld-storysec data-thx="{{ ldThxAttr }}" style="order: 50; padding: 84px 0 92px; background: #FFFFFF; border-bottom: 1px solid rgba(27,42,74,0.07);">
         <div data-ld-wide style="max-width: 1340px; margin: 0 auto; padding: 0 48px;">
           <div style="text-align: center; margin-bottom: 36px;">
-            <p style="font-size: 11px; font-weight: 700; color: var(--lbc-gold-dark); letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 10px;">&mdash; Real results, real families &mdash;</p>
-            <h2 data-sec-title="true" style="font-family: var(--font-serif); font-size: 52px; font-weight: 700; line-height: 1.15; margin: 0; text-wrap: pretty;"><span style="color: var(--lbc-navy);">Hear From </span><span style="color: var(--lbc-gold);">Our Families</span></h2>
+            <p style="font-size: 11px; font-weight: 700; color: var(--lbc-gold-dark); letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 10px;">{{ ldStoryOver }}</p>
+            <h2 data-sec-title="true" style="font-family: var(--font-serif); font-size: 52px; font-weight: 700; line-height: 1.15; margin: 0; text-wrap: pretty;"><span style="color: var(--lbc-navy);">{{ ldStoryA }}</span><span style="color: var(--lbc-gold);">{{ ldStoryB }}</span></h2>
             <p style="margin: 14px auto 0; max-width: 640px; font-size: 16.5px; color: #525252; line-height: 1.65; text-wrap: pretty;">These are not highlight reels. They are real students who spent years building something genuine, and whose applications reflected exactly who they are.</p>
           </div>
           <div data-ld-carousel style="position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; gap: 18px; align-items: center;">
@@ -2888,6 +2951,31 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
       </section>
       </sc-if>
 
+      <sc-if value="{{ ldThanksCard }}" hint-placeholder-val="{{ false }}">
+      <section style="order: 60; position: relative; overflow: hidden; background: var(--lbc-navy); padding: 104px 0 112px;">
+        <span style="position: absolute; inset: 0; background-image: url('assets/reserve-princeton-campus.jpg'); background-size: cover; background-position: center; opacity: 0.09;"></span>
+        <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 28px;">
+          <div data-thx-head style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; margin-bottom: 60px;">
+            <span style="font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--lbc-gold); white-space: nowrap;">What to look forward to</span>
+            <h2 style="font-family: var(--font-serif); font-size: 48px; font-weight: 700; color: #FFFFFF; margin: 0; line-height: 1.1;">What Happens <em style="font-style: italic; color: var(--lbc-gold);">Next.</em></h2>
+            <span style="display: block; width: 48px; height: 2px; background: var(--lbc-gold); margin-top: 6px;"></span>
+          </div>
+          <div style="position: relative;">
+            <span data-thx-steps-line style="position: absolute; left: 12.5%; right: 12.5%; top: 37px; height: 1px; background: rgba(202,170,95,0.45);"></span>
+            <div data-thx-steps style="position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;">
+              <sc-for list="{{ thxSteps }}" as="s" hint-placeholder-count="4">
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; padding: 0 18px 34px; border-radius: 12px; background: {{ s.bg }}; border: 1px solid {{ s.border }};">
+                  <span style="display: flex; align-items: center; justify-content: center; width: 74px; height: 74px; border-radius: 50%; background: {{ s.dotBg }}; border: 1px solid var(--lbc-gold); font-family: var(--font-serif); font-size: 28px; font-weight: 700; color: {{ s.dotFg }}; box-shadow: 0 0 0 8px var(--lbc-navy);">{{ s.n }}</span>
+                  <span style="font-family: var(--font-sans); font-weight: 700; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--lbc-gold);">{{ s.when }}</span>
+                  <h3 style="font-family: var(--font-serif); font-size: 23px; font-weight: 700; color: #FFFFFF; margin: 0; line-height: 1.2;">{{ s.title }}</h3>
+                  <p style="margin: 0; font-size: 15px; line-height: 1.65; color: rgba(254,250,247,0.8); text-wrap: pretty;">{{ s.body }}</p>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </section>
+      </sc-if>
       <sc-if value="{{ ldHasItems }}" hint-placeholder-val="{{ true }}">
       <section data-ld-itemsec data-early="{{ ldItemsEarlyAttr }}" data-dark="{{ ldItemsDark }}" style="order: 120; background: #FFFFFF; padding: 92px 0;">
         <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
@@ -3003,7 +3091,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
     </sc-if>
 
       <sc-if value="{{ ldShowReviews }}" hint-placeholder-val="{{ true }}">
-      <section data-ld-reviewsec data-flow="{{ ldFlow }}" style="order: 150; background: #FFFFFF; border-top: 1px solid rgba(27,42,74,0.07); padding: 64px 0; overflow-x: clip;">
+      <section data-ld-reviewsec data-flow="{{ ldFlow }}" data-thx="{{ ldThxAttr }}" style="order: 150; background: #FFFFFF; border-top: 1px solid rgba(27,42,74,0.07); padding: 64px 0; overflow-x: clip;">
         <div data-marquee="true" style="display: flex; width: max-content; animation: lbcMarqueeL 72s linear infinite;">
           <sc-for list="{{ reviewTicker }}" as="r" hint-placeholder-count="10">
             <div style="flex-shrink: 0; width: 360px; margin: 0 12px; border-radius: 16px; border: 1px solid #E5E5E5; background: #FFFFFF; padding: 24px; box-shadow: 0 1px 3px rgba(27,42,74,0.08); display: flex; flex-direction: column;">
@@ -3598,7 +3686,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
       </sc-if>
 
       <sc-if value="{{ ldHasBooks }}" hint-placeholder-val="{{ true }}">
-      <section data-ld-booksec data-early="{{ ldBooksEarlyAttr }}" style="order: 250; background: var(--lbc-navy);">
+      <section data-ld-booksec data-early="{{ ldBooksEarlyAttr }}" data-thx="{{ ldThxAttr }}" style="order: 250; background: var(--lbc-navy);">
         <div data-ld-book style="max-width: 1200px; margin: 0 auto; padding: 88px 40px 92px; display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 72px; align-items: center;">
           <div style="display: flex; justify-content: center;">
             <img src="assets/books/more-than-a-personal-statement.jpg" alt="More Than a Personal Statement, by Razi Hecker" style="width: 100%; max-width: 320px; height: auto; display: block; border-radius: 4px; box-shadow: 0 30px 70px rgba(0,0,0,0.45);">
@@ -3614,40 +3702,40 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
       </section>
 
       <sc-if value="{{ ldShowCollections }}" hint-placeholder-val="{{ true }}">
-      <section data-ld-booksec data-early="{{ ldBooksEarlyAttr }}" style="order: 260; background: #FFFFFF;">
+      <section data-ld-booksec data-ld-collsec data-early="{{ ldBooksEarlyAttr }}" data-thx="{{ ldThxAttr }}" style="order: 260; background: #FFFFFF;">
         <div style="max-width: 1200px; margin: 0 auto; padding: 88px 40px 24px; text-align: center;">
           <span style="display: block; font-weight: 700; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--lbc-gold-dark); margin-bottom: 16px;">Ivy+ Essay Collections</span>
-          <h2 style="font-family: var(--font-serif); font-weight: 700; font-size: 44px; line-height: 1.1; color: var(--lbc-navy); margin: 0 auto 18px; max-width: 720px; text-wrap: pretty;">Successful essays, school by school</h2>
-          <p style="font-size: 17px; line-height: 1.65; color: var(--fg-2, #5A6377); margin: 0 auto; max-width: 620px; text-wrap: pretty;">The real essays that got our students in, organized by where they were admitted. Our students get the full collections. Book a call to learn more.</p>
+          <h2 style="font-family: var(--font-serif); font-weight: 700; font-size: 44px; line-height: 1.1; color: var(--lbc-navy); margin: 0 auto 18px; max-width: 720px; text-wrap: pretty;">{{ ldCollTitle }}</h2>
+          <p style="font-size: 17px; line-height: 1.65; color: var(--fg-2, #5A6377); margin: 0 auto; max-width: 620px; text-wrap: pretty;">{{ ldCollLead }}</p>
         </div>
         <div style="max-width: 1200px; margin: 0 auto; padding: 44px 40px 136px;">
           <div data-ld-books style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px;">
-            <a href="#" onClick="{{ openCalendly }}" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; padding: 44px 32px 38px; background: #FFFFFF; border: 1px solid var(--border-warm, #F0E8DE); border-radius: 12px; text-decoration: none;" style-hover="box-shadow: 0 18px 44px rgba(27,42,74,0.16);">
+            <a href="#" onClick="{{ ldCollClick }}" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; padding: 44px 32px 38px; background: #FFFFFF; border: 1px solid var(--border-warm, #F0E8DE); border-radius: 12px; text-decoration: none;" style-hover="box-shadow: 0 18px 44px rgba(27,42,74,0.16);">
               <img src="assets/books/successful-essays-harvard.png" alt="Successful Essays, Harvard" style="width: 176px; height: auto; display: block; filter: drop-shadow(0 18px 34px rgba(27,42,74,0.28));">
               <span style="display: flex; flex-direction: column; gap: 10px;">
                 <span style="font-weight: 700; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lbc-gold-dark);">Harvard</span>
                 <span style="font-family: var(--font-serif); font-size: 25px; font-weight: 700; color: var(--lbc-navy); line-height: 1.2;">From our team who got into Harvard</span>
                 <span style="font-size: 14px; line-height: 1.6; color: var(--fg-2, #5A6377); text-wrap: pretty;">Including the essay published in 50 Successful Harvard Application Essays.</span>
               </span>
-              <span style="margin-top: auto; font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lbc-navy); border-bottom: 1px solid var(--lbc-gold); padding-bottom: 4px;">Book a call to learn more</span>
+              <span style="margin-top: auto; font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lbc-navy); border-bottom: 1px solid var(--lbc-gold); padding-bottom: 4px;">{{ ldCollCta }}</span>
             </a>
-            <a href="#" onClick="{{ openCalendly }}" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; padding: 44px 32px 38px; background: #FFFFFF; border: 1px solid var(--border-warm, #F0E8DE); border-radius: 12px; text-decoration: none;" style-hover="box-shadow: 0 18px 44px rgba(27,42,74,0.16);">
+            <a href="#" onClick="{{ ldCollClick }}" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; padding: 44px 32px 38px; background: #FFFFFF; border: 1px solid var(--border-warm, #F0E8DE); border-radius: 12px; text-decoration: none;" style-hover="box-shadow: 0 18px 44px rgba(27,42,74,0.16);">
               <img src="assets/books/uc-booklet.png" alt="Successful Essays, UCLA and UC Berkeley" style="width: 176px; height: auto; display: block; filter: drop-shadow(0 18px 34px rgba(27,42,74,0.28));">
               <span style="display: flex; flex-direction: column; gap: 10px;">
                 <span style="font-weight: 700; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lbc-gold-dark);">UCLA &amp; UC Berkeley</span>
                 <span style="font-family: var(--font-serif); font-size: 25px; font-weight: 700; color: var(--lbc-navy); line-height: 1.2;">From our students who got into the UCs</span>
                 <span style="font-size: 14px; line-height: 1.6; color: var(--fg-2, #5A6377); text-wrap: pretty;">The PIQ set is its own genre. These 350 word answers show how it is done.</span>
               </span>
-              <span style="margin-top: auto; font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lbc-navy); border-bottom: 1px solid var(--lbc-gold); padding-bottom: 4px;">Book a call to learn more</span>
+              <span style="margin-top: auto; font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lbc-navy); border-bottom: 1px solid var(--lbc-gold); padding-bottom: 4px;">{{ ldCollCta }}</span>
             </a>
-            <a href="#" onClick="{{ openCalendly }}" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; padding: 44px 32px 38px; background: #FFFFFF; border: 1px solid var(--border-warm, #F0E8DE); border-radius: 12px; text-decoration: none;" style-hover="box-shadow: 0 18px 44px rgba(27,42,74,0.16);">
+            <a href="#" onClick="{{ ldCollClick }}" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; padding: 44px 32px 38px; background: #FFFFFF; border: 1px solid var(--border-warm, #F0E8DE); border-radius: 12px; text-decoration: none;" style-hover="box-shadow: 0 18px 44px rgba(27,42,74,0.16);">
               <img src="assets/books/successful-essays-upenn.png" alt="Successful Essays, UPenn" style="width: 176px; height: auto; display: block; filter: drop-shadow(0 18px 34px rgba(27,42,74,0.28));">
               <span style="display: flex; flex-direction: column; gap: 10px;">
                 <span style="font-weight: 700; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lbc-gold-dark);">UPenn</span>
                 <span style="font-family: var(--font-serif); font-size: 25px; font-weight: 700; color: var(--lbc-navy); line-height: 1.2;">From our students who got into UPenn</span>
                 <span style="font-size: 14px; line-height: 1.6; color: var(--fg-2, #5A6377); text-wrap: pretty;">Penn reads for fit harder than most. These essays answer the question it is actually asking.</span>
               </span>
-              <span style="margin-top: auto; font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lbc-navy); border-bottom: 1px solid var(--lbc-gold); padding-bottom: 4px;">Book a call to learn more</span>
+              <span style="margin-top: auto; font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lbc-navy); border-bottom: 1px solid var(--lbc-gold); padding-bottom: 4px;">{{ ldCollCta }}</span>
             </a>
           </div>
         </div>
@@ -5581,6 +5669,34 @@ const LANDINGS = {
     },
     peopleTitle: 'Who You Would Work With', people: ['razi', 'josh', 'gabriel', 'amitai', 'maayan'], peopleCards: true
   },
+  thanks: {
+    path: '/thank-you-league-bound-consulting', label: 'Thank You',
+    overline: '', lead: '',
+    image: 'assets/reserve-princeton-campus.jpg', photoHero: 'light', wideHero: true,
+    thanksCard: true, noCta: true, storyEarly: true,
+    thxSteps: [
+      { n: '1', when: 'Right now', title: 'Accept the Invite', body: 'Open the confirmation email and accept the calendar invite. Check spam if it is not in your inbox.' },
+      { n: '2', when: 'Before the call', title: 'Gather Your Materials', body: 'Have your grades, activities, test scores, school list, and any essay drafts ready to share.' },
+      { n: '3', when: 'On the call', title: 'A Real Look at Your Profile', body: 'We tell you plainly where the application is strong and where it needs work.' },
+      { n: '4', when: 'After the call', title: 'A Clear Plan', body: 'You leave with concrete next steps for essays, activities, and timeline.' }
+    ],
+    storyA: 'A Look at ', storyB: 'Our Students',
+    sectionOverline: 'What to look forward to', sectionTitle: 'What Happens', sectionAccent: 'Next.',
+    sectionLead: 'Thirty minutes, focused entirely on your student.',
+    items: [
+      { n: '01', title: 'Your Confirmation', body: 'Accept the calendar invite so the call is saved. If you need to reschedule, use the link in that email.' },
+      { n: '02', title: 'A Real Look at Your Profile', body: 'We go through grades, activities, testing, and the schools on your list, then tell you plainly where the application is strong and where it needs work.' },
+      { n: '03', title: 'A Clear Plan', body: 'You leave with concrete next steps for essays, activities, and timeline, whether or not you decide to work with us.' },
+      { n: '04', title: 'Questions Answered', body: 'Bring everything you want to ask about the process, our team, and pricing. A short written list makes the most of the time.' }
+    ],
+    storyVideos: [
+      { src: 'mlp/videos/ji.mp4', name: 'Ji L.', role: 'Harvard', logo: 'mlp/schools/harvard-color.png' },
+      { src: 'mlp/videos/tanya.mp4', name: 'Tanya G.', role: 'Princeton', logo: 'mlp/schools/princeton.svg' },
+      { src: 'mlp/videos/charvi.mp4', name: 'Charvi K.', role: 'UPenn', logo: 'mlp/schools/upenn-color.png' },
+      { src: 'mlp/videos/shivank.mp4', name: 'Shivank G.', role: 'Cornell Engineering', logo: 'mlp/schools/cornell.png' }
+    ],
+    peopleTitle: '', people: [], peopleCards: false
+  },
   mba: {
     path: '/mba-admissions', label: 'MBA Admissions',
     overline: 'MBA Admissions',
@@ -5941,6 +6057,28 @@ class Component extends DCLogic {
 
   persist(posts, resources) {
     try { window.localStorage.setItem(STORE, JSON.stringify({ posts, resources })); } catch (e) {}
+  }
+
+  thanksInfo() {
+    if (this._thx) return this._thx;
+    let q; try { q = new URLSearchParams(window.location.search); } catch (e) { q = new URLSearchParams(''); }
+    const first = (q.get('invitee_first_name') || (q.get('invitee_full_name') || '').split(' ')[0] || '').trim();
+    const start = q.get('event_start_time');
+    const d = start ? new Date(start) : null;
+    const ok = !!(d && !isNaN(d));
+    let tz = '';
+    if (ok) { try { const p = new Intl.DateTimeFormat('en-US', { timeZoneName: 'long' }).formatToParts(d).find(x => x.type === 'timeZoneName'); tz = p ? p.value : ''; } catch (e) {} }
+    const host = q.get('assigned_to') || '';
+    this._thx = {
+      title: 'Your Free Consultation Is Confirmed.',
+      greeting: first ? 'Thanks for signing up, ' + first : 'Thanks for signing up',
+      eventName: q.get('event_type_name') || 'Free Consultation',
+      hasTime: ok, noTime: !ok,
+      date: ok ? d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) : '',
+      time: ok ? d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) : '',
+      tz, hasHost: !!host, host
+    };
+    return this._thx;
   }
 
   collection() { return this.state.view === 'resources' || this.state.activeKind === 'resources' ? this.state.resources : this.state.posts; }
@@ -6419,8 +6557,21 @@ class Component extends DCLogic {
       showNav: !LANDINGS[s.view],
       ldOverline: LD.overline || '',
       ldHasOverline: !!LD.overline,
-      ldTitle: LD.title || '',
-      ldAccent: LD.accent || '',
+      ldTitle: LD.thanksCard ? this.thanksInfo().title : (LD.title || ''),
+      ldAccent: LD.thanksCard ? '' : (LD.accent || ''),
+      ldThanksCard: !!LD.thanksCard,
+      ldThxAttr: LD.thanksCard ? 'true' : 'false',
+      ldCollTitle: LD.thanksCard ? 'See Some of Our Student Booklets' : 'Successful essays, school by school',
+      ldCollLead: LD.thanksCard ? 'The real essays that got our students in, organized by where they were admitted. Ask about the full collections on your call.' : 'The real essays that got our students in, organized by where they were admitted. Our students get the full collections. Book a call to learn more.',
+      ldCollCta: LD.thanksCard ? 'Ask about it on your call' : 'Book a call to learn more',
+      ldCollClick: LD.thanksCard ? (e => { if (e && e.preventDefault) e.preventDefault(); }) : this.openCalendly,
+      thxSteps: (LD.thxSteps || []).map((s, i) => ({ ...s, bg: i === 0 ? 'rgba(202,170,95,0.1)' : 'transparent', border: i === 0 ? 'rgba(202,170,95,0.5)' : 'transparent', dotBg: i === 0 ? 'var(--lbc-gold)' : 'var(--lbc-navy)', dotFg: i === 0 ? 'var(--lbc-navy)' : 'var(--lbc-gold)' })),
+      ldNotThanks: !LD.thanksCard,
+      ldStoryA: LD.storyA || 'Hear From ',
+      ldStoryOver: LD.thanksCard ? 'These are our wins' : '\u2014 Real results, real families \u2014',
+      ldStoryB: LD.storyB || 'Our Families',
+      ldHasCta: !LD.noCta,
+      thx: LD.thanksCard ? this.thanksInfo() : {},
       ldLead: LD.lead || '',
       ldImage: LD.image || '',
       ldHasVideo: !!LD.video,
@@ -6510,7 +6661,7 @@ class Component extends DCLogic {
           return { ...sg, key: 'gs' + i + '-' + j, left: ((sg.from - 9) / 4 * 100) + '%', width: ((sg.to - sg.from) / 4 * 100) + '%', bg: 'rgba(' + rgb.join(',') + ',' + a.toFixed(2) + ')', fg: (light || a < 0.6) ? '#1B2A4A' : '#FFFFFF' };
         }) };
       }),
-      ldHasItems: !LD.flow && (!!LD.itemsEarly || (!LD.itemsTiles && !LD.appsPath && !LD.gantt)),
+      ldHasItems: !LD.flow && !LD.thanksCard && (!!LD.itemsEarly || (!LD.itemsTiles && !LD.appsPath && !LD.gantt)),
       ldItemsEarlyAttr: LD.itemsEarly ? 'true' : 'false',
       ldAppsPath: !!LD.appsPath,
       ldHasBooking: !LD.flow && !(LD.storyVideos && LD.storyVideos.length),

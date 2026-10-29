@@ -9,6 +9,11 @@
 /international-students   /international/college             301
 /law-school-essays        /get-started-law-school            301
 
+# Post-booking page. Calendly redirects here with event details in the query string.
+/thank-you-league-bound-consulting   /Thank%20You.dc.html   200
+/thank-you-league-bound-consulting/  /Thank%20You.dc.html   200
+/thank-you                           /thank-you-league-bound-consulting   301
+
 # Missing assets should fail as real 404s, not silently return the HTML page.
 /assets/*        /assets/:splat                   404
 /mlp/*           /mlp/:splat                      404
