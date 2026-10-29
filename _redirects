@@ -13,6 +13,7 @@
 /thank-you-league-bound-consulting   /Thank%20You.dc.html   200
 /thank-you-league-bound-consulting/  /Thank%20You.dc.html   200
 /thank-you                           /thank-you-league-bound-consulting   301
+/booked                              /thank-you-league-bound-consulting   301
 
 # Missing assets should fail as real 404s, not silently return the HTML page.
 /assets/*        /assets/:splat                   404

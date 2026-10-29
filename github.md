@@ -2,10 +2,11 @@ repo: razihecker-lbc-hub/website
 branch: main
 
 ## Last sync
-date: 2026-10-29T00:00:00Z
+date: 2026-10-29T18:29:29Z
 note: upload-thankyou/ holds the thank-you page release. Do not upload support.js or International College.dc.html from this project (the repo copies are newer).
 
 ### Updated in this project
+- Trailing-slash URLs now normalized so nested paths load support.js correctly
 - New post-booking page at /thank-you-league-bound-consulting/ (Thank You.dc.html + LANDINGS.thanks)
 - Calendly event details (name, time, host) shown on the thank-you page
 - Danya's law school label corrected to "Law School Applicant"
