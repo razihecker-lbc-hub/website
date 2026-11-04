@@ -15,6 +15,11 @@
 /thank-you                           /thank-you-league-bound-consulting   301
 /booked                              /thank-you-league-bound-consulting   301
 
+# Privacy policy
+/privacy-policy    /Privacy%20Policy.dc.html   200
+/privacy-policy/   /Privacy%20Policy.dc.html   200
+/privacy           /privacy-policy             301
+
 # Missing assets should fail as real 404s, not silently return the HTML page.
 /assets/*        /assets/:splat                   404
 /mlp/*           /mlp/:splat                      404
