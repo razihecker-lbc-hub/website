@@ -738,7 +738,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
       </sc-if>
       <sc-if value="{{ ldHasCta }}" hint-placeholder-val="{{ true }}">
       <span data-nav-cta="true" style="display: flex; align-items: center; flex-shrink: 0;">
-        <a href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; padding: 15px 24px; border-radius: 6px; white-space: nowrap;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">Schedule a Free Consultation</a>
+        <a href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; padding: 15px 24px; border-radius: 6px; white-space: nowrap;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">{{ ctaText }}</a>
       </span>
       </sc-if>
     </div>
@@ -891,7 +891,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
           </div>
           <div style="flex: 1; position: relative; display: flex; align-items: center; justify-content: center; min-height: 400px; padding: 40px; overflow: hidden; background-color: #1B2A4A; background-image: url('assets/reserve-princeton-campus.jpg'); background-size: cover; background-position: center;">
             <span style="position: absolute; inset: 0; background: rgba(27,42,74,0.12);"></span>
-            <a href="#" onClick="{{ openCalendly }}" style="position: relative; display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 20px 36px; border-radius: 6px; text-align: center;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">Schedule a Free Consultation</a>
+            <a href="#" onClick="{{ openCalendly }}" style="position: relative; display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 20px 36px; border-radius: 6px; text-align: center;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">{{ ctaText }}</a>
           </div>
         </div>
       </section>
@@ -1075,7 +1075,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
           <span style="display: block; font-weight: 700; font-size: 15px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lbc-gold); margin-bottom: 22px;">{{ svcPageOverline }}</span>
           <h1 data-home-title="true" style="font-family: var(--font-serif); font-weight: 800; font-size: 76px; line-height: 1.04; letter-spacing: -0.025em; color: #FFFFFF; margin: 0 0 24px; max-width: 900px; text-wrap: pretty;">{{ svcPageTitle }}</h1>
           <p style="font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.82); margin: 0 0 34px; max-width: 620px; text-wrap: pretty;">{{ svcPageLead }}</p>
-          <a href="#" onClick="{{ openCalendly }}" style="display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; padding: 17px 30px; border-radius: 4px;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">Schedule a Free Consultation</a>
+          <a href="#" onClick="{{ openCalendly }}" style="display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; padding: 17px 30px; border-radius: 4px;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">{{ ctaText }}</a>
         </div>
       </section>
 
@@ -1321,7 +1321,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
           </div>
           <div style="position: relative; display: flex; align-items: center; justify-content: center; min-height: 400px; padding: 40px; overflow: hidden; border-radius: 12px; background-color: #1B2A4A; background-image: url('{{ mentorPhoto }}'); background-size: cover; background-position: center; box-shadow: 0 18px 44px rgba(27,42,74,0.16);">
             <span style="position: absolute; inset: 0; background: rgba(27,42,74,0.12);"></span>
-            <a href="#" onClick="{{ openCalendly }}" style="position: relative; display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 20px 36px; border-radius: 6px; text-align: center;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">Schedule a Free Consultation</a>
+            <a href="#" onClick="{{ openCalendly }}" style="position: relative; display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 20px 36px; border-radius: 6px; text-align: center;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">{{ ctaText }}</a>
           </div>
         </div>
       </section>
@@ -1519,7 +1519,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
           </div>
           <div style="flex: 1; min-width: 300px; position: relative; display: flex; align-items: center; justify-content: center; padding: 40px; overflow: hidden; background-color: #1B2A4A; background-image: url('assets/harvard-bridge.jpg'); background-size: cover; background-position: center;">
             <span style="position: absolute; inset: 0; background: rgba(27,42,74,0.12);"></span>
-            <a href="#" onClick="{{ openCalendly }}" style="position: relative; display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 20px 36px; border-radius: 6px; text-align: center;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">Schedule a Free Consultation</a>
+            <a href="#" onClick="{{ openCalendly }}" style="position: relative; display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 20px 36px; border-radius: 6px; text-align: center;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">{{ ctaText }}</a>
           </div>
         </div>
       </section>
@@ -2074,7 +2074,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
         <div style="margin-top: 64px; padding: 34px 36px; background: var(--bg-warm, #FEFAF7); border: 1px solid var(--border-warm, #F0E8DE); border-radius: 12px;">
           <span style="display: block; font-weight: 700; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--lbc-gold-dark); margin-bottom: 12px;">Ready when you are</span>
           <p style="font-family: var(--font-serif); font-size: 26px; line-height: 1.3; color: var(--lbc-navy); margin: 0 0 20px;">Book a 15 minute intro call.</p>
-          <a href="#" onClick="{{ openCalendly }}" style="display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; padding: 15px 26px; border-radius: 4px;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">Schedule a Free Consultation</a>
+          <a href="#" onClick="{{ openCalendly }}" style="display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; padding: 15px 26px; border-radius: 4px;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">{{ ctaText }}</a>
         </div>
       </div>
     </article>
@@ -2098,7 +2098,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
             </h1>
             <p data-hero-desc="true" style="font-size: 16px; line-height: 1.65; color: rgba(255,255,255,0.8); margin: 24px 0 0; max-width: 460px; text-wrap: pretty;">{{ ldLead }}</p>
             <div data-hero-cta="true" style="display: flex; gap: 16px; margin-top: 32px;">
-              <a href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-weight: 600; font-size: 15px; padding: 14px 28px; border-radius: 8px;" style-hover="background: #bfa04e; color: #FFFFFF;">Schedule a Free Consultation</a>
+              <a href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-weight: 600; font-size: 15px; padding: 14px 28px; border-radius: 8px;" style-hover="background: #bfa04e; color: #FFFFFF;">{{ ctaText }}</a>
             </div>
           </div>
           <div data-hero-stats="true" style="grid-column: 1; grid-row: 2; position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; margin-top: 40px; max-width: 460px;">
@@ -2226,7 +2226,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
             <p style="margin: 0; max-width: 540px; font-size: 18px; line-height: 1.72; color: rgba(254,250,247,0.78); text-wrap: pretty;">{{ ldLead }}</p>
             <sc-if value="{{ ldHasCta }}" hint-placeholder-val="{{ true }}">
             <div data-ld-ctarow style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 6px;">
-              <a data-ld-cta href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-family: var(--font-sans); font-weight: 700; font-size: 12.5px; letter-spacing: 0.18em; text-transform: uppercase; padding: 18px 34px; border-radius: 4px; text-decoration: none; white-space: nowrap; text-align: center;" style-hover="background: #A68840;">Schedule a Free Consultation</a>
+              <a data-ld-cta href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-family: var(--font-sans); font-weight: 700; font-size: 12.5px; letter-spacing: 0.18em; text-transform: uppercase; padding: 18px 34px; border-radius: 4px; text-decoration: none; white-space: nowrap; text-align: center;" style-hover="background: #A68840;">{{ ctaText }}</a>
             </div>
             </sc-if>
             <sc-if value="{{ ldHasStats }}" hint-placeholder-val="{{ false }}">
@@ -2288,7 +2288,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
                 <span style="font-family: var(--font-serif); font-size: 20px; font-weight: 600; color: #FFFFFF;">{{ ldVideoName }}</span>
                 <span style="font-family: var(--font-sans); font-weight: 600; font-size: 12.5px; letter-spacing: 0.08em; color: var(--lbc-gold);">{{ ldVideoRole }}</span>
               </span>
-              <a data-ld-mcta href="#" onClick="{{ openCalendly }}" style="display: none; background: var(--lbc-gold); color: #FFFFFF; font-family: var(--font-sans); font-weight: 700; font-size: 12.5px; letter-spacing: 0.18em; text-transform: uppercase; padding: 18px 28px; border-radius: 4px; text-decoration: none; white-space: nowrap; text-align: center;" style-hover="background: #A68840;">Schedule a Free Consultation</a>
+              <a data-ld-mcta href="#" onClick="{{ openCalendly }}" style="display: none; background: var(--lbc-gold); color: #FFFFFF; font-family: var(--font-sans); font-weight: 700; font-size: 12.5px; letter-spacing: 0.18em; text-transform: uppercase; padding: 18px 28px; border-radius: 4px; text-decoration: none; white-space: nowrap; text-align: center;" style-hover="background: #A68840;">{{ ctaText }}</a>
             </div>
           </sc-if>
           <sc-if value="{{ ldHeroQuote }}" hint-placeholder-val="{{ false }}">
@@ -2924,7 +2924,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
           </div>
           <div style="flex: 1; position: relative; display: flex; align-items: center; justify-content: center; min-height: 400px; padding: 40px; overflow: hidden; background-color: #1B2A4A; background-image: url('assets/reserve-princeton-campus.jpg'); background-size: cover; background-position: center;">
             <span style="position: absolute; inset: 0; background: rgba(27,42,74,0.12);"></span>
-            <a href="#" onClick="{{ openCalendly }}" style="position: relative; display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 20px 36px; border-radius: 6px; text-align: center;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">Schedule a Free Consultation</a>
+            <a href="#" onClick="{{ openCalendly }}" style="position: relative; display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 20px 36px; border-radius: 6px; text-align: center;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">{{ ctaText }}</a>
           </div>
         </div>
       </section>
@@ -3181,7 +3181,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
               </div>
               <span style="font-family: var(--font-serif); font-size: 24px; font-weight: 600; color: var(--lbc-navy); margin-top: 18px;">Want her in your corner?</span>
               <div style="display: flex; justify-content: center; margin-top: 6px;">
-                <a href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-family: var(--font-sans); font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; padding: 16px 30px; border-radius: 4px; text-decoration: none; text-align: center;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">Schedule a Free Consultation</a>
+                <a href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-family: var(--font-sans); font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; padding: 16px 30px; border-radius: 4px; text-decoration: none; text-align: center;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">{{ ctaText }}</a>
               </div>
             </div>
           </div>
@@ -3566,7 +3566,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
             <span style="display: block; width: 48px; height: 2px; background: var(--lbc-gold);"></span>
             <p style="margin: 0; font-size: 17px; line-height: 1.76; color: rgba(254,250,247,0.86); text-wrap: pretty;">{{ ldWhy.lead }}</p>
           </div>
-          <a data-ld-cta href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-family: var(--font-sans); font-weight: 700; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; padding: 20px 34px; border-radius: 4px; text-decoration: none; text-align: center; white-space: nowrap;" style-hover="background: #A68840;">Schedule a Free Consultation</a>
+          <a data-ld-cta href="#" onClick="{{ openCalendly }}" style="background: var(--lbc-gold); color: #FFFFFF; font-family: var(--font-sans); font-weight: 700; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; padding: 20px 34px; border-radius: 4px; text-decoration: none; text-align: center; white-space: nowrap;" style-hover="background: #A68840;">{{ ctaText }}</a>
         </div>
       </section>
       </sc-if>
@@ -3680,7 +3680,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
           </div>
           <div style="flex: 1; position: relative; display: flex; align-items: center; justify-content: center; min-height: 400px; padding: 40px; overflow: hidden; background-color: #1B2A4A; background-image: url('assets/reserve-princeton-campus.jpg'); background-size: cover; background-position: center;">
             <span style="position: absolute; inset: 0; background: rgba(27,42,74,0.12);"></span>
-            <a href="#" onClick="{{ openCalendly }}" style="position: relative; display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 20px 36px; border-radius: 6px; text-align: center; text-decoration: none;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">Schedule a Free Consultation</a>
+            <a href="#" onClick="{{ openCalendly }}" style="position: relative; display: inline-block; background: var(--lbc-gold); color: #FFFFFF; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 20px 36px; border-radius: 6px; text-align: center; text-decoration: none;" style-hover="background: var(--lbc-gold-dark); color: #FFFFFF;">{{ ctaText }}</a>
           </div>
         </div>
       </section>
@@ -4470,7 +4470,7 @@ p  { font-family: var(--font-sans); font-size: var(--type-body-size); line-heigh
     
         <div data-fx-block="true" style="position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 17px; text-align: center; z-index: 2">
           <span data-fx-headline="true" style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px; font-weight: 600; line-height: 1.12; color: #FFFFFF; text-shadow: 0 2px 24px rgba(15,26,46,.9)">These Are Our Wins<br><span style="font-style: italic; color: var(--accent, #CAAA5F)">Yours is Next</span></span>
-          <a href="#" data-fx-cta="true" onClick="{{ openCalendly }}" style="background: var(--accent, #CAAA5F); color: #FFFFFF; font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 13px 24px; border-radius: 4px">Schedule a free consultation</a>
+          <a href="#" data-fx-cta="true" onClick="{{ openCalendly }}" style="background: var(--accent, #CAAA5F); color: #FFFFFF; font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding: 13px 24px; border-radius: 4px">{{ ctaText }}</a>
         </div>
         </div>
     
@@ -5674,6 +5674,45 @@ const LANDINGS = {
     },
     peopleTitle: 'Who You Would Work With', people: ['razi', 'josh', 'gabriel', 'amitai', 'maayan'], peopleCards: true
   },
+  essayreview: {
+    path: '/free-essay-review', label: 'Free Essay Review',
+    calendly: 'https://calendly.com/leaguebound/complimentary-guidance-consult-clone?background_color=ffffff&text_color=1b2a4a&primary_color=caaa5f',
+    ctaLabel: 'Schedule Free Essay Review',
+    overline: 'Elite College Essay Consulting', homeHero: true,
+    title: 'Your Story, Told Right.', accent: 'For Elite Colleges.',
+    lead: 'We help ambitious students find the story only they can tell, then write the personal statement and supplements that get them into the schools they’ve always dreamed of.',
+    note: 'Free 30 minute essay consult. No obligation.',
+    image: 'assets/hero-harvard-student.jpg',
+    photoHero: 'light', wideHero: true,
+    stats: true,
+    storyEarly: true, booksEarly: true, hooks: true, appsPath: true, bookingEarly: true,
+    offer: {
+      overline: 'Free for new families', title: 'A free essay consult,', accent: 'and two booklets on us.',
+      lead: 'Book a free 30 minute consult and we will look at where your essays stand and what we would change. Every student who works with us also receives two booklets: our Harvard booklet and our UC Berkeley booklet, filled with real essays that got students in.',
+      cta: 'Schedule Free Essay Review',
+      gifts: [
+        { title: 'Harvard Booklet', image: 'assets/books/successful-essays-harvard.png', href: 'https://50912912.hs-sites.com/harvard' },
+        { title: 'UC Berkeley Booklet', image: 'assets/books/uc-booklet.png', href: 'https://50912912.hs-sites.com/uc' }
+      ]
+    },
+    sectionOverline: 'What we work on', sectionTitle: 'Every Essay in the Application',
+    sectionLead: 'One story, carried through every piece a reader sees.',
+    items: [
+      { n: '01', title: 'Personal Statement', body: 'The 650 words that decide whether a reader remembers you. We start from your life, not a topic list, and work draft by draft until it sounds like you.' },
+      { n: '02', title: 'Supplemental Essays', body: 'Every school asks a different question. We build a plan per school so each Why Us answer proves you know the program, and no two essays repeat each other.' },
+      { n: '03', title: 'Activities and Honors', body: 'Short entries that add to the essays instead of repeating them, written so they stand out and show who you really are.' },
+      { n: '04', title: 'Former Admissions Officer Review', body: 'Before anything is submitted, the full application is reviewed by a former admissions professional, reading it the way an admissions committee actually would.' }
+    ],
+    noReviews: true,
+    banner: {
+      overline: 'What we do together', title: 'Our College', accent: 'Essay Services',
+      paras: [
+        'Most students have never been taught to write about themselves. School essays reward arguments and evidence. The personal statement rewards a voice, a specific moment, and the confidence to say something true.',
+        'At League Bound, every student works one on one with a consultant from our 100% Ivy+ team. We start from your life, not a topic list, and keep going until every essay sounds like you.'
+      ]
+    },
+    peopleTitle: 'Who You Would Work With', people: ['razi', 'josh', 'gabriel', 'amitai', 'maayan'], peopleCards: true
+  },
   thanks: {
     path: '/thank-you-league-bound-consulting', label: 'Thank You',
     overline: '', lead: '',
@@ -5766,7 +5805,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     // Real URLs per screen (live site only; inert in previews where the path is a filename).
-    const PATHS = { home: '/', applications: '/college-applications', guidance: '/college-guidance', grad: '/graduate-admissions', team: '/team', blog: '/blog', resources: '/resources', testimonials: '/results', law: '/get-started-law-school', johnlocke: '/john-locke-essay', transfer: '/transfer-essays', summer: '/summer-programs', mba: '/mba-admissions', guidancestart: '/founding-strategy', essays: '/college-essays', thanks: '/thank-you-league-bound-consulting' };
+    const PATHS = { home: '/', applications: '/college-applications', guidance: '/college-guidance', grad: '/graduate-admissions', team: '/team', blog: '/blog', resources: '/resources', testimonials: '/results', law: '/get-started-law-school', johnlocke: '/john-locke-essay', transfer: '/transfer-essays', summer: '/summer-programs', mba: '/mba-admissions', guidancestart: '/founding-strategy', essays: '/college-essays', essayreview: '/free-essay-review', thanks: '/thank-you-league-bound-consulting' };
     this._paths = PATHS;
     requestAnimationFrame(() => this.wireReveal());
     setTimeout(() => this.wireReveal(), 600);
@@ -6568,6 +6607,7 @@ class Component extends DCLogic {
       ldThxAttr: LD.thanksCard ? 'true' : 'false',
       ldCollTitle: LD.thanksCard ? 'See Some of Our Student Booklets' : 'Successful essays, school by school',
       ldCollLead: LD.thanksCard ? 'The real essays that got our students in, organized by where they were admitted. Ask about the full collections on your call.' : 'The real essays that got our students in, organized by where they were admitted. Our students get the full collections. Book a call to learn more.',
+      ctaText: LD.ctaLabel || 'Schedule a Free Consultation',
       ldCollCta: LD.thanksCard ? 'Ask about it on your call' : 'Book a call to learn more',
       ldCollClick: LD.thanksCard ? (e => { if (e && e.preventDefault) e.preventDefault(); }) : this.openCalendly,
       thxSteps: (LD.thxSteps || []).map((s, i) => ({ ...s, bg: i === 0 ? 'rgba(202,170,95,0.1)' : 'transparent', border: i === 0 ? 'rgba(202,170,95,0.5)' : 'transparent', dotBg: i === 0 ? 'var(--lbc-gold)' : 'var(--lbc-navy)', dotFg: i === 0 ? 'var(--lbc-navy)' : 'var(--lbc-gold)' })),
