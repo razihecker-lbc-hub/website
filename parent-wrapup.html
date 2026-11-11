@@ -156,7 +156,7 @@ const f = document.getElementById('f');
 const em = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 if (!crmEmail) document.getElementById('who').hidden = false;
 const kid = (params.get('student') || '').trim();
-document.querySelectorAll('.kid').forEach(s => s.textContent = kid || 'My kid');
+document.querySelectorAll('.kid').forEach(s => s.textContent = kid || '[Your kid]');
 
 function radio(n){ const el = f.querySelector('input[name="'+n+'"]:checked'); return el ? el.value : ''; }
 f.addEventListener('change', () => {
