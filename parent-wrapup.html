@@ -83,6 +83,8 @@
   .upload label:hover{background:var(--gold-15)}
   .upload img{width:56px;height:56px;border-radius:50%;object-fit:cover;display:none;border:2px solid var(--gold)}
   .upload .fname{font-size:13px;color:var(--fg3)}
+  .seelink{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--gold-dark);text-decoration:none;border-bottom:1px solid rgba(202,170,95,.5);padding-bottom:1px;margin:2px 0 14px}
+  .seelink:hover{color:var(--navy);border-color:var(--navy)}
 </style>
 </head>
 <body>
@@ -106,30 +108,23 @@
     <p class="err">Please fill in your name and a valid email.</p>
   </section>
 
-  <section class="card" data-group="recommend_score">
-    <h2><span class="num">01</span>How likely are you to recommend League Bound to a friend?</h2>
-    <div class="nps" role="radiogroup">
-      <label><input type="radio" name="recommend_score" value="0"><span>0</span></label><label><input type="radio" name="recommend_score" value="1"><span>1</span></label><label><input type="radio" name="recommend_score" value="2"><span>2</span></label><label><input type="radio" name="recommend_score" value="3"><span>3</span></label><label><input type="radio" name="recommend_score" value="4"><span>4</span></label><label><input type="radio" name="recommend_score" value="5"><span>5</span></label><label><input type="radio" name="recommend_score" value="6"><span>6</span></label><label><input type="radio" name="recommend_score" value="7"><span>7</span></label><label><input type="radio" name="recommend_score" value="8"><span>8</span></label><label><input type="radio" name="recommend_score" value="9"><span>9</span></label><label><input type="radio" name="recommend_score" value="10"><span>10</span></label>
-    </div>
-    <div class="nps-ends"><span>Not likely</span><span>Extremely likely</span></div>
-    <p class="err">Please pick a number.</p>
-  </section>
-
   <section class="card">
-    <h2><span class="num">02</span>What did we do well, and what could we do better?</h2>
+    <h2><span class="num">01</span>What did we do well, and what could we do better?</h2>
     <p class="help">Optional</p>
     <textarea name="parent_feedback"></textarea>
   </section>
 
   <section class="card">
-    <h2><span class="num">03</span>Parent video testimonial</h2>
-    <p class="help">Optional</p>
+    <h2><span class="num">02</span>Video testimonial</h2>
+    <p class="help">This is super helpful for us, and it&rsquo;s often how we get new clients.</p>
+    <a class="seelink" href="https://leagueboundconsulting.com/results" target="_blank" rel="noopener">See what our video testimonials look like &rarr;</a>
     <p class="intro">Would you be willing to record a short (~5 min) video about your family&rsquo;s experience working with Razi and the League Bound team? We&rsquo;ll reach out with more information.</p>
     <label class="choice"><input type="radio" name="parent_testimonial_video_consent" value="Yes"><span>Yes</span></label>
     <label class="choice"><input type="radio" name="parent_testimonial_video_consent" value="No"><span>No</span></label>
     <div class="reveal" id="vid"><p class="legal">I give League Bound Consulting permission to record and use my video, name, and likeness in its marketing (including its website, social media, and ads). I understand I&rsquo;m not being paid for the video itself, and that I can ask League Bound to stop using it in new materials at any time by emailing razihecker@leagueboundconsulting.com.</p></div>
     <div class="reveal" id="written">
       <p class="intro" style="margin-top:6px">No issue at all! Would you mind sharing a few sentences here about your experience with League Bound, and where your child got in? We&rsquo;ll use this on our social media.</p>
+      <a class="seelink" href="https://leagueboundconsulting.com/results" target="_blank" rel="noopener">See what our other testimonials look like &rarr;</a>
       <textarea id="parent_written_testimonial" name="parent_written_testimonial" placeholder="Optional"></textarea>
       <p class="intro" style="margin:16px 0 4px">Could you also upload a nice picture? A LinkedIn photo, a family picture, anything you like.</p>
       <div class="upload"><input type="file" id="parent_photo" name="parent_photo" accept="image/*"><label for="parent_photo">Upload a photo</label><img id="photoPrev" alt=""><span class="fname" id="photoName">Optional</span></div>
@@ -139,9 +134,9 @@
     </div>
   </section>
 
-  <section class="card">
-    <h2><span class="num">04</span>Anyone else we could help?</h2>
-    <p class="intro">Do you have any friends, or other kids of your own, who might be interested?</p>
+  <section class="card" data-group="referral_interest">
+    <h2><span class="num">03</span>One small ask</h2>
+    <p class="intro">I know this part&rsquo;s a little awkward, but honestly it&rsquo;s how we grow. Almost all of our families come from word of mouth. Do you have any friends, or other kids of your own, who might be interested?</p>
     <label class="choice"><input type="checkbox" name="referral_interest" value="Yes, a younger child of ours"><span>Yes, a younger child of ours</span></label>
     <label class="choice"><input type="checkbox" name="referral_interest" value="Yes, friends of ours (I’ll shoot them a text this week)"><span>Yes, friends of ours. I&rsquo;ll shoot them a text this week</span></label>
     <label class="choice"><input type="checkbox" name="referral_interest" value="Yes, friends of ours (send me something to pass along)"><span>Yes, friends of ours. Send me something I can pass along</span></label>
@@ -151,21 +146,14 @@
       <p class="help" style="margin-top:-2px">Who they are, what grade, what they&rsquo;re looking for, or anything we can send you to pass along.</p>
       <textarea id="referral_context" name="referral_context" placeholder="Optional"></textarea>
     </div>
-  </section>
-
-  <section class="card" data-group="referral_texts_sent">
-    <h2><span class="num">05</span>One small ask</h2>
-    <p class="intro">I know this part&rsquo;s a little awkward, but honestly it&rsquo;s how we grow. Almost all of our families come from word of mouth. Could you think of three friends with kids in high school and send them a quick text? Something like:</p>
+    <p class="subhead" style="margin-top:20px">Here&rsquo;s a quick text you can send</p>
     <div class="textmsg" id="txt">Hey, by the way, let me know if you&rsquo;re ever interested in getting help with college apps/guidance. <span class="kid">[Child&rsquo;s name]</span> is finally done with the process, and we worked with an amazing team. Happy to connect you if you want. No pressure, but they really are great.</div>
     <button type="button" class="copy" id="copy">Copy text</button>
-    <label class="choice"><input type="radio" name="referral_texts_sent" value="Sent"><span>Done, I sent it!</span></label>
-    <label class="choice"><input type="radio" name="referral_texts_sent" value="This week"><span>I&rsquo;ll do it this week</span></label>
-    <label class="choice"><input type="radio" name="referral_texts_sent" value="Not right now"><span>Not right now</span></label>
-    <p class="err">Please pick one.</p>
+    <p class="err">Please pick at least one.</p>
   </section>
 
   <section class="card">
-    <h2><span class="num">06</span>Sign-off</h2>
+    <h2><span class="num">04</span>Sign-off</h2>
     <p class="legal" style="margin:8px 0 4px">By typing my name below, I confirm the answers above and give League Bound permission to use what I shared as described.</p>
     <div class="row">
       <div><label class="field" for="parent_wrapup_signature">Full name</label><input type="text" id="parent_wrapup_signature" name="parent_wrapup_signature" required></div>
@@ -240,8 +228,7 @@ function validate(live){
   const mark = (card, bad) => { if (live && !card.classList.contains('invalid')) return; card.classList.toggle('invalid', bad); if (bad && !first) first = card; };
   if (!live) f.querySelectorAll('.card').forEach(c => c.classList.remove('invalid'));
   if (!crmEmail) mark(document.getElementById('who'), !f.firstname.value.trim() || !em.test(f.email.value.trim()));
-  mark(f.querySelector('[data-group="recommend_score"]'), !radio('recommend_score'));
-  mark(f.querySelector('[data-group="referral_texts_sent"]'), !radio('referral_texts_sent'));
+  mark(f.querySelector('[data-group="referral_interest"]'), !f.querySelector('input[name="referral_interest"]:checked'));
   mark(f.parent_wrapup_signature.closest('.card'), !f.parent_wrapup_signature.value.trim());
   if (first && !live) first.scrollIntoView({behavior:'smooth', block:'center'});
   return !first;
@@ -261,13 +248,11 @@ f.addEventListener('submit', async e => {
     email: crmEmail || val('email'),
     firstname: crmEmail ? '' : val('firstname'),
     lastname: crmEmail ? '' : val('lastname'),
-    recommend_score: radio('recommend_score'),
     parent_feedback: val('parent_feedback'),
     parent_testimonial_video_consent: radio('parent_testimonial_video_consent'),
     parent_written_testimonial: radio('parent_testimonial_video_consent') === 'No' ? val('parent_written_testimonial') : '',
     referral_interest: [...f.querySelectorAll('input[name="referral_interest"]:checked')].map(i => i.value).join(';'),
     referral_context: val('referral_context'),
-    referral_texts_sent: radio('referral_texts_sent'),
     parent_wrapup_signature: val('parent_wrapup_signature'),
     parent_wrapup_signed_date: Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())
   };

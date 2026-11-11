@@ -73,6 +73,8 @@
   .upload .fname{font-size:13px;color:var(--fg3)}
   .copy{font:inherit;font-size:13px;font-weight:600;color:var(--gold-dark);background:none;border:1px solid rgba(202,170,95,.4);border-radius:999px;padding:6px 14px;cursor:pointer;margin-bottom:6px}
   .copy:hover{background:var(--gold-15)}
+  .seelink{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--gold-dark);text-decoration:none;border-bottom:1px solid rgba(202,170,95,.5);padding-bottom:1px;margin:2px 0 14px}
+  .seelink:hover{color:var(--navy);border-color:var(--navy)}
 </style>
 </head>
 <body>
@@ -106,33 +108,28 @@
 
   <section class="card">
     <h2><span class="num">02</span>Where didn&rsquo;t you get in?</h2>
-    <p class="help">List every rejection (waitlists not included).</p>
+    <p class="help">List every school you were rejected from.</p>
     <textarea name="rejections"></textarea>
   </section>
 
   <section class="card">
-    <h2><span class="num">03</span>Were you waitlisted anywhere? How did it end up?</h2>
-    <p class="help">Optional</p>
-    <textarea name="wrapup_waitlists"></textarea>
-  </section>
-
-  <section class="card">
-    <h2><span class="num">04</span>Where are you enrolling? 🎉</h2>
+    <h2><span class="num">03</span>Where are you enrolling? 🎉</h2>
     <input type="text" name="college" required style="margin-top:10px">
     <p class="err">Tell us where you&rsquo;re headed!</p>
   </section>
 
   <section class="card">
-    <h2><span class="num">05</span>Did you receive any merit scholarships?</h2>
+    <h2><span class="num">04</span>Did you receive any merit scholarships?</h2>
     <p class="help">School and amount, if you&rsquo;re comfortable sharing. Optional.</p>
     <textarea name="merit_scholarships"></textarea>
   </section>
 
   <section class="card" data-group="materials_permission">
-    <h2><span class="num">06</span>Your essays</h2>
+    <h2><span class="num">05</span>Your essays</h2>
     <p class="intro">One of the best ways we help future students is by showing them real essays that worked. We&rsquo;ll sometimes publish these in online booklets for future students as well.</p>
     <p class="subhead">Can we use your materials?</p>
     <p class="help" style="margin-top:-6px">Personal statement, supplements, activities list, additional info</p>
+    <a class="seelink" href="https://flipbook.so/flip/oim3MDq41T6km3cWXUvo" target="_blank" rel="noopener">See what our booklets look like &rarr;</a>
     <label class="choice"><input type="radio" name="materials_permission" value="First name + last initial"><span><b>Yes, use them!</b> You can use my first name and last initial. All other names in the essays will be anonymized.</span></label>
     <label class="choice"><input type="radio" name="materials_permission" value="Initials only"><span><b>Yes,</b> but only use my initials. All other names anonymized.</span></label>
     <label class="choice"><input type="radio" name="materials_permission" value="Yes, with exceptions"><span><b>Yes,</b> except for certain ones</span></label>
@@ -146,14 +143,16 @@
   </section>
 
   <section class="card" data-group="testimonial_video_consent">
-    <h2><span class="num">07</span>Video testimonial</h2>
-    <p class="help">Optional &mdash; no effect on your gift card.</p>
+    <h2><span class="num">06</span>Video testimonial</h2>
+    <p class="help">This is super helpful for us, and it&rsquo;s often how we get new clients.</p>
+    <a class="seelink" href="https://leagueboundconsulting.com/results" target="_blank" rel="noopener">See what our video testimonials look like &rarr;</a>
     <p class="intro">Would you be willing to record a short (~5 min) video about your experience working with Razi and the League Bound team? We&rsquo;ll reach out to schedule.</p>
     <label class="choice"><input type="radio" name="testimonial_video_consent" value="Yes"><span>Yes</span></label>
     <label class="choice"><input type="radio" name="testimonial_video_consent" value="No"><span>No</span></label>
     <div class="reveal" id="vid"><p class="legal">I give League Bound Consulting permission to record and use my video, name, and likeness in its marketing (including its website, social media, and ads). I understand I&rsquo;m not being paid for the video itself, and that I can ask League Bound to stop using it in new materials at any time by emailing razihecker@leagueboundconsulting.com.</p></div>
     <div class="reveal" id="written">
       <p class="intro" style="margin-top:6px">No issue at all! Would you mind sharing a few sentences here about your experience with League Bound, and where you got in? We&rsquo;ll use this on our social media.</p>
+      <a class="seelink" href="https://leagueboundconsulting.com/results" target="_blank" rel="noopener">See what our other testimonials look like &rarr;</a>
       <textarea id="student_written_testimonial" name="student_written_testimonial" placeholder="Optional"></textarea>
       <p class="intro" style="margin:16px 0 4px">Could you also upload a nice picture of yourself? A LinkedIn photo, school picture, anything you like.</p>
       <div class="upload"><input type="file" id="student_photo" name="student_photo" accept="image/*"><label for="student_photo">Upload a photo</label><img id="photoPrev" alt=""><span class="fname" id="photoName">Optional</span></div>
@@ -164,13 +163,13 @@
   </section>
 
   <section class="card">
-    <h2><span class="num">08</span>Anything else you want to tell us?</h2>
+    <h2><span class="num">07</span>Anything else you want to tell us?</h2>
     <p class="help">Optional</p>
     <textarea name="wrapup_anything_else"></textarea>
   </section>
 
   <section class="card">
-    <h2><span class="num">09</span>Sign-off</h2>
+    <h2><span class="num">08</span>Sign-off</h2>
     <p class="legal" style="margin:8px 0 4px">By typing my name below, I confirm the answers above and give League Bound permission to use my materials as I selected.</p>
     <div class="row">
       <div><label class="field" for="wrapup_signature">Full name</label><input type="text" id="wrapup_signature" name="wrapup_signature" required></div>
@@ -266,7 +265,7 @@ f.addEventListener('submit', async e => {
     firstname: val('firstname'), lastname: val('lastname'),
     personal_email: val('personal_email'),
     acceptances: val('acceptances'), rejections: val('rejections'),
-    wrapup_waitlists: val('wrapup_waitlists'), college: val('college'),
+    college: val('college'),
     merit_scholarships: val('merit_scholarships'),
     materials_permission: p,
     materials_excluded: p === 'Yes, with exceptions' ? val('materials_excluded') : '',
