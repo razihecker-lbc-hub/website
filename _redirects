@@ -20,6 +20,12 @@
 /privacy-policy/   /Privacy%20Policy.dc.html   200
 /privacy           /privacy-policy             301
 
+# Class of 2027 wrap-up forms (student + parent). Post into HubSpot forms.
+/wrapup            /wrapup.html          200
+/wrapup/           /wrapup.html          200
+/parent-wrapup     /parent-wrapup.html   200
+/parent-wrapup/    /parent-wrapup.html   200
+
 # Missing assets should fail as real 404s, not silently return the HTML page.
 /assets/*        /assets/:splat                   404
 /mlp/*           /mlp/:splat                      404
