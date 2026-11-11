@@ -65,6 +65,14 @@
   .done .seal{width:64px;height:64px;border-radius:50%;background:var(--gold-15);display:grid;place-items:center;margin:0 auto 18px;color:var(--gold-dark);font-size:28px}
   footer{text-align:center;color:var(--fg3);font-size:12px;padding:0 16px 40px}
   footer a{color:var(--fg3)}
+  .upload{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0 4px}
+  .upload input[type=file]{position:absolute;width:1px;height:1px;opacity:0}
+  .upload label{display:inline-block;font-weight:600;font-size:14px;color:var(--navy);background:var(--cream);border:1px dashed var(--gold);border-radius:10px;padding:12px 16px;cursor:pointer}
+  .upload label:hover{background:var(--gold-15)}
+  .upload img{width:56px;height:56px;border-radius:50%;object-fit:cover;display:none;border:2px solid var(--gold)}
+  .upload .fname{font-size:13px;color:var(--fg3)}
+  .copy{font:inherit;font-size:13px;font-weight:600;color:var(--gold-dark);background:none;border:1px solid rgba(202,170,95,.4);border-radius:999px;padding:6px 14px;cursor:pointer;margin-bottom:6px}
+  .copy:hover{background:var(--gold-15)}
 </style>
 </head>
 <body>
@@ -144,6 +152,15 @@
     <label class="choice"><input type="radio" name="testimonial_video_consent" value="Yes"><span>Yes</span></label>
     <label class="choice"><input type="radio" name="testimonial_video_consent" value="No"><span>No</span></label>
     <div class="reveal" id="vid"><p class="legal">I give League Bound Consulting permission to record and use my video, name, and likeness in its marketing (including its website, social media, and ads). I understand I&rsquo;m not being paid for the video itself, and that I can ask League Bound to stop using it in new materials at any time by emailing razihecker@leagueboundconsulting.com.</p></div>
+    <div class="reveal" id="written">
+      <p class="intro" style="margin-top:6px">No issue at all! Would you mind sharing a few sentences here about your experience with League Bound, and where you got in? We&rsquo;ll use this on our social media.</p>
+      <textarea id="student_written_testimonial" name="student_written_testimonial" placeholder="Optional"></textarea>
+      <p class="intro" style="margin:16px 0 4px">Could you also upload a nice picture of yourself? A LinkedIn photo, school picture, anything you like.</p>
+      <div class="upload"><input type="file" id="student_photo" name="student_photo" accept="image/*"><label for="student_photo">Upload a photo</label><img id="photoPrev" alt=""><span class="fname" id="photoName">Optional</span></div>
+      <p class="legal">By sharing, I give League Bound Consulting permission to post my words and photo on its website and social media, and I can ask League Bound to take them down at any time by emailing razihecker@leagueboundconsulting.com.</p>
+      <p class="intro" style="margin:16px 0 8px">It would also mean a lot if you posted it as a Google review:</p>
+      <button type="button" class="copy" id="greview">Copy my text &amp; open Google Reviews</button>
+    </div>
   </section>
 
   <section class="card">
@@ -190,8 +207,33 @@ function sync(){
   document.getElementById('excl').classList.toggle('on', p === 'Yes, with exceptions');
   document.getElementById('share').classList.toggle('on', !!p && p !== 'No');
   document.getElementById('vid').classList.toggle('on', radio('testimonial_video_consent') === 'Yes');
+  document.getElementById('written').classList.toggle('on', radio('testimonial_video_consent') === 'No');
 }
 f.addEventListener('change', sync);
+
+const PHOTO='student_photo', WRITTEN='student_written_testimonial';
+function photoInput(){ return document.getElementById(PHOTO); }
+photoInput().addEventListener('change', e => {
+  const file = e.target.files[0], prev = document.getElementById('photoPrev'), nm = document.getElementById('photoName');
+  if (!file) { prev.style.display='none'; nm.textContent='Optional'; return; }
+  if (file.size > 10*1024*1024) { e.target.value=''; nm.textContent='That photo is over 10MB, try a smaller one'; prev.style.display='none'; return; }
+  prev.src = URL.createObjectURL(file); prev.style.display='block'; nm.textContent = file.name;
+});
+document.getElementById('greview').addEventListener('click', async e => {
+  const t = document.getElementById(WRITTEN).value.trim();
+  try { if (t) await navigator.clipboard.writeText(t); } catch (_) {}
+  window.open('https://www.google.com/search?q=League+Bound+Consulting#lrd=0x49e3984222fea111:0xb2d3b0f7ff0b6581,3,,,,', '_blank', 'noopener');
+  e.target.textContent = t ? 'Copied ✓ just paste it into the review' : 'Opened Google Reviews';
+});
+async function sendToHubSpot(fields, withPhoto){
+  const fd = new FormData();
+  Object.entries(fields).forEach(([k,v]) => { if (v !== '' && v != null) fd.append(k, String(v)); });
+  const file = withPhoto && photoInput().files[0];
+  if (file) fd.append(PHOTO, file, file.name);
+  fd.append('hs_context', JSON.stringify({ pageUrl: location.href.split('?')[0], pageName: document.title }));
+  const r = await fetch('https://forms.hubspot.com/uploads/form/v2/'+CONFIG.portalId+'/'+CONFIG.formId, { method:'POST', body: fd });
+  if (!r.ok) throw new Error('HubSpot ' + r.status);
+}
 
 function validate(){
   let first = null;
@@ -225,19 +267,13 @@ f.addEventListener('submit', async e => {
     materials_permission: p,
     materials_excluded: p === 'Yes, with exceptions' ? val('materials_excluded') : '',
     testimonial_video_consent: radio('testimonial_video_consent'),
+    student_written_testimonial: radio('testimonial_video_consent') === 'No' ? val('student_written_testimonial') : '',
     wrapup_anything_else: val('wrapup_anything_else'),
     wrapup_signature: val('wrapup_signature'),
     wrapup_signed_date: Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())
   };
-  const body = {
-    fields: Object.entries(fields).filter(([,v]) => v !== '').map(([name,value]) => ({objectTypeId:'0-1', name, value:String(value)})),
-    context: { pageUri: location.href.split('?')[0], pageName: document.title }
-  };
   try {
-    const r = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+CONFIG.portalId+'/'+CONFIG.formId, {
-      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)
-    });
-    if (!r.ok) throw new Error(await r.text());
+    await sendToHubSpot(fields, radio('testimonial_video_consent') === 'No');
     f.style.display = 'none';
     const d = document.getElementById('done'); d.style.display = 'block';
     window.scrollTo({top:0, behavior:'smooth'});

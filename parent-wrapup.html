@@ -77,6 +77,12 @@
   .textmsg{position:relative;background:var(--cream);border:1px solid var(--cream-border);border-radius:14px 14px 14px 4px;padding:14px 16px;font-size:15px;color:var(--navy);margin:6px 0 10px}
   .copy{font:inherit;font-size:13px;font-weight:600;color:var(--gold-dark);background:none;border:1px solid var(--gold-30,rgba(202,170,95,.4));border-radius:999px;padding:6px 14px;cursor:pointer;margin-bottom:16px}
   .copy:hover{background:var(--gold-15)}
+  .upload{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0 4px}
+  .upload input[type=file]{position:absolute;width:1px;height:1px;opacity:0}
+  .upload label{display:inline-block;font-weight:600;font-size:14px;color:var(--navy);background:var(--cream);border:1px dashed var(--gold);border-radius:10px;padding:12px 16px;cursor:pointer}
+  .upload label:hover{background:var(--gold-15)}
+  .upload img{width:56px;height:56px;border-radius:50%;object-fit:cover;display:none;border:2px solid var(--gold)}
+  .upload .fname{font-size:13px;color:var(--fg3)}
 </style>
 </head>
 <body>
@@ -85,7 +91,6 @@
   <p class="eyebrow">League Bound &middot; Class of 2027 &middot; Parents</p>
   <h1>Congratulations on finishing this (crazy) process!!</h1>
   <p>It&rsquo;s been a real privilege working with your family. This form takes about 3 minutes and really matters to us.</p>
-  <span class="gift">As a thank-you: a $100 Amazon gift card</span>
 </header>
 
 <main>
@@ -111,22 +116,24 @@
   </section>
 
   <section class="card">
-    <h2><span class="num">02</span>Anything we could have done better?</h2>
+    <h2><span class="num">02</span>What did we do well, and what could we do better?</h2>
     <p class="help">Optional</p>
     <textarea name="parent_feedback"></textarea>
   </section>
 
   <section class="card">
     <h2><span class="num">03</span>Parent video testimonial</h2>
-    <p class="help">Optional &mdash; no effect on your gift card.</p>
+    <p class="help">Optional</p>
     <p class="intro">Would you be willing to record a short (~5 min) video about your family&rsquo;s experience working with Razi and the League Bound team? We&rsquo;ll reach out with more information.</p>
     <label class="choice"><input type="radio" name="parent_testimonial_video_consent" value="Yes"><span>Yes</span></label>
     <label class="choice"><input type="radio" name="parent_testimonial_video_consent" value="No"><span>No</span></label>
     <div class="reveal" id="vid"><p class="legal">I give League Bound Consulting permission to record and use my video, name, and likeness in its marketing (including its website, social media, and ads). I understand I&rsquo;m not being paid for the video itself, and that I can ask League Bound to stop using it in new materials at any time by emailing razihecker@leagueboundconsulting.com.</p></div>
     <div class="reveal" id="written">
       <p class="intro" style="margin-top:6px">No issue at all! Would you mind sharing a few sentences here about your experience with League Bound, and where your child got in? We&rsquo;ll use this on our social media.</p>
-      <textarea id="parent_written_testimonial" name="parent_written_testimonial"></textarea>
-      <p class="legal">By sharing, I give League Bound Consulting permission to post this on its website and social media, and I can ask League Bound to take it down at any time by emailing razihecker@leagueboundconsulting.com.</p>
+      <textarea id="parent_written_testimonial" name="parent_written_testimonial" placeholder="Optional"></textarea>
+      <p class="intro" style="margin:16px 0 4px">Could you also upload a nice picture? A LinkedIn photo, a family picture, anything you like.</p>
+      <div class="upload"><input type="file" id="parent_photo" name="parent_photo" accept="image/*"><label for="parent_photo">Upload a photo</label><img id="photoPrev" alt=""><span class="fname" id="photoName">Optional</span></div>
+      <p class="legal">By sharing, I give League Bound Consulting permission to post my words and photo on its website and social media, and I can ask League Bound to take them down at any time by emailing razihecker@leagueboundconsulting.com.</p>
       <p class="intro" style="margin:16px 0 8px">It would also mean a lot if you posted it as a Google review:</p>
       <button type="button" class="copy" id="greview">Copy my text &amp; open Google Reviews</button>
     </div>
@@ -143,6 +150,16 @@
     <p class="err">Please pick one.</p>
   </section>
 
+  <section class="card">
+    <h2><span class="num">05</span>Sign-off</h2>
+    <p class="legal" style="margin:8px 0 4px">By typing my name below, I confirm the answers above and give League Bound permission to use what I shared as described.</p>
+    <div class="row">
+      <div><label class="field" for="parent_wrapup_signature">Full name</label><input type="text" id="parent_wrapup_signature" name="parent_wrapup_signature" required></div>
+      <div><label class="field" for="sigdate">Date</label><input type="text" id="sigdate" readonly tabindex="-1"></div>
+    </div>
+    <p class="err">Please type your full name to sign.</p>
+  </section>
+
   <button class="submit" type="submit">Submit</button>
   <p class="form-msg" id="msg"></p>
 </form>
@@ -150,7 +167,7 @@
 <section class="card done" id="done">
   <div class="seal">&#10003;</div>
   <h2>Thank you!!</h2>
-  <p>This really means a lot. Your $100 Amazon gift card is on its way. Congratulations again!</p>
+  <p>This really means a lot. Congratulations again, and enjoy this moment!</p>
 </section>
 </main>
 <footer>League Bound Consulting &middot; <a href="/privacy-policy">Privacy policy</a></footer>
@@ -170,17 +187,37 @@ f.addEventListener('change', () => {
   document.getElementById('vid').classList.toggle('on', radio('parent_testimonial_video_consent') === 'Yes');
   document.getElementById('written').classList.toggle('on', radio('parent_testimonial_video_consent') === 'No');
 });
-document.getElementById('greview').addEventListener('click', async e => {
-  const t = document.getElementById('parent_written_testimonial').value.trim();
-  try { if (t) await navigator.clipboard.writeText(t); } catch (_) {}
-  window.open('https://www.google.com/search?q=League+Bound+Consulting#lrd=0x49e3984222fea111:0xb2d3b0f7ff0b6581,3,,,,', '_blank', 'noopener');
-  e.target.textContent = t ? 'Copied ✓ just paste it into the review' : 'Opened Google Reviews';
-});
 document.getElementById('copy').addEventListener('click', async e => {
   try { await navigator.clipboard.writeText(document.getElementById('txt').innerText.trim()); e.target.textContent = 'Copied ✓'; }
   catch (_) { e.target.textContent = 'Select the text above to copy'; }
   setTimeout(() => e.target.textContent = 'Copy text', 2500);
 });
+
+const today = new Date();
+document.getElementById('sigdate').value = today.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+const PHOTO='parent_photo', WRITTEN='parent_written_testimonial';
+function photoInput(){ return document.getElementById(PHOTO); }
+photoInput().addEventListener('change', e => {
+  const file = e.target.files[0], prev = document.getElementById('photoPrev'), nm = document.getElementById('photoName');
+  if (!file) { prev.style.display='none'; nm.textContent='Optional'; return; }
+  if (file.size > 10*1024*1024) { e.target.value=''; nm.textContent='That photo is over 10MB, try a smaller one'; prev.style.display='none'; return; }
+  prev.src = URL.createObjectURL(file); prev.style.display='block'; nm.textContent = file.name;
+});
+document.getElementById('greview').addEventListener('click', async e => {
+  const t = document.getElementById(WRITTEN).value.trim();
+  try { if (t) await navigator.clipboard.writeText(t); } catch (_) {}
+  window.open('https://www.google.com/search?q=League+Bound+Consulting#lrd=0x49e3984222fea111:0xb2d3b0f7ff0b6581,3,,,,', '_blank', 'noopener');
+  e.target.textContent = t ? 'Copied ✓ just paste it into the review' : 'Opened Google Reviews';
+});
+async function sendToHubSpot(fields, withPhoto){
+  const fd = new FormData();
+  Object.entries(fields).forEach(([k,v]) => { if (v !== '' && v != null) fd.append(k, String(v)); });
+  const file = withPhoto && photoInput().files[0];
+  if (file) fd.append(PHOTO, file, file.name);
+  fd.append('hs_context', JSON.stringify({ pageUrl: location.href.split('?')[0], pageName: document.title }));
+  const r = await fetch('https://forms.hubspot.com/uploads/form/v2/'+CONFIG.portalId+'/'+CONFIG.formId, { method:'POST', body: fd });
+  if (!r.ok) throw new Error('HubSpot ' + r.status);
+}
 
 function validate(){
   let first = null;
@@ -189,6 +226,7 @@ function validate(){
   if (!crmEmail) mark(document.getElementById('who'), !f.firstname.value.trim() || !em.test(f.email.value.trim()));
   mark(f.querySelector('[data-group="recommend_score"]'), !radio('recommend_score'));
   mark(f.querySelector('[data-group="referral_texts_sent"]'), !radio('referral_texts_sent'));
+  mark(f.parent_wrapup_signature.closest('.card'), !f.parent_wrapup_signature.value.trim());
   if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
   return !first;
 }
@@ -207,17 +245,12 @@ f.addEventListener('submit', async e => {
     parent_feedback: val('parent_feedback'),
     parent_testimonial_video_consent: radio('parent_testimonial_video_consent'),
     parent_written_testimonial: radio('parent_testimonial_video_consent') === 'No' ? val('parent_written_testimonial') : '',
-    referral_texts_sent: radio('referral_texts_sent')
-  };
-  const body = {
-    fields: Object.entries(fields).filter(([,v]) => v !== '').map(([name,value]) => ({objectTypeId:'0-1', name, value:String(value)})),
-    context: { pageUri: location.href.split('?')[0], pageName: document.title }
+    referral_texts_sent: radio('referral_texts_sent'),
+    parent_wrapup_signature: val('parent_wrapup_signature'),
+    parent_wrapup_signed_date: Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())
   };
   try {
-    const r = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+CONFIG.portalId+'/'+CONFIG.formId, {
-      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)
-    });
-    if (!r.ok) throw new Error(await r.text());
+    await sendToHubSpot(fields, radio('parent_testimonial_video_consent') === 'No');
     f.style.display = 'none';
     document.getElementById('done').style.display = 'block';
     window.scrollTo({top:0, behavior:'smooth'});
