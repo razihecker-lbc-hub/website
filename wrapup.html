@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="/">
+<title>Class of 2027 Wrap-Up | League Bound Consulting</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/logo-lion-gold.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2A4A; --navy-dark:#0F1A2E; --navy-light:#2D4070;
+    --gold:#CAAA5F; --gold-dark:#A68840; --gold-15:rgba(202,170,95,.15);
+    --cream:#FEFAF7; --cream-border:#F0E8DE;
+    --fg2:#3B4A66; --fg3:#6B7890; --line:rgba(27,42,74,.14);
+    --serif:'Playfair Display',Georgia,serif; --sans:'Montserrat',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--cream);color:var(--navy);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .hero{background:var(--navy);color:#fff;padding:56px 16px 96px;text-align:center;position:relative;overflow:hidden}
+  .hero:after{content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);width:120%;height:60px;background:var(--cream);border-radius:50% 50% 0 0/100% 100% 0 0}
+  .hero img{width:56px;height:56px;object-fit:contain;margin-bottom:18px}
+  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 12px}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,6vw,48px);line-height:1.15;margin:0 auto 18px;max-width:640px}
+  .hero p{color:#C9D1E0;max-width:560px;margin:0 auto;font-size:16px}
+  .hero .gift{display:inline-block;margin-top:22px;padding:8px 16px;border:1px solid rgba(202,170,95,.5);border-radius:999px;color:var(--gold);font-size:13px;font-weight:600;letter-spacing:.02em}
+  main{max-width:680px;margin:-48px auto 0;padding:0 16px 80px;position:relative;z-index:1}
+  .card{background:#fff;border:1px solid var(--cream-border);border-radius:14px;padding:28px 24px;margin-bottom:18px;box-shadow:0 1px 2px rgba(15,26,46,.04),0 8px 24px rgba(15,26,46,.05)}
+  @media(min-width:560px){.card{padding:32px 36px}}
+  .card h2{font-family:var(--serif);font-weight:600;font-size:22px;margin:0 0 6px;line-height:1.3}
+  .num{display:inline-block;min-width:28px;color:var(--gold-dark);font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.08em}
+  .help{color:var(--fg3);font-size:14px;margin:0 0 14px}
+  .intro{color:var(--fg2);font-size:15px;margin:0 0 18px}
+  label.field{display:block;font-size:13px;font-weight:600;color:var(--fg2);margin:14px 0 6px}
+  .opt-tag{font-weight:500;color:var(--fg3)}
+  input[type=text],input[type=email],textarea{width:100%;font:inherit;font-size:16px;color:var(--navy);background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:12px 14px;transition:border-color .15s,box-shadow .15s}
+  textarea{min-height:96px;resize:vertical}
+  input:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-15);background:#fff}
+  .row{display:grid;gap:0 14px}
+  @media(min-width:560px){.row{grid-template-columns:1fr 1fr}}
+  .choice{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;cursor:pointer;transition:border-color .15s,background .15s;font-size:15px;color:var(--fg2)}
+  .choice:hover{border-color:var(--gold)}
+  .choice input{margin:4px 0 0;accent-color:var(--navy);width:17px;height:17px;flex:none}
+  .choice:has(input:checked){border-color:var(--gold);background:var(--gold-15);color:var(--navy)}
+  .choice b{color:var(--navy);font-weight:600}
+  .reveal{display:none;margin:4px 0 14px}
+  .reveal.on{display:block}
+  .legal{font-size:13px;line-height:1.6;color:var(--fg2);background:var(--cream);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0 0}
+  .subhead{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin:22px 0 10px}
+  .err{color:#B3261E;font-size:13px;margin-top:6px;display:none}
+  .card.invalid .err{display:block}
+  .card.invalid{border-color:#E8B4B0}
+  button.submit{display:block;width:100%;font:inherit;font-weight:600;font-size:16px;letter-spacing:.03em;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:16px 24px;cursor:pointer;transition:background .15s,transform .1s}
+  button.submit:hover{background:var(--navy-light)}
+  button.submit:active{transform:translateY(1px)}
+  button.submit[disabled]{opacity:.6;cursor:wait}
+  .form-msg{text-align:center;font-size:14px;color:#B3261E;margin:12px 0 0;min-height:1em}
+  .done{display:none;text-align:center;padding:48px 28px}
+  .done h2{font-size:30px;margin-bottom:12px}
+  .done p{color:var(--fg2);max-width:440px;margin:0 auto}
+  .done .seal{width:64px;height:64px;border-radius:50%;background:var(--gold-15);display:grid;place-items:center;margin:0 auto 18px;color:var(--gold-dark);font-size:28px}
+  footer{text-align:center;color:var(--fg3);font-size:12px;padding:0 16px 40px}
+  footer a{color:var(--fg3)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <img src="/assets/logo-lion-gold.png" alt="League Bound Consulting">
+  <p class="eyebrow">League Bound &middot; Class of 2027</p>
+  <h1>Congrats!! This (crazy) process of college applications is over :)</h1>
+  <p>This form takes about 5 minutes to complete and really matters to us. It&rsquo;s how I can grow this business and keep helping students tell their stories and get into top schools.</p>
+  <span class="gift">As a thank-you: a $100 Amazon gift card</span>
+</header>
+
+<main>
+<form id="f" novalidate>
+  <section class="card">
+    <h2>Your info</h2>
+    <div class="row">
+      <div><label class="field" for="firstname">First name</label><input type="text" id="firstname" name="firstname" autocomplete="given-name" required></div>
+      <div><label class="field" for="lastname">Last name</label><input type="text" id="lastname" name="lastname" autocomplete="family-name" required></div>
+    </div>
+    <label class="field" for="personal_email">Personal email <span class="opt-tag">(non-school email, so we can keep in touch with you)</span></label>
+    <input type="email" id="personal_email" name="personal_email" autocomplete="email" required>
+    <p class="err">Please fill in your name and a valid email.</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">01</span>Where did you get in?</h2>
+    <p class="help">List every school you were accepted to.</p>
+    <textarea name="acceptances" required></textarea>
+    <p class="err">Please list your acceptances.</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">02</span>Where didn&rsquo;t you get in?</h2>
+    <p class="help">List every rejection (waitlists not included).</p>
+    <textarea name="rejections"></textarea>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">03</span>Were you waitlisted anywhere? How did it end up?</h2>
+    <p class="help">Optional</p>
+    <textarea name="wrapup_waitlists"></textarea>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">04</span>Where are you enrolling? 🎉</h2>
+    <input type="text" name="college" required style="margin-top:10px">
+    <p class="err">Tell us where you&rsquo;re headed!</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">05</span>Did you receive any merit scholarships?</h2>
+    <p class="help">School and amount, if you&rsquo;re comfortable sharing. Optional.</p>
+    <textarea name="merit_scholarships"></textarea>
+  </section>
+
+  <section class="card" data-group="materials_permission">
+    <h2><span class="num">06</span>Your essays</h2>
+    <p class="intro">One of the best ways we help future students is by showing them real essays that worked. We&rsquo;ll sometimes publish these in online booklets for future students as well.</p>
+    <p class="subhead">Can we use your materials?</p>
+    <p class="help" style="margin-top:-6px">Personal statement, supplements, activities list, additional info</p>
+    <label class="choice"><input type="radio" name="materials_permission" value="First name + last initial"><span><b>Yes, use them!</b> You can use my first name and last initial. All other names in the essays will be anonymized.</span></label>
+    <label class="choice"><input type="radio" name="materials_permission" value="Initials only"><span><b>Yes,</b> but only use my initials. All other names anonymized.</span></label>
+    <label class="choice"><input type="radio" name="materials_permission" value="Yes, with exceptions"><span><b>Yes,</b> except for certain ones</span></label>
+    <div class="reveal" id="excl"><label class="field" for="materials_excluded">Which ones should we leave out?</label><textarea id="materials_excluded" name="materials_excluded" style="min-height:72px"></textarea></div>
+    <label class="choice"><input type="radio" name="materials_permission" value="No"><span>I&rsquo;d rather you not use my materials.</span></label>
+
+    <div class="reveal" id="share">
+      <p class="subhead">Where can we share them?</p>
+      <label class="choice"><input type="checkbox" name="materials_share_where" value="Privately with current students"><span>Privately with current League Bound students</span></label>
+      <label class="choice"><input type="checkbox" name="materials_share_where" value="Published"><span>Published (online booklets, our website)</span></label>
+      <label class="choice"><input type="checkbox" name="materials_share_where" value="Social media and ads"><span>Social media and ads</span></label>
+      <p class="legal">By selecting &ldquo;Yes&rdquo; above, I give League Bound Consulting permission to use, share, and publish my application materials as I&rsquo;ve selected, with names anonymized as described. I still own my essays, and I can ask League Bound to stop using them in new materials at any time by emailing razihecker@leagueboundconsulting.com.</p>
+    </div>
+    <p class="err">Please pick one option (and where we can share them).</p>
+  </section>
+
+  <section class="card" data-group="testimonial_video_consent">
+    <h2><span class="num">07</span>Video testimonial</h2>
+    <p class="help">Optional &mdash; no effect on your gift card.</p>
+    <p class="intro">Would you be willing to record a short (~5 min) video about your experience with League Bound?</p>
+    <label class="choice"><input type="radio" name="testimonial_video_consent" value="Yes"><span>Yes</span></label>
+    <label class="choice"><input type="radio" name="testimonial_video_consent" value="No"><span>No</span></label>
+    <div class="reveal" id="vid"><p class="legal">I give League Bound Consulting permission to record and use my video, name, and likeness in its marketing (including its website, social media, and ads). I understand I&rsquo;m not being paid for the video itself, and that I can ask League Bound to stop using it in new materials at any time by emailing razihecker@leagueboundconsulting.com.</p></div>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">08</span>Anything else you want to tell us?</h2>
+    <p class="help">Optional</p>
+    <textarea name="wrapup_anything_else"></textarea>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">09</span>Sign-off</h2>
+    <p class="legal" style="margin:8px 0 4px">By typing my name below, I confirm the answers above and give League Bound permission to use my materials as I selected.</p>
+    <div class="row">
+      <div><label class="field" for="wrapup_signature">Full name</label><input type="text" id="wrapup_signature" name="wrapup_signature" required></div>
+      <div><label class="field" for="sigdate">Date</label><input type="text" id="sigdate" readonly tabindex="-1"></div>
+    </div>
+    <p class="err">Please type your full name to sign.</p>
+  </section>
+
+  <button class="submit" type="submit">Submit</button>
+  <p class="form-msg" id="msg"></p>
+</form>
+
+<section class="card done" id="done">
+  <div class="seal">&#10003;</div>
+  <h2>Thank you!!</h2>
+  <p>This really means a lot. Your $100 Amazon gift card is on its way. Congrats again, and enjoy every minute of what&rsquo;s next.</p>
+</section>
+</main>
+<footer>League Bound Consulting &middot; <a href="/privacy-policy">Privacy policy</a></footer>
+
+<script>
+const CONFIG = { portalId: '50912912', formId: 'STUDENT_FORM_GUID' };
+const params = new URLSearchParams(location.search);
+const crmEmail = params.get('email') || '';
+const f = document.getElementById('f');
+const today = new Date();
+document.getElementById('sigdate').value = today.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+if (params.get('fn')) f.firstname.value = params.get('fn');
+if (params.get('ln')) f.lastname.value = params.get('ln');
+
+function radio(n){ const el = f.querySelector('input[name="'+n+'"]:checked'); return el ? el.value : ''; }
+function sync(){
+  const p = radio('materials_permission');
+  document.getElementById('excl').classList.toggle('on', p === 'Yes, with exceptions');
+  document.getElementById('share').classList.toggle('on', !!p && p !== 'No');
+  document.getElementById('vid').classList.toggle('on', radio('testimonial_video_consent') === 'Yes');
+}
+f.addEventListener('change', sync);
+
+function validate(){
+  let first = null;
+  const mark = (card, bad) => { card.classList.toggle('invalid', bad); if (bad && !first) first = card; };
+  f.querySelectorAll('.card').forEach(c => c.classList.remove('invalid'));
+  const em = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  mark(f.firstname.closest('.card'), !f.firstname.value.trim() || !f.lastname.value.trim() || !em.test(f.personal_email.value.trim()));
+  mark(f.acceptances.closest('.card'), !f.acceptances.value.trim());
+  mark(f.college.closest('.card'), !f.college.value.trim());
+  const p = radio('materials_permission');
+  const where = f.querySelectorAll('input[name="materials_share_where"]:checked').length;
+  mark(f.querySelector('[data-group="materials_permission"]'), !p || (p !== 'No' && !where));
+  mark(f.wrapup_signature.closest('.card'), !f.wrapup_signature.value.trim());
+  if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
+  return !first;
+}
+
+f.addEventListener('submit', async e => {
+  e.preventDefault();
+  if (!validate()) return;
+  const btn = f.querySelector('.submit'), msg = document.getElementById('msg');
+  btn.disabled = true; btn.textContent = 'Submitting…'; msg.textContent = '';
+  const val = n => (f[n] && f[n].value || '').trim();
+  const p = radio('materials_permission');
+  const fields = {
+    email: crmEmail || val('personal_email'),
+    firstname: val('firstname'), lastname: val('lastname'),
+    personal_email: val('personal_email'),
+    acceptances: val('acceptances'), rejections: val('rejections'),
+    wrapup_waitlists: val('wrapup_waitlists'), college: val('college'),
+    merit_scholarships: val('merit_scholarships'),
+    materials_permission: p,
+    materials_excluded: p === 'Yes, with exceptions' ? val('materials_excluded') : '',
+    materials_share_where: p === 'No' ? '' : [...f.querySelectorAll('input[name="materials_share_where"]:checked')].map(i => i.value).join(';'),
+    testimonial_video_consent: radio('testimonial_video_consent'),
+    wrapup_anything_else: val('wrapup_anything_else'),
+    wrapup_signature: val('wrapup_signature'),
+    wrapup_signed_date: Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())
+  };
+  const body = {
+    fields: Object.entries(fields).filter(([,v]) => v !== '').map(([name,value]) => ({objectTypeId:'0-1', name, value:String(value)})),
+    context: { pageUri: location.href.split('?')[0], pageName: document.title }
+  };
+  try {
+    const r = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+CONFIG.portalId+'/'+CONFIG.formId, {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)
+    });
+    if (!r.ok) throw new Error(await r.text());
+    f.style.display = 'none';
+    const d = document.getElementById('done'); d.style.display = 'block';
+    window.scrollTo({top:0, behavior:'smooth'});
+  } catch (err) {
+    console.error(err);
+    btn.disabled = false; btn.textContent = 'Submit';
+    msg.textContent = 'Something went wrong. Please try again, or email razihecker@leagueboundconsulting.com.';
+  }
+});
+</script>
+</body>
+</html>
