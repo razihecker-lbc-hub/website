@@ -139,8 +139,22 @@
     </div>
   </section>
 
+  <section class="card">
+    <h2><span class="num">04</span>Anyone else we could help?</h2>
+    <p class="intro">Do you have any friends, or other kids of your own, who might be interested?</p>
+    <label class="choice"><input type="checkbox" name="referral_interest" value="Yes, a younger child of ours"><span>Yes, a younger child of ours</span></label>
+    <label class="choice"><input type="checkbox" name="referral_interest" value="Yes, friends of ours (I’ll shoot them a text this week)"><span>Yes, friends of ours. I&rsquo;ll shoot them a text this week</span></label>
+    <label class="choice"><input type="checkbox" name="referral_interest" value="Yes, friends of ours (send me something to pass along)"><span>Yes, friends of ours. Send me something I can pass along</span></label>
+    <label class="choice"><input type="checkbox" name="referral_interest" value="Not right now"><span>Not right now</span></label>
+    <div class="reveal" id="refctx">
+      <label class="field" for="referral_context">Feel free to share more context here</label>
+      <p class="help" style="margin-top:-2px">Who they are, what grade, what they&rsquo;re looking for, or anything we can send you to pass along.</p>
+      <textarea id="referral_context" name="referral_context" placeholder="Optional"></textarea>
+    </div>
+  </section>
+
   <section class="card" data-group="referral_texts_sent">
-    <h2><span class="num">04</span>One small ask</h2>
+    <h2><span class="num">05</span>One small ask</h2>
     <p class="intro">I know this part&rsquo;s a little awkward, but honestly it&rsquo;s how we grow. Almost all of our families come from word of mouth. Could you think of three friends with kids in high school and send them a quick text? Something like:</p>
     <div class="textmsg" id="txt">Hey, by the way, let me know if you&rsquo;re ever interested in getting help with college apps/guidance. <span class="kid">[Child&rsquo;s name]</span> is finally done with the process, and we worked with an amazing team. Happy to connect you if you want. No pressure, but they really are great.</div>
     <button type="button" class="copy" id="copy">Copy text</button>
@@ -151,7 +165,7 @@
   </section>
 
   <section class="card">
-    <h2><span class="num">05</span>Sign-off</h2>
+    <h2><span class="num">06</span>Sign-off</h2>
     <p class="legal" style="margin:8px 0 4px">By typing my name below, I confirm the answers above and give League Bound permission to use what I shared as described.</p>
     <div class="row">
       <div><label class="field" for="parent_wrapup_signature">Full name</label><input type="text" id="parent_wrapup_signature" name="parent_wrapup_signature" required></div>
@@ -186,6 +200,8 @@ function radio(n){ const el = f.querySelector('input[name="'+n+'"]:checked'); re
 f.addEventListener('change', () => {
   document.getElementById('vid').classList.toggle('on', radio('parent_testimonial_video_consent') === 'Yes');
   document.getElementById('written').classList.toggle('on', radio('parent_testimonial_video_consent') === 'No');
+  const ref = [...f.querySelectorAll('input[name="referral_interest"]:checked')].map(i => i.value);
+  document.getElementById('refctx').classList.toggle('on', ref.some(v => v.startsWith('Yes')));
 });
 document.getElementById('copy').addEventListener('click', async e => {
   try { await navigator.clipboard.writeText(document.getElementById('txt').innerText.trim()); e.target.textContent = 'Copied ✓'; }
@@ -249,6 +265,8 @@ f.addEventListener('submit', async e => {
     parent_feedback: val('parent_feedback'),
     parent_testimonial_video_consent: radio('parent_testimonial_video_consent'),
     parent_written_testimonial: radio('parent_testimonial_video_consent') === 'No' ? val('parent_written_testimonial') : '',
+    referral_interest: [...f.querySelectorAll('input[name="referral_interest"]:checked')].map(i => i.value).join(';'),
+    referral_context: val('referral_context'),
     referral_texts_sent: radio('referral_texts_sent'),
     parent_wrapup_signature: val('parent_wrapup_signature'),
     parent_wrapup_signed_date: Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())
