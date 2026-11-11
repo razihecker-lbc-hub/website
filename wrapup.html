@@ -75,15 +75,28 @@
   .copy:hover{background:var(--gold-15)}
   .seelink{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--gold-dark);text-decoration:none;border-bottom:1px solid rgba(202,170,95,.5);padding-bottom:1px;margin:2px 0 14px}
   .seelink:hover{color:var(--navy);border-color:var(--navy)}
+  .hero{background:var(--navy-dark);padding:64px 16px 120px}
+  .slices{position:absolute;top:-10%;bottom:-10%;left:-12%;right:-12%;display:flex;gap:10px;transform:skewX(-12deg)}
+  .slices>div{flex:1;overflow:hidden;position:relative}
+  .slices>div>span{position:absolute;inset:0 -40%;background-size:cover;background-position:center;transform:skewX(12deg)}
+  .hero:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,26,46,.70) 0%,rgba(27,42,74,.80) 55%,rgba(27,42,74,.92) 100%)}
+  .hero-inner{position:relative;z-index:2}
+  .hero h1{text-shadow:0 2px 18px rgba(0,0,0,.35)}
+  .hero:after{z-index:2}
+  main{z-index:3}
+  @media(max-width:600px){.slices>div:nth-child(n+5){display:none}.slices{gap:7px}}
 </style>
 </head>
 <body>
 <header class="hero">
+  <div class="slices" aria-hidden="true"><div><span style="background-image:url(/assets/harvard-memorial-hall.jpg)"></span></div><div><span style="background-image:url(/assets/yale-banners.jpg)"></span></div><div><span style="background-image:url(/assets/mit-dome.jpg)"></span></div><div><span style="background-image:url(/assets/reserve-princeton-campus.jpg)"></span></div><div><span style="background-image:url(/assets/grad-consult-columbia.jpg)"></span></div><div><span style="background-image:url(/assets/harvard-bridge.jpg)"></span></div></div>
+  <div class="hero-inner">
   <img src="/assets/logo-lion-gold.png" alt="League Bound Consulting">
   <p class="eyebrow">League Bound &middot; Class of 2027</p>
   <h1>Congrats!! This (crazy) process of college applications is over :)</h1>
   <p>This form takes about 5 minutes to complete and really matters to us. It&rsquo;s how I can grow this business and keep helping students tell their stories and get into top schools.</p>
   <span class="gift">As a thank-you: a $100 Amazon gift card</span>
+  </div>
 </header>
 
 <main>
