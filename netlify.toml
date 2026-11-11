@@ -27,3 +27,14 @@
   for = "/"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# Private wrap-up forms: keep out of search engines (also set via meta tag).
+[[headers]]
+  for = "/wrapup*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/parent-wrapup*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
