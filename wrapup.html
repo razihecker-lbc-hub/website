@@ -132,19 +132,15 @@
     <label class="choice"><input type="radio" name="materials_permission" value="No"><span>I&rsquo;d rather you not use my materials.</span></label>
 
     <div class="reveal" id="share">
-      <p class="subhead">Where can we share them?</p>
-      <label class="choice"><input type="checkbox" name="materials_share_where" value="Privately with current students"><span>Privately with current League Bound students</span></label>
-      <label class="choice"><input type="checkbox" name="materials_share_where" value="Published"><span>Published (online booklets, our website)</span></label>
-      <label class="choice"><input type="checkbox" name="materials_share_where" value="Social media and ads"><span>Social media and ads</span></label>
       <p class="legal">By selecting &ldquo;Yes&rdquo; above, I give League Bound Consulting permission to use, share, and publish my application materials as I&rsquo;ve selected, with names anonymized as described. I still own my essays, and I can ask League Bound to stop using them in new materials at any time by emailing razihecker@leagueboundconsulting.com.</p>
     </div>
-    <p class="err">Please pick one option (and where we can share them).</p>
+    <p class="err">Please pick one option.</p>
   </section>
 
   <section class="card" data-group="testimonial_video_consent">
     <h2><span class="num">07</span>Video testimonial</h2>
     <p class="help">Optional &mdash; no effect on your gift card.</p>
-    <p class="intro">Would you be willing to record a short (~5 min) video about your experience with League Bound?</p>
+    <p class="intro">Would you be willing to record a short (~5 min) video about your experience working with Razi and the League Bound team? We&rsquo;ll reach out to schedule.</p>
     <label class="choice"><input type="radio" name="testimonial_video_consent" value="Yes"><span>Yes</span></label>
     <label class="choice"><input type="radio" name="testimonial_video_consent" value="No"><span>No</span></label>
     <div class="reveal" id="vid"><p class="legal">I give League Bound Consulting permission to record and use my video, name, and likeness in its marketing (including its website, social media, and ads). I understand I&rsquo;m not being paid for the video itself, and that I can ask League Bound to stop using it in new materials at any time by emailing razihecker@leagueboundconsulting.com.</p></div>
@@ -206,8 +202,7 @@ function validate(){
   mark(f.acceptances.closest('.card'), !f.acceptances.value.trim());
   mark(f.college.closest('.card'), !f.college.value.trim());
   const p = radio('materials_permission');
-  const where = f.querySelectorAll('input[name="materials_share_where"]:checked').length;
-  mark(f.querySelector('[data-group="materials_permission"]'), !p || (p !== 'No' && !where));
+  mark(f.querySelector('[data-group="materials_permission"]'), !p);
   mark(f.wrapup_signature.closest('.card'), !f.wrapup_signature.value.trim());
   if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
   return !first;
@@ -229,7 +224,6 @@ f.addEventListener('submit', async e => {
     merit_scholarships: val('merit_scholarships'),
     materials_permission: p,
     materials_excluded: p === 'Yes, with exceptions' ? val('materials_excluded') : '',
-    materials_share_where: p === 'No' ? '' : [...f.querySelectorAll('input[name="materials_share_where"]:checked')].map(i => i.value).join(';'),
     testimonial_video_consent: radio('testimonial_video_consent'),
     wrapup_anything_else: val('wrapup_anything_else'),
     wrapup_signature: val('wrapup_signature'),

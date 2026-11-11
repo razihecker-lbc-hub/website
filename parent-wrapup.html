@@ -119,16 +119,23 @@
   <section class="card">
     <h2><span class="num">03</span>Parent video testimonial</h2>
     <p class="help">Optional &mdash; no effect on your gift card.</p>
-    <p class="intro">Would you be willing to record a short (~5 min) video about your family&rsquo;s experience?</p>
-    <label class="choice"><input type="radio" name="testimonial_video_consent" value="Yes"><span>Yes</span></label>
-    <label class="choice"><input type="radio" name="testimonial_video_consent" value="No"><span>No</span></label>
+    <p class="intro">Would you be willing to record a short (~5 min) video about your family&rsquo;s experience working with Razi and the League Bound team? We&rsquo;ll reach out with more information.</p>
+    <label class="choice"><input type="radio" name="parent_testimonial_video_consent" value="Yes"><span>Yes</span></label>
+    <label class="choice"><input type="radio" name="parent_testimonial_video_consent" value="No"><span>No</span></label>
     <div class="reveal" id="vid"><p class="legal">I give League Bound Consulting permission to record and use my video, name, and likeness in its marketing (including its website, social media, and ads). I understand I&rsquo;m not being paid for the video itself, and that I can ask League Bound to stop using it in new materials at any time by emailing razihecker@leagueboundconsulting.com.</p></div>
+    <div class="reveal" id="written">
+      <p class="intro" style="margin-top:6px">No issue at all! Would you mind sharing a few sentences here about your experience with League Bound, and where your child got in? We&rsquo;ll use this on our social media.</p>
+      <textarea id="parent_written_testimonial" name="parent_written_testimonial"></textarea>
+      <p class="legal">By sharing, I give League Bound Consulting permission to post this on its website and social media, and I can ask League Bound to take it down at any time by emailing razihecker@leagueboundconsulting.com.</p>
+      <p class="intro" style="margin:16px 0 8px">It would also mean a lot if you posted it as a Google review:</p>
+      <button type="button" class="copy" id="greview">Copy my text &amp; open Google Reviews</button>
+    </div>
   </section>
 
   <section class="card" data-group="referral_texts_sent">
     <h2><span class="num">04</span>One small ask</h2>
     <p class="intro">I know this part&rsquo;s a little awkward, but honestly it&rsquo;s how we grow. Almost all of our families come from word of mouth. Could you think of three friends with kids in high school and send them a quick text? Something like:</p>
-    <div class="textmsg" id="txt">Hey! Let me know if you&rsquo;re ever interested in college guidance. <span class="kid">[Student]</span>&rsquo;s finally done with the process and we worked with an amazing team. Happy to connect you if you want.</div>
+    <div class="textmsg" id="txt">Hey, by the way, let me know if you&rsquo;re ever interested in getting help with college apps/guidance. <span class="kid">[Child&rsquo;s name]</span> is finally done with the process, and we worked with an amazing team. Happy to connect you if you want. No pressure, but they really are great.</div>
     <button type="button" class="copy" id="copy">Copy text</button>
     <label class="choice"><input type="radio" name="referral_texts_sent" value="Sent"><span>Done, I sent it!</span></label>
     <label class="choice"><input type="radio" name="referral_texts_sent" value="This week"><span>I&rsquo;ll do it this week</span></label>
@@ -156,11 +163,18 @@ const f = document.getElementById('f');
 const em = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 if (!crmEmail) document.getElementById('who').hidden = false;
 const kid = (params.get('student') || '').trim();
-document.querySelectorAll('.kid').forEach(s => s.textContent = kid || '[Your kid]');
+document.querySelectorAll('.kid').forEach(s => s.textContent = kid || '[Child’s name]');
 
 function radio(n){ const el = f.querySelector('input[name="'+n+'"]:checked'); return el ? el.value : ''; }
 f.addEventListener('change', () => {
-  document.getElementById('vid').classList.toggle('on', radio('testimonial_video_consent') === 'Yes');
+  document.getElementById('vid').classList.toggle('on', radio('parent_testimonial_video_consent') === 'Yes');
+  document.getElementById('written').classList.toggle('on', radio('parent_testimonial_video_consent') === 'No');
+});
+document.getElementById('greview').addEventListener('click', async e => {
+  const t = document.getElementById('parent_written_testimonial').value.trim();
+  try { if (t) await navigator.clipboard.writeText(t); } catch (_) {}
+  window.open('https://www.google.com/search?q=League+Bound+Consulting#lrd=0x49e3984222fea111:0xb2d3b0f7ff0b6581,3,,,,', '_blank', 'noopener');
+  e.target.textContent = t ? 'Copied ✓ just paste it into the review' : 'Opened Google Reviews';
 });
 document.getElementById('copy').addEventListener('click', async e => {
   try { await navigator.clipboard.writeText(document.getElementById('txt').innerText.trim()); e.target.textContent = 'Copied ✓'; }
@@ -191,7 +205,8 @@ f.addEventListener('submit', async e => {
     lastname: crmEmail ? '' : val('lastname'),
     recommend_score: radio('recommend_score'),
     parent_feedback: val('parent_feedback'),
-    testimonial_video_consent: radio('testimonial_video_consent'),
+    parent_testimonial_video_consent: radio('parent_testimonial_video_consent'),
+    parent_written_testimonial: radio('parent_testimonial_video_consent') === 'No' ? val('parent_written_testimonial') : '',
     referral_texts_sent: radio('referral_texts_sent')
   };
   const body = {
