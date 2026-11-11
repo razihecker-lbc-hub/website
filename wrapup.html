@@ -235,10 +235,10 @@ async function sendToHubSpot(fields, withPhoto){
   if (!r.ok) throw new Error('HubSpot ' + r.status);
 }
 
-function validate(){
+function validate(live){
   let first = null;
-  const mark = (card, bad) => { card.classList.toggle('invalid', bad); if (bad && !first) first = card; };
-  f.querySelectorAll('.card').forEach(c => c.classList.remove('invalid'));
+  const mark = (card, bad) => { if (live && !card.classList.contains('invalid')) return; card.classList.toggle('invalid', bad); if (bad && !first) first = card; };
+  if (!live) f.querySelectorAll('.card').forEach(c => c.classList.remove('invalid'));
   const em = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   mark(f.firstname.closest('.card'), !f.firstname.value.trim() || !f.lastname.value.trim() || !em.test(f.personal_email.value.trim()));
   mark(f.acceptances.closest('.card'), !f.acceptances.value.trim());
@@ -246,9 +246,13 @@ function validate(){
   const p = radio('materials_permission');
   mark(f.querySelector('[data-group="materials_permission"]'), !p);
   mark(f.wrapup_signature.closest('.card'), !f.wrapup_signature.value.trim());
-  if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
+  if (first && !live) first.scrollIntoView({behavior:'smooth', block:'center'});
   return !first;
 }
+
+// Clear an error as soon as that question is fixed.
+f.addEventListener('input', () => validate(true));
+f.addEventListener('change', () => validate(true));
 
 f.addEventListener('submit', async e => {
   e.preventDefault();

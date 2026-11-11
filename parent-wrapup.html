@@ -219,17 +219,21 @@ async function sendToHubSpot(fields, withPhoto){
   if (!r.ok) throw new Error('HubSpot ' + r.status);
 }
 
-function validate(){
+function validate(live){
   let first = null;
-  const mark = (card, bad) => { card.classList.toggle('invalid', bad); if (bad && !first) first = card; };
-  f.querySelectorAll('.card').forEach(c => c.classList.remove('invalid'));
+  const mark = (card, bad) => { if (live && !card.classList.contains('invalid')) return; card.classList.toggle('invalid', bad); if (bad && !first) first = card; };
+  if (!live) f.querySelectorAll('.card').forEach(c => c.classList.remove('invalid'));
   if (!crmEmail) mark(document.getElementById('who'), !f.firstname.value.trim() || !em.test(f.email.value.trim()));
   mark(f.querySelector('[data-group="recommend_score"]'), !radio('recommend_score'));
   mark(f.querySelector('[data-group="referral_texts_sent"]'), !radio('referral_texts_sent'));
   mark(f.parent_wrapup_signature.closest('.card'), !f.parent_wrapup_signature.value.trim());
-  if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
+  if (first && !live) first.scrollIntoView({behavior:'smooth', block:'center'});
   return !first;
 }
+
+// Clear an error as soon as that question is fixed.
+f.addEventListener('input', () => validate(true));
+f.addEventListener('change', () => validate(true));
 
 f.addEventListener('submit', async e => {
   e.preventDefault();
